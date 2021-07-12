@@ -2,10 +2,12 @@
   margin-top: 100px;
   display: flex;
   flex-direction: column;
-  background-color: black;
-  color: orange;
+  background-color: orange;
+  color: black;
   line-height: 1.5;
   padding-top: 30px;
+  border-top: 2px solid black;
+  
 }
 
 .footer-top {
@@ -19,16 +21,16 @@
 .recent-posts,
 .pages {
   max-width: 20%;
-  
 }
 
 .about-us-title,
 .contact-us-title,
 .recent-posts-title,
 .pages-title {
-  font-size: 1.2rem;
-  border-bottom: 2px solid orange;
-  
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-bottom: 2px solid black;
 }
 
 .contacts-list,
@@ -40,26 +42,31 @@
 .contacts-list li,
 .recent-posts .list li,
 .footer-links li {
-    list-style: none;
+  list-style: none;
 }
 
 .footer-link a {
-    text-decoration: none;
-    color: orange;
-    text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  
 }
 
 .contact-us strong {
-    border-bottom: 2px solid orange;
+  border-bottom: 2px solid black;
 }
 
 .footer-bottom {
-    display: flex;
-    justify-content: center;
-    border-top: 1px solid orange;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid black;
 }
 
 .contacts-list {
-    line-height: 1.7;
+  line-height: 1.8;
 }
 
+.footer-links {
+  display: flex;
+  justify-content: center;
+}

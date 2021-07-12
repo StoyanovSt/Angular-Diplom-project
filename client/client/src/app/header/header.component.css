@@ -45,10 +45,11 @@
 .link a {
   text-decoration: none;
   color: orange;
+  font-size: 0.9rem;
   font-weight: bold;
   text-transform: uppercase;
   border: 2px solid orange;
-  padding: 10px 16px;
+  padding: 8px 24px;
   border-radius: 30px;
 }
 
