@@ -1,40 +1,59 @@
 .site-header {
-    max-width: 90%;
-    margin: 20px auto;
+  margin: 20px auto;
+  background-color: black;
+  padding: 30px 45px 20px 15px;
+  margin-top: 0;
+  margin-bottom: 60px;
 }
 
 .header-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    max-width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo img {
-    width: 50%;
+  width: 50%;
+  border-radius: 50%;
+}
+
+.logo-text {
+  color: orange;
+  font-size: 1.1rem;
 }
 
 .links {
-    display: flex;
+  display: flex;
 }
 
 .link {
-    list-style: none;
-    margin-right: 35px;
+  list-style: none;
+  margin-right: 25px;
 }
 
 .link:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .link a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
+  text-decoration: none;
+  color: orange;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid orange;
+  padding: 10px 16px;
+  border-radius: 30px;
+}
+
+.link a:hover {
+  cursor: pointer;
+  color: white;
+  border-color: white;
 }
