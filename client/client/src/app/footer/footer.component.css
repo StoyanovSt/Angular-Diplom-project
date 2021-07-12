@@ -59,7 +59,10 @@
 .footer-bottom {
   display: flex;
   justify-content: center;
-  border-top: 1px solid black;
+  border-top: 1px solid orange;
+  background-color: black;
+  color: orange;
+  font-size: bold;
 }
 
 .contacts-list {
