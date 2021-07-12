@@ -1,9 +1,12 @@
 .site-header {
-  margin: 20px auto;
+  max-width: 97%;
+  margin: 0px auto;
   background-color: black;
-  padding: 30px 45px 20px 15px;
+  padding: 30px 45px 20px 25px;
   margin-top: 0;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
 }
 
 .header-nav {
@@ -28,6 +31,7 @@
 }
 
 .logo-text {
+  margin-top: 0px;
   color: orange;
   font-size: 1.1rem;
   padding: 5px;
@@ -53,12 +57,12 @@
   font-weight: bold;
   text-transform: uppercase;
   border: 2px solid orange;
-  padding: 8px 24px;
+  padding: 6px 24px;
   border-radius: 30px;
 }
 
 .link a:hover {
   cursor: pointer;
-  color: white;
-  border-color: white;
+  color: black;
+  background-color: orange;
 }
