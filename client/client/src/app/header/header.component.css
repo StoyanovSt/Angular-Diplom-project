@@ -9,7 +9,7 @@
 .header-nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .logo {
@@ -17,6 +17,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 2px solid orange;
+  border-radius: 50%;
+  padding: 5px;
 }
 
 .logo img {
@@ -27,6 +30,7 @@
 .logo-text {
   color: orange;
   font-size: 1.1rem;
+  padding: 5px;
 }
 
 .links {
