@@ -34,10 +34,16 @@
     box-shadow: 3px 0px 7px 2px lightgrey;
 }
 
-.log-in {
-    font-size: 0.9rem;
+.log-in-button {
+    width: fit-content;
     position: relative;
     left: 75px;
+    border-radius: 24px;
+    box-shadow: 3px 0px 7px 2px lightgrey;
+}
+
+.log-in {
+    font-size: 0.9rem;    
     padding: 12px 48px;
     background-color: orange;
     border: 2px solid black;
