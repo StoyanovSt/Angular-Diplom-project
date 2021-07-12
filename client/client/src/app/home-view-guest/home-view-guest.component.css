@@ -60,3 +60,24 @@
     color: orange;
     background-color: black;
 }
+
+.recent-offerts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    background-color: orange;
+}
+
+.recent-offerts-title {
+    font-size: 2rem;
+    margin-bottom: 0px;
+}
+
+.recent-offerts .inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
