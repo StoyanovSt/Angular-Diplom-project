@@ -1,0 +1,54 @@
+.create-product-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: orange;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  line-height: 2;
+}
+
+.create-product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-product-form label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.create-product-form > input {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  padding: 8px 24px;
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  border-radius: 22px;
+  letter-spacing: 3px;
+  border: none;
+}
+
+.create-product-form > input:hover {
+  background-color: orange;
+  color: black;
+  border: 2px solid black;
+}
+
+.create-product-form label input,
+.create-product-form label textarea {
+  width: 300px;
+  padding: 5px 0px 5px 5px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+}
+
+.create-product-form label textarea {
+  overflow: scroll;
+  height: 80px;
+}
