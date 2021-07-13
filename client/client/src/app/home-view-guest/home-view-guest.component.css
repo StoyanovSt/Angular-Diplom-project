@@ -1,83 +1,101 @@
 .home-guest-view-content {
-    display: flex;
-    justify-content: center;
-    align-items: top;
+  display: flex;
+  justify-content: center;
+  align-items: top;
 }
 
 .home-guest-view-content-text {
-    max-width: 45%;
+  max-width: 45%;
 }
 
 .home-guest-view-content-text-title {
-    font-size: 3rem;
-    margin-bottom: 0;
+  font-size: 3rem;
+  margin-bottom: 0;
 }
 
 .home-guest-view-content-text-subtitle {
-    font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 .home-guest-view-content-image-container {
-    max-width: 45%;
+  max-width: 45%;
 }
 
 .home-guest-view-content-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;    
-    margin-right: 50px;    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 50px;
 }
 
 .home-guest-view-content-image-container img {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 3px 0px 7px 2px lightgrey;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 3px 0px 7px 2px lightgrey;
 }
 
 .log-in-button {
-    width: fit-content;
-    position: relative;
-    left: 75px;
-    border-radius: 24px;
-    box-shadow: 3px 0px 7px 2px lightgrey;
+  width: fit-content;
+  position: relative;
+  left: 75px;
+  border-radius: 24px;
+  box-shadow: 3px 0px 7px 2px lightgrey;
 }
 
 .log-in {
-    font-size: 0.9rem;    
-    padding: 12px 48px;
-    background-color: orange;
-    border: 2px solid black;
-    color: black;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 24px;
-    letter-spacing: 3px;
+  font-size: 0.9rem;
+  padding: 12px 48px;
+  background-color: orange;
+  border: 2px solid black;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 24px;
+  letter-spacing: 3px;
 }
 
 .log-in:hover {
-    cursor: pointer;
-    border-color: orange;
-    color: orange;
-    background-color: black;
+  cursor: pointer;
+  border-color: orange;
+  color: orange;
+  background-color: black;
 }
 
 .recent-offerts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    background-color: orange;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: orange;
 }
 
 .recent-offerts-title {
-    font-size: 2rem;
-    margin-bottom: 0px;
+  font-size: 2rem;
+  margin-bottom: 0px;
 }
 
 .recent-offerts .inner {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-form label {
+  position: relative;
+  left: -500px;
+}
+
+.filter-form label input {
+  padding: 5px 0px 5px 25px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+}
+
+.fas.fa-search {
+  position: absolute;
+  top: 6px;
+  left: 3px;
 }
