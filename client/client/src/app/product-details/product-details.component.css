@@ -1,0 +1,89 @@
+.product-details-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.product-details-content-image-wrapper {
+  width: 500px;
+  margin-right: 70px;
+}
+
+.product-details-content-image-wrapper img {
+  width: 100%;
+}
+
+.product-details-content-text-title {
+  margin-top: 0;
+}
+
+.product-details-content-text-subtitle {
+  margin-bottom: 0;
+}
+
+.product-details-content-text {
+  width: 400px;
+}
+
+.product-details-content-text-title {
+  width: 200px;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.informative-list {
+  padding-left: 0;
+}
+
+.informative-list-item {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.informative-list-item span {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.product-details-content-text-subtitle {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.main-info {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.secondary-info {
+  color: gray;
+  font-size: 0.8rem;
+}
+
+.product-details-content-btn {
+  background-color: #ffb600;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-top: 32px;
+  margin-bottom: 60px;
+  margin-right: 20px;
+}
+
+.product-details-content-btn:hover {
+  cursor: pointer;
+}
+
+.product-details-content-btn.delete {
+  background-color: red;
+  color: white;
+}
+
+.product-details-content-btn.buy {
+  background-color: green;
+  color: white;
+}
