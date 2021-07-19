@@ -4,6 +4,7 @@ const config = {
     SALT_ROUNDS: 9,
     SECRET: 'public',
     PASSWORD_VALIDATION_PATTERN: /^[a-zA-Z0-9]{6,}$/,
+    EMAIL_VALIDATION_PATTERN: /^\w+\@[a-zA-Z]+\.[a-zA-Z]+$/,
     USERNAME_VALIDATION_PATTERN: /^[a-zA-Z0-9]{4,}$/,
 };
 

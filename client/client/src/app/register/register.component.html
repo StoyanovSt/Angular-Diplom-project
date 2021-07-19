@@ -1,22 +1,28 @@
 <section class="register-form-container">
     <h2 class="register-form-title">Sign up</h2>
-    <form action="" class="register-form">
+    <form class="register-form">
         <label for="username">Username
             <i class="fas fa-user"></i>
-            <input type="text" id="username" name="username" placeholder="Username" autofocus>
+            <input type="text" #usernameInput id="username" name="username" placeholder="Username" autofocus>
         </label>
         <label for="e-mail">E-mail
             <i class="fas fa-envelope"></i>
-            <input type="email" id="e-mail" name="Email" placeholder="E-mail">
+            <input type="email" #emailInput id="e-mail" name="Email" placeholder="E-mail">
         </label>
         <label for="password">Password
             <i class="fas fa-key"></i>
-            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="password" #passwordInput id="password" name="password" placeholder="Password">
         </label>
         <label for="re-password">Re-password
             <i class="fas fa-key"></i>
-            <input type="password" id="re-password" name="rePassword" placeholder="Re-password">
+            <input type="password" #rePasswordInput id="re-password" name="rePassword" placeholder="Re-password">
         </label>
-        <input type="submit" value="Sign up">
+        <input type="submit" (click)="signUpHandler(
+            $event,
+            usernameInput,
+            emailInput,
+            passwordInput,
+            rePasswordInput
+        )" value="Sign up">
     </form>
 </section>

@@ -26,15 +26,25 @@ router.get('/', (req, res) => {
 });
 
 // AUTH-----------------------------
-// Register
+// Register - rdy
 router.post('/register', (req, res) => {
     // get user data
     const userData = req.body;
+    console.log(userData);
 
     // validate data
     if (!userData.username.match(config.USERNAME_VALIDATION_PATTERN)) {
         res.status(409).json({
             message: 'Username must be atleast four characters long and may contains only english letters and digits!',
+            hasError: true,
+        });
+
+        return;
+    }
+
+    if (!userData.eMail.match(config.EMAIL_VALIDATION_PATTERN)) {
+        res.status(409).json({
+            message: 'Email is not valid!',
             hasError: true,
         });
 
@@ -78,7 +88,7 @@ router.post('/register', (req, res) => {
                         bcrypt.hash(userData.password, salt)
                             .then(hash => {
                                 // store in database
-                                const user = new User({ username: userData.username, password: hash });
+                                const user = new User({ username: userData.username, eMail: userData.eMail, password: hash });
 
                                 user.save()
                                     .then(response => {

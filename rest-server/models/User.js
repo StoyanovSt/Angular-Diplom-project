@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    eMail: {
+        type: String,
+        require: true,
+    },
     products: [
         {
             type: mongoose.Types.ObjectId,

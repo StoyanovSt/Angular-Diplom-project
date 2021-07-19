@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductComponent } from './product/product.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { RegisterService } from './services/register.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,13 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: RegisterService,
+    useClass: RegisterService
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
