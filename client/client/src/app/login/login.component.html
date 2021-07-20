@@ -3,12 +3,16 @@
     <form action="" class="login-form">
         <label for="username">Username
             <i class="fas fa-user"></i>
-            <input type="text" id="username" name="username" placeholder="Username" autofocus>
+            <input type="text" #usernameInput id="username" name="username" placeholder="Username" autofocus>
         </label>
         <label for="password">Password
             <i class="fas fa-key"></i>
-            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="password" #passwordInput id="password" name="password" placeholder="Password">
         </label>
-        <input type="submit" value="Sign in">
+        <input type="submit" (click)="signInHandler(
+            [$event,
+            usernameInput,
+            passwordInput]
+        )" value="Sign in">
     </form>
 </section>

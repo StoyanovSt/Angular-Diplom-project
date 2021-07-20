@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IUser } from '../interfaces/user';
 import { RegisterService } from '../services/register.service';
 
@@ -7,13 +7,16 @@ import { RegisterService } from '../services/register.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   user: IUser = {
     username: '',
     eMail: '',
     password: '',
     rePassword: '',
   }
+
+  serverResponse!: {};
+  hasError: boolean = true;
 
   constructor(private registerService: RegisterService) {
 
@@ -40,7 +43,8 @@ export class RegisterComponent implements OnInit {
     this.registerService
       .registerUser(this.user)
       .subscribe(
-        error => console.error(error)
+        error => console.error(error),
+        () => console.log('Stream has been closed!')        
       );
 
     usernameInput.value = '';
@@ -49,7 +53,4 @@ export class RegisterComponent implements OnInit {
     rePasswordInput.value = '';
   }
 
-  ngOnInit(): void {
-
-  }
 }

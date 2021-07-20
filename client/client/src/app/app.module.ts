@@ -19,6 +19,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RegisterService } from './services/register.service';
 import { SuccessComponent } from './notifications/success/success.component';
 import { ErrorComponent } from './notifications/error/error.component';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,10 @@ import { ErrorComponent } from './notifications/error/error.component';
   providers: [{
     provide: RegisterService,
     useClass: RegisterService
+  },
+  {
+    provide: LoginService,
+    useClass: LoginService
   }],
   bootstrap: [AppComponent]
 })
