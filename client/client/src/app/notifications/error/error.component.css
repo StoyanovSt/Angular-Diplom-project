@@ -1,0 +1,19 @@
+.error-notification {
+    display: flex;
+    justify-content: center;
+    max-width: 95%;
+    margin: 0 auto;
+    letter-spacing: 3px;
+    background-color: red;
+    padding: 25px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    margin-bottom: 20px;
+    border-top: 3px solid black;
+    box-shadow: 0px 5px 7px 4px lightgrey;
+}
+
+.error-notification-text {
+    border-bottom: 2px solid black;
+    width: fit-content;
+}

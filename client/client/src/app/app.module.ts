@@ -17,6 +17,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductComponent } from './product/product.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RegisterService } from './services/register.service';
+import { SuccessComponent } from './notifications/success/success.component';
+import { ErrorComponent } from './notifications/error/error.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { RegisterService } from './services/register.service';
     PageNotFoundComponent,
     ProductDetailsComponent,
     ProductComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    SuccessComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
