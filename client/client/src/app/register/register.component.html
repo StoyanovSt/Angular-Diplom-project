@@ -24,12 +24,12 @@
             <i class="fas fa-key"></i>
             <input type="password" #rePasswordInput id="re-password" name="rePassword" placeholder="Re-password">
         </label>
-        <input type="submit" (click)="signUpHandler(
+        <input type="submit" (click)="signUpHandler([
             $event,
             usernameInput,
             emailInput,
             passwordInput,
             rePasswordInput
-        )" value="Sign up">
+        ])" value="Sign up">
     </form>
 </section>

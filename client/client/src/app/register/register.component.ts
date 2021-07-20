@@ -15,42 +15,30 @@ export class RegisterComponent {
     rePassword: '',
   }
 
-  serverResponse!: {};
-  hasError: boolean = true;
+  constructor(private registerService: RegisterService) { }
 
-  constructor(private registerService: RegisterService) {
+  signUpHandler(args: Array<any>): void {
+    args[0].preventDefault();
 
-  }
-
-  signUpHandler(
-    $event: MouseEvent,
-    usernameInput: HTMLInputElement,
-    emailInput: HTMLInputElement,
-    passwordInput: HTMLInputElement,
-    rePasswordInput: HTMLInputElement,
-  ): void {
-    $event.preventDefault();
-
-    if (passwordInput.value !== rePasswordInput.value) {
+    if (args[3].value !== args[4].value) {
       throw Error('Passwords do not match!');
     }
 
-    this.user.username = usernameInput.value;
-    this.user.eMail = emailInput.value;
-    this.user.password = passwordInput.value;
-    this.user.rePassword = rePasswordInput.value;
+    this.user.username = args[1].value;
+    this.user.eMail = args[2].value;
+    this.user.password = args[3].value;
+    this.user.rePassword = args[4].value;
 
     this.registerService
       .registerUser(this.user)
       .subscribe(
         error => console.error(error),
-        () => console.log('Stream has been closed!')        
+        () => console.log('Stream has been closed!')
       );
 
-    usernameInput.value = '';
-    emailInput.value = '';
-    passwordInput.value = '';
-    rePasswordInput.value = '';
+      args[1].value = '';
+      args[2].value = '';
+      args[3].value = '';
+      args[4].value = '';
   }
-
 }

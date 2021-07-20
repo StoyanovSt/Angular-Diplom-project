@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IUser } from '../interfaces/user';
 import { LoginService } from '../services/login.service';
 
@@ -7,7 +7,7 @@ import { LoginService } from '../services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   user: IUser = {
     username: '',
     eMail: '',
@@ -15,12 +15,7 @@ export class LoginComponent implements OnInit {
     rePassword: '',
   }
 
-  serverResponse!: {};
-
   constructor(private loginService: LoginService) { }
-
-  ngOnInit(): void {
-  }
 
   signInHandler(args: Array<any>): void {
     args[0].preventDefault();
@@ -30,13 +25,11 @@ export class LoginComponent implements OnInit {
     this.loginService
       .loginUser(this.user)
       .subscribe(
-        response => this.serverResponse = response,
         error => console.error(error),
-        () => console.log(this.serverResponse)
+        () => console.log('Stream has been closed!')
       );
 
       args[1].value = '';
       args[2].value = '';
   }
-
 }

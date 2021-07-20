@@ -9,10 +9,10 @@
             <i class="fas fa-key"></i>
             <input type="password" #passwordInput id="password" name="password" placeholder="Password">
         </label>
-        <input type="submit" (click)="signInHandler(
-            [$event,
+        <input type="submit" (click)="signInHandler([
+            $event,
             usernameInput,
-            passwordInput]
-        )" value="Sign in">
+            passwordInput
+        ])" value="Sign in">
     </form>
 </section>

@@ -7,17 +7,15 @@ import { Injectable } from '@angular/core';
 const apiURL = environment.apiURL;
 
 @Injectable()
-
 export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(user: IUser): Observable<{}> {
-    return this.http.post<{}>(`${apiURL}/register`, user, {
+  registerUser(user: IUser): Observable<any> {
+    return this.http.post<any>(`${apiURL}/register`, user, {
       headers: {
         'content-type': 'application/json'
       }
     })
   }
-
 }
