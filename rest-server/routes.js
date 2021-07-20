@@ -30,7 +30,6 @@ router.get('/', (req, res) => {
 router.post('/register', (req, res) => {
     // get user data
     const userData = req.body;
-    console.log(userData);
 
     // validate data
     if (!userData.username.match(config.USERNAME_VALIDATION_PATTERN)) {

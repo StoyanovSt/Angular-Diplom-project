@@ -25,6 +25,7 @@ export class LoginComponent {
     this.loginService
       .loginUser(this.user)
       .subscribe(
+        response => localStorage.setItem('user', JSON.stringify({ TOKEN: response.token, USERNAME: response.username })),
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );
