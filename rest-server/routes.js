@@ -481,6 +481,27 @@ router.patch('/product/:productId', (req, res) => {
         })
 });
 
+//get current user that is selling the product
+router.get('user/:userId', isAuthorized, (req, res) => {
+// get user id
+const userId = req.params.userId;
+
+// get user by id from database
+User.findById(productId).lean()
+.then(user => {
+    res.status(200).json({
+        user,
+        hasError: false,
+    });
+})
+.catch(err => {
+    res.status(500).json({
+        message: 'Internal server error!',
+        hasError: false,
+    });
+});
+});
+
 //---------------------------------------
 
 module.exports = router;
