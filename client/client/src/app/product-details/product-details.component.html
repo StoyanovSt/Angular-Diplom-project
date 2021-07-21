@@ -3,25 +3,16 @@
         <img src="../../assets/images/honey.jpg" alt="">
     </article>
     <article class="product-details-content-text">
-        <p class="product-details-content-text-title">HONEY</p>
-        <p class="product-details-content-text-subtitle">A fresh honey made of linden.</p>
+        <p class="product-details-content-text-title">{{currentProduct?.product}}</p>
+        <p class="product-details-content-text-subtitle">{{currentProduct?.description}}</p>
         <ul class="informative-list">
             <li class="informative-list-item">
-                <span class="main-info">Year of production
-                </span>
-                <span class="secondary-info">July 2021</span>
-            </li>
-            <li class="informative-list-item">
                 <span class="main-info">Price</span>
-                <span class="secondary-info">10 lv/kg.</span>
+                <span class="secondary-info">{{currentProduct?.price}} lv/kg.</span>
             </li>
             <li class="informative-list-item">
                 <span class="main-info">Seller</span>
                 <span class="secondary-info">Ivan Dimitrov Petrov</span>
-            </li>
-            <li class="informative-list-item">
-                <span class="main-info">Phone</span>
-                <span class="secondary-info">0889 *** ***</span>
             </li>
             <li class="informative-list-item">
                 <span class="main-info">E-mail</span>

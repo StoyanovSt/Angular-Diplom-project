@@ -9,10 +9,14 @@ import { CreateOffertService } from '../services/create-offert.service';
 })
 export class ProductCreateComponent {
   product: IProduct = {
+    _id: '',
     product: '',
     description: '',
     imageUrl: '',
     price: 0,
+    seller: '',
+    likes: 0,
+    peopleLikedProduct: [],
   }
 
   constructor(private createOffertService: CreateOffertService) { }

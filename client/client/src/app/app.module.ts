@@ -21,6 +21,7 @@ import { SuccessComponent } from './notifications/success/success.component';
 import { ErrorComponent } from './notifications/error/error.component';
 import { LoginService } from './services/login.service';
 import { CreateOffertService } from './services/create-offert.service';
+import { ProductDetailsService } from './services/product-details.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,10 @@ import { CreateOffertService } from './services/create-offert.service';
   {
     provide: CreateOffertService,
     useClass: CreateOffertService
+  },
+  {
+    provide: ProductDetailsService,
+    useClass: ProductDetailsService
   }],
   bootstrap: [AppComponent]
 })

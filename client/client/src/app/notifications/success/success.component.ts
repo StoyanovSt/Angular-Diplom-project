@@ -6,11 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./success.component.css']
 })
 export class SuccessComponent implements OnInit {
-  // @Input() message = '';
+  @Input() info!: {};
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

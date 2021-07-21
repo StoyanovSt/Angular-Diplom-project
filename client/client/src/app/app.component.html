@@ -1,10 +1,17 @@
 <app-header></app-header>
-<!-- <app-register></app-register> -->
-<!-- <app-login></app-login> -->
-<app-product-create></app-product-create>
-<!-- <app-product-edit></app-product-edit> -->
-<!-- <app-home-view-guest></app-home-view-guest> -->
-<!-- <app-product-details></app-product-details> -->
-<!-- <app-page-not-found></app-page-not-found> -->
-<!-- <app-user-profile></app-user-profile> -->
+<main>
+    <section class="main-content">
+        <!-- <section class="notification-section" *ngIf="serverResponseInfo">
+            <app-success [info]="serverResponseInfo"></app-success>
+        </section>
+        <app-register (serverResponseEmitter)="eventEmitterHandler($event)"></app-register> -->
+        <!-- <app-login></app-login> -->
+        <!-- <app-product-create></app-product-create> -->
+        <!-- <app-product-edit></app-product-edit> -->
+        <app-home-view-guest (serverResponseEmitter)="eventEmitterHandler($event)"></app-home-view-guest>
+        <app-product-details [currentProduct]="product"></app-product-details>
+        <!-- <app-page-not-found></app-page-not-found> -->
+        <!-- <app-user-profile></app-user-profile> -->
+    </section>
+</main>
 <app-footer></app-footer>

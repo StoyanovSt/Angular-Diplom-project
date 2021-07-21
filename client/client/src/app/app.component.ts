@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IProduct } from './interfaces/product';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'client';
+  // serverResponseInfo!: {};
+
+  // eventEmitterHandler(event: Event): void {
+  //   this.serverResponseInfo = event;
+  // }
+
+  product!: IProduct;
+
+  eventEmitterHandler(event: any): void {
+    this.product = event.product;    
+  }
 }

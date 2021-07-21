@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-home-view-guest',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-view-guest.component.css']
 })
 export class HomeViewGuestComponent implements OnInit {
+  @Output()
+  serverResponseEmitter: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  eventEmitterHandler(event: Event): void {
+    this.serverResponseEmitter.emit(event);
   }
 
 }

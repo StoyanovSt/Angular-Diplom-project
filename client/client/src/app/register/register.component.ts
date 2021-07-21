@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { IUser } from '../interfaces/user';
 import { RegisterService } from '../services/register.service';
 
@@ -8,6 +8,9 @@ import { RegisterService } from '../services/register.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  @Output()
+  serverResponseEmitter: EventEmitter<any> = new EventEmitter();
+
   user: IUser = {
     username: '',
     eMail: '',
@@ -29,16 +32,18 @@ export class RegisterComponent {
     this.user.password = args[3].value;
     this.user.rePassword = args[4].value;
 
+    args[1].value = '';
+    args[2].value = '';
+    args[3].value = '';
+    args[4].value = '';
+
     this.registerService
       .registerUser(this.user)
       .subscribe(
+        response => this.serverResponseEmitter.emit(response),
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );
 
-      args[1].value = '';
-      args[2].value = '';
-      args[3].value = '';
-      args[4].value = '';
   }
 }
