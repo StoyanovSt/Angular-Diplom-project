@@ -440,7 +440,7 @@ router.get('/product/:productId', (req, res) => {
         .catch(err => {
             res.status(500).json({
                 message: 'Internal server error!',
-                hasError: false,
+                hasError: true,
             });
         });
 });
@@ -482,22 +482,21 @@ router.patch('/product/:productId', (req, res) => {
 });
 
 //get current user that is selling the product
-router.get('user/:userId', isAuthorized, (req, res) => {
+router.get('/user/:userId', isAuthorized, (req, res) => {
 // get user id
 const userId = req.params.userId;
 
 // get user by id from database
-User.findById(productId).lean()
+User.findById(userId).lean()
 .then(user => {
     res.status(200).json({
-        user,
-        hasError: false,
+        ...user,
     });
 })
 .catch(err => {
     res.status(500).json({
         message: 'Internal server error!',
-        hasError: false,
+        hasError: true,
     });
 });
 });

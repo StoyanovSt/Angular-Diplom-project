@@ -22,6 +22,7 @@ import { ErrorComponent } from './notifications/error/error.component';
 import { LoginService } from './services/login.service';
 import { CreateOffertService } from './services/create-offert.service';
 import { ProductDetailsService } from './services/product-details.service';
+import { GetCurrentUserService } from './services/get-current-user.service';
 
 @NgModule({
   declarations: [
@@ -46,22 +47,13 @@ import { ProductDetailsService } from './services/product-details.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [{
-    provide: RegisterService,
-    useClass: RegisterService
-  },
-  {
-    provide: LoginService,
-    useClass: LoginService
-  },
-  {
-    provide: CreateOffertService,
-    useClass: CreateOffertService
-  },
-  {
-    provide: ProductDetailsService,
-    useClass: ProductDetailsService
-  }],
+  providers: [
+    RegisterService,
+    LoginService,
+    CreateOffertService,
+    ProductDetailsService,
+    GetCurrentUserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
