@@ -1,6 +1,6 @@
-<section class="product-details-content">
+<!-- <section class="product-details-content">
     <article class="product-details-content-image-wrapper">
-        <img src="../../assets/images/honey.jpg" alt="">
+        <img [src]="{{currentProduct?.imageUrl}}" alt="">
     </article>
     <article class="product-details-content-text">
         <p class="product-details-content-text-title">{{currentProduct?.product}}</p>
@@ -18,10 +18,14 @@
                 <span class="main-info">E-mail</span>
                 <span class="secondary-info">{{seller?.eMail}}</span>
             </li>
-            <button class="product-details-content-btn edit">Edit</button>
-            <button class="product-details-content-btn delete">Delete</button>
-            <button class="product-details-content-btn buy">Buy</button>
-            <button class="product-details-content-btn like">Like</button>
+            <article class="owner-options" *ngIf="currentLoggedUser === seller.username">
+                <button class="product-details-content-btn edit">Edit</button>
+                <button class="product-details-content-btn delete">Delete</button>
+            </article>
+            <article class="guest-options" *ngIf="currentLoggedUser !== seller.username">
+                <button class="product-details-content-btn buy">Buy</button>
+                <button class="product-details-content-btn like">Like</button>
+            </article>
         </ul>
     </article>
-</section>
+</section> -->

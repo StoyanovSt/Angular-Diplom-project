@@ -1,10 +1,11 @@
 <article class="product">
     <article class="image-container">
-        <img src="../../assets/images/honey.jpg" alt="">
+        <img src="{{product.imageUrl}}" alt="">
     </article>
     <article class="product-info">
-        <p class="product-name">Honey</p>
-        <p class="price">Price: 12lv/ kg</p>
-        <button class="more-info" (click)="productDetailsHandler($event)">More info</button>            
+        <p class="product-name">{{product?.product}}</p>
+        <p class="price">Price: {{product?.price}} lv/ kg</p>
+        <!-- link -->
+        <button class="more-info" (click)="productDetailsHandler($event)">More info</button>
     </article>
 </article>

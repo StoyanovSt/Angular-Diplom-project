@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IProduct } from '../interfaces/product';
 import { ProductDetailsService } from '../services/product-details.service';
 
 @Component({
@@ -6,17 +7,25 @@ import { ProductDetailsService } from '../services/product-details.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
+  @Input()
+  product!: IProduct;
   @Output()
   serverResponseEmitter: EventEmitter<any> = new EventEmitter();
 
+
   constructor(private productDetailsService: ProductDetailsService) { }
 
-  productDetailsHandler(event: Event): void {
+  productDetailsHandler(event: MouseEvent): void {
     this.productDetailsService.getProduct().subscribe(
       response => this.serverResponseEmitter.emit(response),
       error => console.error(error),
       () => console.log('Stream has been closed!')
     )
+  }
+
+  ngOnInit():void {
+    console.log(this.product);
+    
   }
 }

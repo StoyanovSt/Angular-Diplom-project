@@ -1,8 +1,9 @@
 .product {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
+  max-width: 33%;
 }
 
 .image-container {

@@ -1,0 +1,17 @@
+.main-content-title,
+.loading {
+    text-align: center;
+}
+
+.main-content-title {
+    font-size: 1.5rem;
+}
+
+.loading{
+    margin-top: 70px;
+    font-size: 1.2rem;
+}
+
+.products {
+    display: flex;
+}
