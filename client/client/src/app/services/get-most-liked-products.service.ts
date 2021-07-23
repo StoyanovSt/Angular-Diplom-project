@@ -5,22 +5,16 @@ import { Observable } from "rxjs";
 import { IProduct } from "../interfaces/product";
 
 const apiURL = environment.apiURL;
-let token = '';
-
-if (localStorage.getItem('user')) {
-  token = JSON.parse(String(localStorage.getItem('user'))).TOKEN;
-}
 
 @Injectable()
-export class GetAllProductsService {
+export class GetMostLikedProductsService {
 
   constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(apiURL + `/home`, {
+    return this.http.get<IProduct[]>(apiURL + `/`, {
       headers: {
-        'content-type': 'application/json',
-        'authorization': `${token}`,
+        'content-type': 'application/json'
       }
     })
   }

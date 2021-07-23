@@ -30,6 +30,7 @@ import { LogoutService } from './services/logout.service';
 import { ProductDeleteService } from './services/product-delete.service';
 import { ProductDeleteComponent } from './product-delete/product-delete.component';
 import { GetUserProductsService } from './services/get-user-products.service';
+import { GetMostLikedProductsService } from './services/get-most-liked-products.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { GetUserProductsService } from './services/get-user-products.service';
     EditOffertService,
     LogoutService,
     ProductDeleteService,
-    GetUserProductsService
+    GetUserProductsService,
+    GetMostLikedProductsService
   ],
   bootstrap: [AppComponent]
 })

@@ -6,8 +6,8 @@ const config = require('./config/config');
 const jwt = require('jsonwebtoken');
 const isAuthorized = require('./middlewares/isAuthorized.js');
 
-// Home page - half done
-router.get('/', (req, res) => {
+// Home page - done
+router.get('/home', isAuthorized, (req, res) => {
     // get all products
     Product.find()
         .lean()
@@ -22,7 +22,26 @@ router.get('/', (req, res) => {
                 hasError: true,
             });
         });
+});
 
+// home guest - 3 most liked onces - done
+router.get('/', (req, res) => {
+    // get most liked products
+    Product.find()
+        .sort({ peopleLikedProduct: -1 })
+        .limit(1)
+        .lean()
+        .then(products => {
+            res.status(200).json([
+                ...products
+            ]);
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+                hasError: true,
+            });
+        });
 });
 
 // AUTH-----------------------------
@@ -456,8 +475,8 @@ router.patch('/product/:productId', (req, res) => {
         })
 });
 
-// User profile page - to add isAuthorized!
-router.get('/user/:userId/profile',  (req, res) => {
+// User profile page - done
+router.get('/user/:userId/profile', isAuthorized, (req, res) => {
     // get user id
     const userId = req.params.userId;
 
