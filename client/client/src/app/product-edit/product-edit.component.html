@@ -1,17 +1,17 @@
 <section class="edit-product-container">
     <h2 class="edit-product-form-title">Edit your offert</h2>
-    <form action="" class="edit-product-form">
+    <form class="edit-product-form">
         <label for="product-name">Product name
-            <input type="text" id="product-name" name="product" placeholder="Product name" autofocus>
+            <input type="text" id="product-name" name="product" placeholder="Product name" autofocus value="{{product?.product}}">
         </label>
         <label for="product-description">Product description
-            <textarea id="product-description" name="description" placeholder="Product description"></textarea>
+            <textarea id="product-description" name="description" placeholder="Product description">{{product?.description}}</textarea>
         </label>
         <label for="product-image">Product image
-            <input type="text" id="product-image" name="imageUrl" placeholder="Product image">
+            <input type="text" id="product-image" name="imageUrl" placeholder="Product image" value="{{product?.imageUrl}}">
         </label>
         <label for="product-price">Product price
-            <input type="number" id="product-price" name="price" placeholder="Product price">
+            <input type="number" id="product-price" name="price" placeholder="Product price" value="{{product?.price}}">
         </label>
         <input type="submit" value="Edit product">
     </form>

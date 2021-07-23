@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IUser } from '../interfaces/user';
 import { RegisterService } from '../services/register.service';
 
@@ -7,9 +8,12 @@ import { RegisterService } from '../services/register.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
   @Output()
   serverResponseEmitter: EventEmitter<any> = new EventEmitter();
+
+  // за ръчен unsubscribe!
+  unsub!: Subscription;
 
   user: IUser = {
     username: '',
@@ -37,13 +41,16 @@ export class RegisterComponent {
     args[3].value = '';
     args[4].value = '';
 
-    this.registerService
+    this.unsub = this.registerService
       .registerUser(this.user)
       .subscribe(
         response => this.serverResponseEmitter.emit(response),
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );
+  }
 
+  ngOnDestroy(): void {
+    this.unsub.unsubscribe();
   }
 }
