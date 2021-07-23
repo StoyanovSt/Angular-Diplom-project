@@ -27,6 +27,8 @@ import { GetAllProductsService } from './services/get-all-products.service';
 import { EditOffertService } from './services/edit-offert.service';
 import { LogoutComponent } from './logout/logout.component';
 import { LogoutService } from './services/logout.service';
+import { ProductDeleteService } from './services/product-delete.service';
+import { ProductDeleteComponent } from './product-delete/product-delete.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { LogoutService } from './services/logout.service';
     SuccessComponent,
     ErrorComponent,
     LogoutComponent,
+    ProductDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { LogoutService } from './services/logout.service';
     GetCurrentUserService,
     GetAllProductsService,
     EditOffertService,
-    LogoutService
+    LogoutService,
+    ProductDeleteService
   ],
   bootstrap: [AppComponent]
 })
