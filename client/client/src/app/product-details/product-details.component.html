@@ -1,31 +1,31 @@
-<!-- <section class="product-details-content">
+<section class="product-details-content">
     <article class="product-details-content-image-wrapper">
-        <img [src]="{{currentProduct?.imageUrl}}" alt="">
+        <img src="../../assets/images/honey.jpg" alt="">
     </article>
     <article class="product-details-content-text">
-        <p class="product-details-content-text-title">{{currentProduct?.product}}</p>
-        <p class="product-details-content-text-subtitle">{{currentProduct?.description}}</p>
+        <p class="product-details-content-text-title">Honey</p>
+        <p class="product-details-content-text-subtitle">A fresh honey. Year of production: July 2021.</p>
         <ul class="informative-list">
             <li class="informative-list-item">
                 <span class="main-info">Price</span>
-                <span class="secondary-info">{{currentProduct?.price}} lv/kg.</span>
+                <span class="secondary-info">15 lv/kg.</span>
             </li>
             <li class="informative-list-item">
                 <span class="main-info">Seller</span>
-                <span class="secondary-info">{{seller?.username}}</span>
+                <span class="secondary-info">Ivan Ivanov Dimitrov</span>
             </li>
             <li class="informative-list-item">
                 <span class="main-info">E-mail</span>
-                <span class="secondary-info">{{seller?.eMail}}</span>
+                <span class="secondary-info">someEmail@abv.bg</span>
             </li>
-            <article class="owner-options" *ngIf="currentLoggedUser === seller.username">
+            <article class="owner-options">
                 <button class="product-details-content-btn edit">Edit</button>
                 <button class="product-details-content-btn delete">Delete</button>
             </article>
-            <article class="guest-options" *ngIf="currentLoggedUser !== seller.username">
+            <!-- <article class="guest-options">
                 <button class="product-details-content-btn buy">Buy</button>
                 <button class="product-details-content-btn like">Like</button>
-            </article>
+            </article> -->
         </ul>
     </article>
-</section> -->
+</section>

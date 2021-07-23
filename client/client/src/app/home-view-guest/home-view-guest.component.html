@@ -24,7 +24,7 @@
         <article class="filter"></article>
     </article>
     <section class="inner">
-        <app-product (serverResponseEmitter)="eventEmitterHandler($event)"></app-product>
-        
+        <app-product *ngIf="currentProduct" [productInfo]="currentProduct"
+            (serverResponseEmitter)="eventEmitterHandler($event)"></app-product>
     </section>
 </section>

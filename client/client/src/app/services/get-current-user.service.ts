@@ -17,7 +17,7 @@ export class GetCurrentUserService {
   constructor(private http: HttpClient) { }
 
   getProductSeller(userId: string): Observable<IUser> {
-    return this.http.get<IUser>(apiURL + `/user/${userId}`, {
+    return this.http.get<IUser>(apiURL + `/user/:${userId}`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${token}`,

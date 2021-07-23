@@ -25,6 +25,8 @@ import { ProductDetailsService } from './services/product-details.service';
 import { GetCurrentUserService } from './services/get-current-user.service';
 import { GetAllProductsService } from './services/get-all-products.service';
 import { EditOffertService } from './services/edit-offert.service';
+import { LogoutComponent } from './logout/logout.component';
+import { LogoutService } from './services/logout.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { EditOffertService } from './services/edit-offert.service';
     UserProfileComponent,
     SuccessComponent,
     ErrorComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ import { EditOffertService } from './services/edit-offert.service';
     GetCurrentUserService,
     GetAllProductsService,
     EditOffertService,
+    LogoutService
   ],
   bootstrap: [AppComponent]
 })

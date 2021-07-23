@@ -6,7 +6,7 @@ const config = require('./config/config');
 const jwt = require('jsonwebtoken');
 const isAuthorized = require('./middlewares/isAuthorized.js');
 
-// Home page
+// Home page - half done
 router.get('/', (req, res) => {
     // get all products
     Product.find()
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 });
 
 // AUTH-----------------------------
-// Register - rdy
+// Register - done
 router.post('/register', (req, res) => {
     // get user data
     const userData = req.body;
@@ -128,7 +128,7 @@ router.post('/register', (req, res) => {
 
 });
 
-// Login
+// Login - done
 router.post('/login', (req, res) => {
     // get user data
     const userData = req.body;
@@ -188,7 +188,7 @@ router.post('/login', (req, res) => {
 });
 
 //----------------------------------------------------------------------------
-// Create product
+// Create product - done
 router.post('/product/create', isAuthorized, (req, res) => {
     // get data
     let { product, description, imageUrl, price } = req.body;
@@ -310,7 +310,7 @@ router.get('/product/:productId/delete', isAuthorized, (req, res) => {
         });
 });
 
-// Edit product
+// Edit product - done
 router.get('/product/:productId/edit', isAuthorized, (req, res) => {
     // get product id
     const productId = req.params.productId;
@@ -374,7 +374,7 @@ router.post('/product/:productId/edit', isAuthorized, (req, res) => {
         })
 });
 
-// Product details page
+// Product details page - done
 router.get('/product/:productId/details', isAuthorized, (req, res) => {
     const currentLoggedUserId = req.user._id;
 

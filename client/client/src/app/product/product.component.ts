@@ -10,9 +10,11 @@ import { ProductDetailsService } from '../services/product-details.service';
 export class ProductComponent implements OnInit {
   @Input()
   product!: IProduct;
+  @Input()
+  productInfo!: IProduct;
+  
   @Output()
   serverResponseEmitter: EventEmitter<any> = new EventEmitter();
-
 
   constructor(private productDetailsService: ProductDetailsService) { }
 
@@ -25,7 +27,6 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit():void {
-    console.log(this.product);
     
   }
 }

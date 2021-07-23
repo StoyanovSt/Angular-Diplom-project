@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IProduct } from '../interfaces/product';
+import { IUser } from '../interfaces/user';
 
 @Component({
   selector: 'app-home-view-guest',
@@ -6,6 +8,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./home-view-guest.component.css']
 })
 export class HomeViewGuestComponent implements OnInit {
+  @Input()
+  currentProduct!: IProduct;
+ 
   @Output()
   serverResponseEmitter: EventEmitter<any> = new EventEmitter();
 

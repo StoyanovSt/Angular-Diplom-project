@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { IProduct } from './interfaces/product';
 import { IUser } from './interfaces/user';
 import { GetCurrentUserService } from './services/get-current-user.service';
@@ -10,6 +11,7 @@ import { GetCurrentUserService } from './services/get-current-user.service';
 })
 export class AppComponent {
   constructor(private getCurrentUserService: GetCurrentUserService) { }
+  // register
   // serverResponseInfo!: {};
 
   // eventEmitterHandler(event: Event): void {
@@ -20,14 +22,19 @@ export class AppComponent {
   productSellerId!: string;
   productSeller!: IUser;
 
+  //product details
   eventEmitterHandler(event: any): void {
     this.product = event.product;
     this.productSellerId = event.currentLoggedUserId;
-    this.getCurrentUserService.getProductSeller(this.productSellerId).subscribe(
-      response => this.productSeller = response,
-      error => console.error(error),
-      () => console.log('Stream has been closed!')
-    );
+    this.getCurrentUserService.getProductSeller(this.productSellerId)
+      .pipe(
+        tap((response) => console.log(response))
+      )
+      .subscribe(
+        response => this.productSeller = response,
+        error => console.error(error),
+        () => console.log('Stream has been closed!')
+      );
   }
 
 }
