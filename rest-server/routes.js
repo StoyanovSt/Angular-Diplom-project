@@ -289,7 +289,7 @@ router.post('/product/create', isAuthorized, (req, res) => {
         });
 });
 
-// Delete product
+// Delete product - done
 router.get('/product/:productId/delete', isAuthorized, (req, res) => {
     // get product id
     const productId = req.params.productId;
@@ -333,7 +333,7 @@ router.get('/product/:productId/edit', isAuthorized, (req, res) => {
 
 router.post('/product/:productId/edit', isAuthorized, (req, res) => {
     // get editted data
-    const { product, description, imageUrl, price} = req.body;
+    const { product, description, imageUrl, price } = req.body;
 
     // get product id
     const productId = req.params.productId;
@@ -398,28 +398,6 @@ router.get('/product/:productId/details', isAuthorized, (req, res) => {
 
 });
 
-// User profile page
-router.get('/user/profile', isAuthorized, (req, res) => {
-    // get current user by id
-    const currentLoggedUserId = req.user._id;
-
-    // TODO: user ID
-    User.findById(currentLoggedUserId)
-        .populate('products')
-        .then(user => {
-            res.status(200).json({
-                username: user.username,
-                products: user.products,
-            });
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: 'Internal server error!',
-                hasError: true,
-            });
-        });
-
-});
 
 // Like product logic
 router.get('/product/:productId', (req, res) => {
@@ -478,24 +456,47 @@ router.patch('/product/:productId', (req, res) => {
         })
 });
 
-//get current user that is selling the product
-router.get('/user/:userId', isAuthorized, (req, res) => {
-// get user id
-const userId = req.params.userId;
+// User profile page - to add isAuthorized!
+router.get('/user/:userId/profile',  (req, res) => {
+    // get user id
+    const userId = req.params.userId;
 
-// get user by id from database
-User.findById(userId).lean()
-.then(user => {
-    res.status(200).json({
-        ...user,
-    });
-})
-.catch(err => {
-    res.status(500).json({
-        message: 'Internal server error!',
-        hasError: true,
-    });
+    // TODO: 
+    User.findById(userId)
+        .populate('products')
+        .then(user => {
+            res.status(200).json({
+                username: user.username,
+                products: user.products
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+                hasError: true,
+            });
+        });
+
 });
+
+//get current user that is selling the product - done
+router.get('/user/:userId', isAuthorized, (req, res) => {
+    // get user id
+    const userId = req.params.userId;
+
+    // get user by id from database
+    User.findById(userId).lean()
+        .then(user => {
+            res.status(200).json({
+                ...user,
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+                hasError: true,
+            });
+        });
 });
 
 //---------------------------------------
