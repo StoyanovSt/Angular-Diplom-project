@@ -2,17 +2,23 @@
     <h2 class="edit-product-form-title">Edit your offert</h2>
     <form class="edit-product-form">
         <label for="product-name">Product name
-            <input type="text" id="product-name" name="product" placeholder="Product name" autofocus value="{{product?.product}}">
+            <input type="text" #productNameInput id="product-name" name="product" placeholder="Product name" autofocus value="{{product?.product}}">
         </label>
         <label for="product-description">Product description
-            <textarea id="product-description" name="description" placeholder="Product description">{{product?.description}}</textarea>
+            <textarea id="product-description" #productDescriptionInput name="description" placeholder="Product description">{{product?.description}}</textarea>
         </label>
         <label for="product-image">Product image
-            <input type="text" id="product-image" name="imageUrl" placeholder="Product image" value="{{product?.imageUrl}}">
+            <input type="text" #productImageUrlInput id="product-image" name="imageUrl" placeholder="Product image" value="{{product?.imageUrl}}">
         </label>
         <label for="product-price">Product price
-            <input type="number" id="product-price" name="price" placeholder="Product price" value="{{product?.price}}">
+            <input type="number" #productPriceInput id="product-price" name="price" placeholder="Product price" value="{{product?.price}}">
         </label>
-        <input type="submit" value="Edit product">
+        <input type="submit" (click)="editProductEventHandler([
+        $event,
+        productNameInput,
+        productDescriptionInput,
+        productImageUrlInput,
+        productPriceInput
+        ])" value="Edit product">
     </form>
 </section>

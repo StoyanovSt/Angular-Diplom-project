@@ -333,7 +333,7 @@ router.get('/product/:productId/edit', isAuthorized, (req, res) => {
 
 router.post('/product/:productId/edit', isAuthorized, (req, res) => {
     // get editted data
-    const { product, description, imageUrl, price, seller } = req.body;
+    const { product, description, imageUrl, price} = req.body;
 
     // get product id
     const productId = req.params.productId;
@@ -348,9 +348,6 @@ router.post('/product/:productId/edit', isAuthorized, (req, res) => {
         })
         .then(response => {
             return Product.updateOne({ _id: productId }, { price: price });
-        })
-        .then(response => {
-            return Product.updateOne({ _id: productId }, { seller: seller });
         })
         .then(response => {
             // get product by id from database

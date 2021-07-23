@@ -24,6 +24,7 @@ import { CreateOffertService } from './services/create-offert.service';
 import { ProductDetailsService } from './services/product-details.service';
 import { GetCurrentUserService } from './services/get-current-user.service';
 import { GetAllProductsService } from './services/get-all-products.service';
+import { EditOffertService } from './services/edit-offert.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { GetAllProductsService } from './services/get-all-products.service';
     CreateOffertService,
     ProductDetailsService,
     GetCurrentUserService,
-    GetAllProductsService
+    GetAllProductsService,
+    EditOffertService,
   ],
   bootstrap: [AppComponent]
 })
