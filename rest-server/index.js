@@ -13,7 +13,6 @@ app.use(express.json());
 
 app.use('/api', routes);
 
-
 //-------------------------------------------------------------------------------------
 app.listen(config.PORT, () => {
     console.log(`Server is listening on port ${config.PORT}...`);
