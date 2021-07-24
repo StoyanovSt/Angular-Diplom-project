@@ -214,26 +214,6 @@ router.get('/product/:productId/details', isAuthorized, (req, res) => {
 });
 
 // Like product
-router.get('/product/:productId', (req, res) => {
-    // get product id
-    const productId = req.params.productId;
-
-    // get product by id from database
-    Product.findById(productId).lean()
-        .then(product => {
-            res.status(200).json({
-                product,
-                hasError: false,
-            });
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: 'Internal server error!',
-                hasError: true,
-            });
-        });
-});
-
 router.patch('/product/:productId', (req, res) => {
     // get editted data
     const { countOfLikes, currentUser } = req.body;

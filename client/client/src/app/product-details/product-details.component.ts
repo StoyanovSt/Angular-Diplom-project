@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from '../interfaces/product';
 import { IUser } from '../interfaces/user';
+import { LikeProductService } from '../services/like-product.service';
+import { map, tap } from 'rxjs/operators';
 
 let currentLoggedUserUsername = '';
 
@@ -19,13 +21,27 @@ export class ProductDetailsComponent implements OnInit {
   @Input()
   seller!: IUser;
 
-  currentLoggedUser: string = currentLoggedUserUsername;  
+  currentLoggedUser: string = currentLoggedUserUsername;
 
-  constructor() { }
+  constructor(private likeProductService: LikeProductService) { }
+
+  likeProductHandler(): void {
+    this.likeProductService.likeProduct(1)
+      .pipe(
+        map((response) => response['product']),
+        tap((response) => console.log(response)
+        )
+      )
+      .subscribe(
+        response => this.currentProduct = response,
+        error => console.error(error),
+        () => ('Stream has been closed!')
+      )
+  }
 
   ngOnInit(): void {
     console.log(this.seller);
-    console.log(this.currentProduct);   
-    
+    console.log(this.currentProduct);
+
   }
 }
