@@ -9,6 +9,7 @@ import { CoreModule } from './modules/core/core.module';
 import { HomeModule } from './modules/home/home.module';
 import { ProductModule } from './modules/product/product.module';
 import { PageNotFoundModule } from './modules/page-not-found/page-not-found.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PageNotFoundModule } from './modules/page-not-found/page-not-found.modu
     CoreModule,
     HomeModule,
     ProductModule,
-    PageNotFoundModule
+    PageNotFoundModule,
+    NotificationsModule
   ],
   bootstrap: [AppComponent]
 })
