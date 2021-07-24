@@ -3,21 +3,25 @@
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-  max-width: 33%;
+  width: 33%;
 }
 
 .image-container {
-  max-width: 30%;
+  width: 150px;
   max-height: 150px;
-  border-radius: 50%;
   margin-bottom: 20px;
+  border-radius: 50%;
+  margin-bottom: 40px;
 }
+
 .image-container img {
   width: 100%;
   border-radius: 50%;
 }
 
 .more-info {
+  position: relative;
+  left: 7px;
   padding: 8px 16px;
   background-color: black;
   border: none;
@@ -28,4 +32,9 @@
 
 .more-info:hover {
   cursor: pointer;
+}
+
+.product-name {
+  text-align: center;
+  margin-top: 0;
 }
