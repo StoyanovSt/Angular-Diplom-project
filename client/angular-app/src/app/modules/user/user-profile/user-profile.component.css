@@ -1,13 +1,36 @@
 .user-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .user-profile-image-container {
-    max-width: 200px;
+  max-width: 200px;
 }
 
 .user-profile-image-container img {
-    width: 100%;
+  width: 100%;
+}
+
+.user-profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-profile-info p {
+  font-weight: bold;
+  width: fit-content;
+}
+
+.user-profile-info p:first-child {
+    margin-bottom: 0px;
+}
+
+.user-profile-info p:first-child span {
+  font-weight: normal;
+}
+.user-profile-info p:last-child span {
+  font-weight: normal;
+  color: red;
 }

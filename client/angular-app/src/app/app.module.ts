@@ -8,6 +8,7 @@ import { UserModule } from './modules/user/user.module';
 import { CoreModule } from './modules/core/core.module';
 import { HomeModule } from './modules/home/home.module';
 import { ProductModule } from './modules/product/product.module';
+import { PageNotFoundModule } from './modules/page-not-found/page-not-found.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductModule } from './modules/product/product.module';
     UserModule,
     CoreModule,
     HomeModule,
-    ProductModule
+    ProductModule,
+    PageNotFoundModule
   ],
   bootstrap: [AppComponent]
 })
