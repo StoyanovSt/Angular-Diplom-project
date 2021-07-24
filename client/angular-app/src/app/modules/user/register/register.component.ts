@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { UserService } from '../user.service';
-import { IUser } from '../../../interfaces/user';
+import { IUser } from '../../shared/interfaces/user';
 
 @Component({
   selector: 'app-register',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { tap } from 'rxjs/operators';
 
-import { IProduct } from './interfaces/product';
-import { IUser } from './interfaces/user';
+import { IProduct } from './modules/shared/interfaces/product';
+import { IUser } from './modules/shared/interfaces/user';
 import { UserService } from './modules/user/user.service';
 
 @Component({

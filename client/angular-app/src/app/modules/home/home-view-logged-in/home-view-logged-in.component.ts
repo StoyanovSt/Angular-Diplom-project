@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { IProduct } from '../../../interfaces/product';
+import { IProduct } from '../../shared/interfaces/product';
 import { UserService } from '../../user/user.service';
 
 @Component({

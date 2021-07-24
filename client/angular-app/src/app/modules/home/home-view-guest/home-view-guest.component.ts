@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { IProduct } from '../../../interfaces/product';
+import { IProduct } from '../../shared/interfaces/product';
 
 @Component({
   selector: 'app-home-view-guest',

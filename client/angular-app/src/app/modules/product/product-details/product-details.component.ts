@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IProduct } from '../../../interfaces/product';
-import { IUser } from '../../../interfaces/user';
+import { IProduct } from '../../shared/interfaces/product';
+import { IUser } from '../../shared/interfaces/user';
 import { ProductService } from '../product.service';
 import { map, tap } from 'rxjs/operators';
 
