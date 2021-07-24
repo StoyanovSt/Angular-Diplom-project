@@ -1,6 +1,7 @@
 <app-header></app-header>
 <main>
     <section class="main-content">
+        <router-outlet></router-outlet>
         <!-- <section class="notification-section" *ngIf="serverResponseInfo">
             <app-success [info]="serverResponseInfo"></app-success>
         </section>
@@ -13,7 +14,7 @@
         <!-- <app-user-profile></app-user-profile> -->
         <!-- <app-home-view-guest *ngIf="product" [currentProduct]="product"
             (serverResponseEmitter)="eventEmitterHandler($event)"></app-home-view-guest> -->
-        <app-product-details [currentProduct]="product" [seller]="productSeller"></app-product-details>
+        <!-- <app-product-details [currentProduct]="product" [seller]="productSeller"></app-product-details> -->
         <!-- <app-logout></app-logout> -->
         <!-- <app-page-not-found></app-page-not-found> -->
         <!-- <app-user-profile></app-user-profile> -->
