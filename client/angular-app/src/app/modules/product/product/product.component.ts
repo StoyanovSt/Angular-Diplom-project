@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   productDetailsHandler(event: MouseEvent): void {
-    this.productService.getProduct().subscribe(
+    this.productService.getProduct('60fd5cfd329c281ee4f8ca90').subscribe(
       response => this.serverResponseEmitter.emit(response),
       error => console.error(error),
       () => console.log('Stream has been closed!')
