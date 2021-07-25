@@ -1,29 +1,29 @@
 <section class="product-details-content">
     <article class="product-details-content-image-wrapper">
-        <img src="../../assets/images/honey.jpg" alt="">
+        <img [src]="product!.imageUrl" alt="Product">
     </article>
     <article class="product-details-content-text">
-        <p class="product-details-content-text-title">Honey</p>
-        <p class="product-details-content-text-subtitle">A fresh honey. Year of production: July 2021.</p>
+        <p class="product-details-content-text-title">{{product!.product}}</p>
+        <p class="product-details-content-text-subtitle">{{product!.description}}</p>
         <ul class="informative-list">
             <li class="informative-list-item">
                 <span class="main-info">Price</span>
-                <span class="secondary-info">15 lv/kg.</span>
+                <span class="secondary-info">{{product!.price}} lv/kg.</span>
             </li>
             <li class="informative-list-item">
                 <span class="main-info">Seller</span>
-                <span class="secondary-info">Ivan Ivanov Dimitrov</span>
+                <span class="secondary-info">{{user!.username}}</span>
             </li>
             <li class="informative-list-item">
                 <span class="main-info">E-mail</span>
-                <span class="secondary-info">someEmail@abv.bg</span>
+                <span class="secondary-info">{{user!.eMail}}</span>
             </li>
             <article class="owner-options">
-                <button class="product-details-content-btn edit" routerLink="/product/:id/edit">Edit</button>
-                <button class="product-details-content-btn delete" (click)="productDeleteHandler()">Delete</button>
+                <button class="product-details-content-btn edit" routerLink="/product/:productId/edit">Edit</button>
+                <!-- <button class="product-details-content-btn delete" (click)="productDeleteHandler()">Delete</button> -->
             </article>
             <!-- <article class="guest-options">
-                <button class="product-details-content-btn buy" (click)="productDeleteHandler()>Buy</button>
+                <button class="product-details-content-btn buy" (click)="productDeleteHandler()">Buy</button>
                 <button class="product-details-content-btn like" (click)="likeProductHandler()">Like</button>
             </article> -->
         </ul>

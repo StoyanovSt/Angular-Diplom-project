@@ -1,14 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { IProduct } from '../../../interfaces/product';
-import { IUser } from '../../../interfaces/user';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
+
 import { ProductService } from '../product.service';
-import { map, tap } from 'rxjs/operators';
-
-let currentLoggedUserUsername = '';
-
-if (localStorage.getItem('user')) {
-  currentLoggedUserUsername = JSON.parse(String(localStorage.getItem('user'))).USERNAME;
-}
+import { IProduct } from 'src/app/interfaces/product';
+import { IUser } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-product-details',
@@ -16,40 +12,48 @@ if (localStorage.getItem('user')) {
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  @Input()
-  currentProduct!: IProduct;
-  @Input()
-  seller!: IUser;
+  product!: IProduct;
+  user!: IUser;
 
-  currentLoggedUser: string = currentLoggedUserUsername;
+  constructor(
+    private productService: ProductService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
-  constructor(private productService: ProductService) { }
-
-  likeProductHandler(): void {
-    this.productService.likeProduct(1)
+  ngOnInit(): void {
+    this.productService.getProduct(this.activatedRoute.snapshot.params.productId)
       .pipe(
-        map((response) => response['product']),
-        tap((response) => console.log(response)
-        )
+        map(response => {
+          this.product = response['product'];
+          this.user = response['user'];
+        })
       )
       .subscribe(
-        response => this.currentProduct = response,
         error => console.error(error),
-        () => ('Stream has been closed!')
-      )
-  }
-
-  productDeleteHandler():void{
-    this.productService.deleteProduct()
-      .subscribe(
-        error => console.log(error),
-        () => ('Stream has been closed!')
+        () => console.log('Stream has been closed!')
       );
   }
 
-  ngOnInit(): void {
-    console.log(this.seller);
-    console.log(this.currentProduct);
-
+  likeProductHandler(): void {
+    // this.productService.likeProduct(1)
+    //   .pipe(
+    //     map((response) => response['product']),
+    //     tap((response) => console.log(response)
+    //     )
+    //   )
+    //   .subscribe(
+    //     response => this.currentProduct = response,
+    //     error => console.error(error),
+    //     () => ('Stream has been closed!')
+    //   )
   }
+
+  productDeleteHandler(): void {
+    // this.productService.deleteProduct()
+    //   .subscribe(
+    //     error => console.log(error),
+    //     () => ('Stream has been closed!')
+    //   );
+  }
+
 }

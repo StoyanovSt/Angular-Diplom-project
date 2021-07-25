@@ -34,7 +34,7 @@ router.get('/user/:userId', isAuthorized, (req, res) => {
     User.findById(userId).lean()
         .then(user => {
             res.status(200).json({
-                ...user,
+                user
             });
         })
         .catch(err => {

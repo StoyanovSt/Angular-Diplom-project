@@ -69,8 +69,9 @@ export class UserService {
     this.router.navigate(['/']);
   }
 
-  getProductSeller(userId: string): Observable<IUser> {
-    return this.http.get<IUser>(apiURL + `/user/:${userId}`, {
+  // ГОТОВ
+  getProductSeller(userId: string): Observable<any> {
+    return this.http.get<any>(apiURL + `/user/${userId}`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${this.getCurrentUserToken()}`,
