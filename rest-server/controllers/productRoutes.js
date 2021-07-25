@@ -205,7 +205,7 @@ router.get('/product/:productId/details', isAuthorized, async (req, res) => {
 });
 
 // Like product
-router.patch('/product/:productId', (req, res) => {
+router.patch('/product/:productId/like', (req, res) => {
     // get editted data
     const { countOfLikes, currentUser } = req.body;
 

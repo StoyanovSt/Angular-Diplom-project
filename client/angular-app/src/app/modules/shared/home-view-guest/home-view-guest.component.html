@@ -21,10 +21,13 @@
                 </label>
             </form>
         </article>
-        <article class="filter"></article>
     </article>
     <section class="inner">
-        <!-- <app-product *ngIf="currentProduct" [productInfo]="currentProduct"
-            (serverResponseEmitter)="eventEmitterHandler($event)"></app-product> -->
+        <ng-template [ngIf]="mostRecentOfferts">
+            <app-product *ngFor="let product of mostRecentOfferts" [product]="product"></app-product>
+        </ng-template>
+        <ng-template [ngIf]="!mostRecentOfferts">
+            <h3>Loading...</h3>
+        </ng-template>
     </section>
 </section>

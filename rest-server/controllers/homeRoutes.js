@@ -8,9 +8,9 @@ router.get('/home', isAuthorized, (req, res) => {
     Product.find()
         .lean()
         .then(products => {
-            res.status(200).json([
-                ...products
-            ]);
+            res.status(200).json(
+                products
+            );
         })
         .catch(err => {
             res.status(500).json({
@@ -25,12 +25,12 @@ router.get('/', (req, res) => {
     // get most liked products
     Product.find()
         .sort({ peopleLikedProduct: -1 })
-        .limit(1)
+        .limit(3)
         .lean()
         .then(products => {
-            res.status(200).json([
-                ...products
-            ]);
+            res.status(200).json(
+                products
+            );
         })
         .catch(err => {
             res.status(500).json({

@@ -76,8 +76,8 @@
 
 .recent-offerts .inner {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .filter-form label {

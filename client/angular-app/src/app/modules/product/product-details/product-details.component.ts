@@ -34,26 +34,23 @@ export class ProductDetailsComponent implements OnInit {
       );
   }
 
-  likeProductHandler(): void {
-    // this.productService.likeProduct(1)
-    //   .pipe(
-    //     map((response) => response['product']),
-    //     tap((response) => console.log(response)
-    //     )
-    //   )
-    //   .subscribe(
-    //     response => this.currentProduct = response,
-    //     error => console.error(error),
-    //     () => ('Stream has been closed!')
-    //   )
-  }
-
   productDeleteHandler(): void {
-    // this.productService.deleteProduct()
-    //   .subscribe(
-    //     error => console.log(error),
-    //     () => ('Stream has been closed!')
-    //   );
+    this.productService.deleteProduct(this.product._id)
+      .subscribe(
+        // ЗА НОТИФИКАЦИЯ ЩЕ МИ ТРЯБВА RESPONSA ОТ БАЗАТА
+        error => console.log(error),
+        () => ('Stream has been closed!')
+      );
   }
 
+  likeProductHandler(): void {
+    this.productService.likeProduct(this.product._id, this.product.likes + 1)
+      .pipe(
+        map((response) => this.product = response['product']),
+      )
+      .subscribe(
+        error => console.error(error),
+        () => ('Stream has been closed!')
+      );
+  }
 }

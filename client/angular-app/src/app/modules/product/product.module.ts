@@ -11,7 +11,6 @@ import { ProductRoutingModule } from './product-routing.module';
 import { RouterModule } from '@angular/router';
 
 
-
 @NgModule({
   declarations: [
     ProductComponent,

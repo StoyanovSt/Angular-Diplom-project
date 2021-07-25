@@ -6,6 +6,7 @@ import { ErrorComponent } from './notifications/error/error.component';
 import { HomeViewGuestComponent } from './home-view-guest/home-view-guest.component';
 import { HomeViewLoggedInComponent } from './home-view-logged-in/home-view-logged-in.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductModule } from '../product/product.module';
 
 
 @NgModule({
@@ -14,10 +15,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomeViewLoggedInComponent,
     PageNotFoundComponent,
     SuccessComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProductModule
   ],
   exports: [
     SuccessComponent,

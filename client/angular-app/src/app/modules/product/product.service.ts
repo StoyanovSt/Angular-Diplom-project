@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from "src/environments/environment";
-import { IProduct } from 'src/app/interfaces/product';
 import { UserService } from '../user/user.service';
 
-const apiURL = environment.apiURL + '/product';
+const apiURL = environment.apiURL;
+const apiURLProduct = environment.apiURL + '/product';
 
 @Injectable()
 export class ProductService {
@@ -17,7 +17,7 @@ export class ProductService {
 
   // ГОТОВ
   getProduct(productId: string): Observable<any> {
-    return this.http.get<any>(apiURL + `/${productId}/details`, {
+    return this.http.get<any>(apiURLProduct + `/${productId}/details`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${this.userService.getCurrentUserToken()}`,
@@ -32,7 +32,7 @@ export class ProductService {
     imageUrl: string,
     price: number
   ): Observable<any> {
-    return this.http.post<any>(`${apiURL}/create`, {
+    return this.http.post<any>(`${apiURLProduct}/create`, {
       product,
       description,
       imageUrl,
@@ -53,7 +53,7 @@ export class ProductService {
     price: number,
     productId: string
   ): Observable<any> {
-    return this.http.post<any>(`${apiURL}/${productId}/edit`, {
+    return this.http.post<any>(`${apiURLProduct}/${productId}/edit`, {
       product,
       description,
       imageUrl,
@@ -66,8 +66,9 @@ export class ProductService {
     });
   }
 
-  deleteProduct(): Observable<any> {
-    return this.http.get<any>(apiURL + `/60f7b0433772d73c04879030/delete`, {
+  // ГОТОВ
+  deleteProduct(productId: string): Observable<any> {
+    return this.http.get<any>(apiURLProduct + `/${productId}/delete`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${this.userService.getCurrentUserToken()}`,
@@ -75,10 +76,9 @@ export class ProductService {
     });
   }
 
-
-
-  likeProduct(countOfLikes: number): Observable<any> {
-    return this.http.patch<any>(apiURL + `/60f6a70dd329e82ea0c43d26`, {
+  //ГОТОВ
+  likeProduct(productId: string, countOfLikes: number): Observable<any> {
+    return this.http.patch<any>(apiURLProduct + `/${productId}/like`, {
       countOfLikes,
       currentUser: this.userService.getCurrentUserName()
     }, {
@@ -89,11 +89,12 @@ export class ProductService {
     });
   }
 
-  getMostLikedProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(apiURL + `/`, {
+  // ГОТОВ
+  getMostLikedProducts(): Observable<any> {
+    return this.http.get<any>(apiURL + '/', {
       headers: {
         'content-type': 'application/json'
       }
-    })
+    });
   }
 }
