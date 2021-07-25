@@ -1,16 +1,16 @@
 <section class="main-content">
     <h1 class="main-content-title">All products available</h1>
     <section class="inner">
-        <section class="loading" *ngIf="!products">
+        <!-- <section class="loading" *ngIf="!products">
             Loading...
-        </section>
-        <section *ngIf="products">
+        </section> -->
+        <section class="products-container" *ngIf="products">
             <!-- <app-product *ngFor="let product of products" [product]="product"
                 (serverResponseEmitter)="eventEmitterHandler($event)">
             </app-product> -->
         </section>
+        <section class="empty">
+            <h3>No products stored yet!</h3>
+        </section>
     </section>
-</section>
-<section class="empty-section">
-
 </section>

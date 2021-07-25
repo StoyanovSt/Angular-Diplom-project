@@ -1,18 +1,22 @@
 .main-content-title,
 .loading {
-    text-align: center;
+  text-align: center;
 }
 
 .main-content-title {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
-.loading{
-    margin-top: 50px;
-    margin-bottom: 100px;
-    font-size: 1.2rem;
+.loading {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  font-size: 1.2rem;
 }
 
 .products {
-    display: flex;
+  display: flex;
+}
+
+.empty {
+ text-align: center;
 }

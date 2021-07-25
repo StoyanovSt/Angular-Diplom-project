@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { IUser } from '../../shared/interfaces/user';
 import { UserService } from '../user.service';
 
@@ -15,8 +17,11 @@ export class LoginComponent {
     rePassword: '',
   }
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router) { }
 
+    // this.router.navigate(['/'])
   signInHandler(args: Array<any>): void {
     args[0].preventDefault();
     this.user.username = args[1].value;

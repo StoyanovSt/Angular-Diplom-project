@@ -9,7 +9,7 @@ import { CoreModule } from './modules/core/core.module';
 import { HomeModule } from './modules/home/home.module';
 import { ProductModule } from './modules/product/product.module';
 import { PageNotFoundModule } from './modules/page-not-found/page-not-found.module';
-import { NotificationsModule } from './modules/notifications/notifications.module';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
     HomeModule,
     ProductModule,
     PageNotFoundModule,
-    NotificationsModule
+    SharedModule,
   ],
   bootstrap: [AppComponent]
 })

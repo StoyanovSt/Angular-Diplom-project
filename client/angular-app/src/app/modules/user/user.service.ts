@@ -17,6 +17,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  // абе тука отделни парамерти да получава не цял усер! :@
   registerUser(user: IUser): Observable<any> {
     return this.http.post<any>(`${apiURL}/register`, user, {
       headers: {
@@ -24,6 +25,8 @@ export class UserService {
       }
     })
   } 
+
+  // абе тука отделни парамерти да получава не цял усер! :@
 
   loginUser(user: IUser): Observable<any> {
     return this.http.post<any>(`${apiURL}/login`, user, {

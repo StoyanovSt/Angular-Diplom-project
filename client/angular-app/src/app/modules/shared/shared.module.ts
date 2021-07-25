@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SuccessComponent } from './success/success.component';
-import { ErrorComponent } from './error/error.component';
+import { SuccessComponent } from './notifications/success/success.component';
+import { ErrorComponent } from './notifications/error/error.component';
 
 
 @NgModule({
@@ -18,4 +18,4 @@ import { ErrorComponent } from './error/error.component';
     ErrorComponent
   ]
 })
-export class NotificationsModule { }
+export class SharedModule { }
