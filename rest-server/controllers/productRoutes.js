@@ -190,41 +190,18 @@ router.post('/product/:productId/edit', isAuthorized, (req, res) => {
 });
 
 // Product details
-router.get('/product/:productId/details', isAuthorized, (req, res) => {
-    const currentLoggedUserId = req.user._id;
-    let info = {};
-
-    // get product id
+router.get('/product/:productId/details', isAuthorized, async (req, res) => {
     const productId = req.params.productId;
+    const currentLoggedUserId = req.user._id;
+    const info = {};
 
-    // get product by id from database
-    Product.findById(productId).lean()
-        .then(product => {
-            info['product'] = product;
-        })
-        .then(response => {
-            User.findById(currentLoggedUserId).lean()
-                .then(user => {
-                    info['user'] = user;
-                })
-                .then(response => {
-                    res.status(200).json({
-                        product: info['product'],
-                        user: info['user']
-                    });
-                }).catch(err => {
-                    res.status(500).json({
-                        message: 'Internal server error!',
-                        hasError: true,
-                    });
-                })
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: 'Internal server error!',
-                hasError: true,
-            });
-        });
+    info['product'] = await Product.findById(productId).lean();
+    info['user'] = await User.findById(currentLoggedUserId).lean();
+    
+    return res.status(200).json({
+        product: info['product'],
+        user: info['user']
+    });
 });
 
 // Like product
