@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IProduct } from '../../shared/interfaces/product';
-import { IUser } from '../../shared/interfaces/user';
+import { IProduct } from '../../../interfaces/product';
+import { IUser } from '../../../interfaces/user';
 import { ProductService } from '../product.service';
 import { map, tap } from 'rxjs/operators';
 
@@ -37,6 +37,14 @@ export class ProductDetailsComponent implements OnInit {
         error => console.error(error),
         () => ('Stream has been closed!')
       )
+  }
+
+  productDeleteHandler():void{
+    this.productService.deleteProduct()
+      .subscribe(
+        error => console.log(error),
+        () => ('Stream has been closed!')
+      );
   }
 
   ngOnInit(): void {

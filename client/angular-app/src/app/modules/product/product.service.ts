@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from "src/environments/environment";
-import { IProduct } from 'src/app/modules/shared/interfaces/product';
+import { IProduct } from 'src/app/interfaces/product';
 
 const apiURL = environment.apiURL;
 let currentUser = 'Ivan';

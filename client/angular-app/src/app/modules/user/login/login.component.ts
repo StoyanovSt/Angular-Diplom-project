@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { IUser } from '../../shared/interfaces/user';
+import { IUser } from '../../../interfaces/user';
 import { UserService } from '../user.service';
 
 @Component({

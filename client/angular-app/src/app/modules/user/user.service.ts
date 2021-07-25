@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 import { environment } from "src/environments/environment";
-import { IUser } from '../shared/interfaces/user';
+import { IUser } from '../../interfaces/user';
 
 const apiURL = environment.apiURL;
 let token = '';
@@ -15,7 +17,8 @@ if (localStorage.getItem('user')) {
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private router: Router) { }
 
   // абе тука отделни парамерти да получава не цял усер! :@
   registerUser(user: IUser): Observable<any> {
@@ -38,6 +41,7 @@ export class UserService {
 
   logout(): void {
     localStorage.removeItem('user');
+    this.router.navigate(['/']);
   }
 
   getProductSeller(userId: string): Observable<IUser> {

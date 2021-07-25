@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ProductComponent } from './product/product.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
-import { ProductDeleteComponent } from './product-delete/product-delete.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductService } from './product.service';
@@ -16,7 +15,6 @@ import { ProductRoutingModule } from './product-routing.module';
   declarations: [
     ProductComponent,
     ProductCreateComponent,
-    ProductDeleteComponent,
     ProductDetailsComponent,
     ProductEditComponent,
   ],
@@ -28,7 +26,6 @@ import { ProductRoutingModule } from './product-routing.module';
   exports: [
     ProductComponent,
     ProductCreateComponent,
-    ProductDeleteComponent,
     ProductDetailsComponent,
     ProductEditComponent,
   ],

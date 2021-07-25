@@ -6,9 +6,7 @@ import { AppComponent } from './app.component';
 
 import { UserModule } from './modules/user/user.module';
 import { CoreModule } from './modules/core/core.module';
-import { HomeModule } from './modules/home/home.module';
 import { ProductModule } from './modules/product/product.module';
-import { PageNotFoundModule } from './modules/page-not-found/page-not-found.module';
 import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
@@ -21,9 +19,7 @@ import { SharedModule } from './modules/shared/shared.module';
     HttpClientModule,
     UserModule,
     CoreModule,
-    HomeModule,
     ProductModule,
-    PageNotFoundModule,
     SharedModule,
   ],
   bootstrap: [AppComponent]

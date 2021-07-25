@@ -5,7 +5,6 @@ import { UserRoutingModule } from './user-routing.module';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserService } from './user.service';
 
@@ -13,7 +12,6 @@ import { UserService } from './user.service';
   declarations: [
     RegisterComponent,
     LoginComponent,
-    LogoutComponent,
     UserProfileComponent
   ],
   imports: [
@@ -24,7 +22,6 @@ import { UserService } from './user.service';
   exports: [
     RegisterComponent,
     LoginComponent,
-    LogoutComponent,
     UserProfileComponent
   ],
   providers: [

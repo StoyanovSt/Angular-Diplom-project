@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 
-import { IProduct } from '../../shared/interfaces/product';
+import { IProduct } from '../../../interfaces/product';
 import { ProductService } from '../product.service';
 
 @Component({
