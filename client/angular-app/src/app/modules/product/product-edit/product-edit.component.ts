@@ -13,14 +13,12 @@ export class ProductEditComponent implements OnInit {
   product!: IProduct;
 
   edittedProduct: IProduct = {
-    _id: '',
+    
     product: '',
     description: '',
     imageUrl: '',
     price: 0,
-    seller: '',
-    likes: 0,
-    peopleLikedProduct: [],
+    
   }
 
   constructor(private productService: ProductService) { }

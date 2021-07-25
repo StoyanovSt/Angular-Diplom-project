@@ -4,35 +4,42 @@ import { Observable } from 'rxjs';
 
 import { environment } from "src/environments/environment";
 import { IProduct } from 'src/app/interfaces/product';
+import { UserService } from '../user/user.service';
 
 const apiURL = environment.apiURL;
-let currentUser = 'Ivan';
-let token = '';
-
-if (localStorage.getItem('user')) {
-  token = JSON.parse(String(localStorage.getItem('user'))).TOKEN;
-  // currentUser = JSON.parse(String(localStorage.getItem('user'))).USERNAME;
-}
 
 @Injectable()
 export class ProductService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private userService: UserService) { }
 
-  storeProduct(product: IProduct): Observable<any> {
-    return this.http.post<any>(`${apiURL}/product/create`, product, {
+  // ГОТОВ
+  storeProduct(
+    product: string,
+    description: string,
+    imageUrl: string,
+    price: number
+  ): Observable<any> {
+    return this.http.post<any>(`${apiURL}/product/create`, {
+      product,
+      description,
+      imageUrl,
+      price
+    }, {
       headers: {
         'content-type': 'application/json',
-        'authorization': `${token}`,
+        'authorization': `${this.userService.getCurrentUserToken()}`,
       }
-    })
+    });
   }
 
   editProduct(product: IProduct): Observable<any> {
     return this.http.post<any>(`${apiURL}/product/60f6a6a9d329e82ea0c43d25/edit`, product, {
       headers: {
         'content-type': 'application/json',
-        'authorization': `${token}`,
+        'authorization': `${this.userService.getCurrentUserToken()}`,
       }
     })
   }
@@ -41,7 +48,7 @@ export class ProductService {
     return this.http.get<any>(apiURL + `/product/60f7b0433772d73c04879030/delete`, {
       headers: {
         'content-type': 'application/json',
-        'authorization': `${token}`,
+        'authorization': `${this.userService.getCurrentUserToken()}`,
       }
     });
   }
@@ -50,16 +57,19 @@ export class ProductService {
     return this.http.get<IProduct>(apiURL + `/product/60f6a6a9d329e82ea0c43d25/details`, {
       headers: {
         'content-type': 'application/json',
-        'authorization': `${token}`,
+        'authorization': `${this.userService.getCurrentUserToken()}`,
       }
     });
   }
 
   likeProduct(countOfLikes: number): Observable<any> {
-    return this.http.patch<any>(apiURL + `/product/60f6a70dd329e82ea0c43d26`, { countOfLikes, currentUser }, {
+    return this.http.patch<any>(apiURL + `/product/60f6a70dd329e82ea0c43d26`, {
+      countOfLikes,
+      currentUser: this.userService.getCurrentUserName()
+    }, {
       headers: {
         'content-type': 'application/json',
-        'authorization': `${token}`,
+        'authorization': `${this.userService.getCurrentUserToken()}`,
       }
     });
   }

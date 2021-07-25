@@ -7,11 +7,6 @@ import { environment } from "src/environments/environment";
 import { IUser } from '../../interfaces/user';
 
 const apiURL = environment.apiURL;
-let token = '';
-
-if (localStorage.getItem('user')) {
-  token = JSON.parse(String(localStorage.getItem('user'))).TOKEN;
-}
 
 @Injectable()
 export class UserService {
@@ -21,9 +16,9 @@ export class UserService {
     private router: Router
   ) { }
 
-  isLogged(): boolean {
-    return localStorage.getItem('user') ? true : false;
-  }
+  // isLogged(): boolean {
+  //   return localStorage.getItem('user') ? true : false;
+  // }
 
   // ГОТОВ
   registerUser(
@@ -59,6 +54,15 @@ export class UserService {
     });
   }
 
+  getCurrentUserName(): string {
+    return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).USERNAME : '';
+  }
+
+  // РАБОТИ
+  getCurrentUserToken(): string {
+    return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).TOKEN : '';
+  }
+
   // ГОТОВ
   logout(): void {
     localStorage.removeItem('user');
@@ -69,7 +73,7 @@ export class UserService {
     return this.http.get<IUser>(apiURL + `/user/:${userId}`, {
       headers: {
         'content-type': 'application/json',
-        'authorization': `${token}`,
+        'authorization': `${this.getCurrentUserToken()}`,
       }
     });
   }
@@ -78,7 +82,7 @@ export class UserService {
     return this.http.get<any>(apiURL + `/user/${userId}/profile`, {
       headers: {
         'content-type': 'application/json',
-        'authorization': `${token}`,
+        'authorization': `${this.getCurrentUserToken()}`,
       }
     });
   }
