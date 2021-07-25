@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { UserService } from '../user.service';
-import { IUser } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-register',
@@ -11,19 +12,14 @@ import { IUser } from '../../../interfaces/user';
 })
 export class RegisterComponent {
   @Output()
-  serverResponseEmitter: EventEmitter<any> = new EventEmitter();
+  serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
 
-  // за ръчен unsubscribe!
-  //unsub!: Subscription;
+  // unsub!: Subscription;
 
-  user: IUser = {
-    username: '',
-    eMail: '',
-    password: '',
-    rePassword: '',
-  }
-
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   signUpHandler(args: Array<any>): void {
     args[0].preventDefault();
@@ -32,27 +28,30 @@ export class RegisterComponent {
       throw Error('Passwords do not match!');
     }
 
-    this.user.username = args[1].value;
-    this.user.eMail = args[2].value;
-    this.user.password = args[3].value;
-    this.user.rePassword = args[4].value;
+    // this.unsub = 
+    this.userService
+      .registerUser(
+        args[1].value,
+        args[2].value,
+        args[3].value,
+        args[4].value,
+      ).pipe(
+        tap(response => console.log(response)),
+      )
+      .subscribe(
+        // for notification message
+        response => this.serverResponseEmitter.emit(response),
+        error => console.error(error),
+        () => console.log('Stream has been closed!')
+      );
 
     args[1].value = '';
     args[2].value = '';
     args[3].value = '';
     args[4].value = '';
-
-    //this.unsub = 
-    this.userService
-      .registerUser(this.user)
-      .subscribe(
-        response => this.serverResponseEmitter.emit(response),
-        error => console.error(error),
-        () => console.log('Stream has been closed!')
-      );
   }
 
-  //   ngOnDestroy(): void {
-  //     this.unsub.unsubscribe();
-  //   }
+  // ngOnDestroy(): void {
+  //   this.unsub.unsubscribe();
+  // }
 }

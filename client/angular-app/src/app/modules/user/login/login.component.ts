@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
-import { IUser } from '../../../interfaces/user';
 import { UserService } from '../user.service';
 
 @Component({
@@ -10,32 +10,25 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  user: IUser = {
-    username: '',
-    eMail: '',
-    password: '',
-    rePassword: '',
-  }
+  constructor(private userService: UserService,) { }
 
-  constructor(
-    private userService: UserService,
-    private router: Router) { }
-
-    // this.router.navigate(['/'])
   signInHandler(args: Array<any>): void {
     args[0].preventDefault();
-    this.user.username = args[1].value;
-    this.user.password = args[2].value;
 
     this.userService
-      .loginUser(this.user)
+      .loginUser(
+        args[1].value,
+        args[2].value
+      ).pipe(
+        tap(response => console.log(response)),
+      )
       .subscribe(
         response => localStorage.setItem('user', JSON.stringify({ TOKEN: response.token, USERNAME: response.username })),
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );
 
-      args[1].value = '';
-      args[2].value = '';
+    args[1].value = '';
+    args[2].value = '';
   }
 }

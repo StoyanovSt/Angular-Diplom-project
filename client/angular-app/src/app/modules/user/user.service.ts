@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
-
 import { environment } from "src/environments/environment";
 import { IUser } from '../../interfaces/user';
 
@@ -17,28 +16,50 @@ if (localStorage.getItem('user')) {
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient,
-    private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
-  // абе тука отделни парамерти да получава не цял усер! :@
-  registerUser(user: IUser): Observable<any> {
-    return this.http.post<any>(`${apiURL}/register`, user, {
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-  } 
-
-  // абе тука отделни парамерти да получава не цял усер! :@
-
-  loginUser(user: IUser): Observable<any> {
-    return this.http.post<any>(`${apiURL}/login`, user, {
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
+  isLogged(): boolean {
+    return localStorage.getItem('user') ? true : false;
   }
 
+  // ГОТОВ
+  registerUser(
+    username: string,
+    eMail: string,
+    password: string,
+    rePassword: string
+  ): Observable<any> {
+    return this.http.post<any>(`${apiURL}/register`, {
+      username,
+      eMail,
+      password,
+      rePassword
+    }, {
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+
+  // ГОТОВ
+  loginUser(
+    username: string,
+    password: string
+  ): Observable<any> {
+    return this.http.post<any>(`${apiURL}/login`, {
+      username,
+      password
+    }, {
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+
+  // ГОТОВ
   logout(): void {
     localStorage.removeItem('user');
     this.router.navigate(['/']);
@@ -61,5 +82,5 @@ export class UserService {
       }
     });
   }
-  
+
 }
