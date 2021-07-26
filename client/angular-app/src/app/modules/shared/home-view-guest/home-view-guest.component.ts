@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs/operators';
 
 import { IProduct } from 'src/app/interfaces/product';
 import { ProductService } from '../../product/product.service';
@@ -16,9 +15,6 @@ export class HomeViewGuestComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getMostLikedProducts()
-      .pipe(
-        tap(response => console.log(response))
-      )
       .subscribe(
         response => this.mostRecentOfferts = response,
         error => console.error(error),

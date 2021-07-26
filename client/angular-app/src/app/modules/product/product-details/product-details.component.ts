@@ -26,6 +26,10 @@ export class ProductDetailsComponent implements OnInit {
     return this.userService.isCurrentLoggedUserOwnerOfProduct(this.user.username, this.userService.getCurrentUserName());
   }
 
+  get isCurrentLoggedUserAdmin():boolean {
+    return this.userService.getCurrentUserName() === 'ADMIN';
+  }
+
   ngOnInit(): void {
     this.productService.getProduct(this.activatedRoute.snapshot.params.productId)
       .pipe(

@@ -41,6 +41,7 @@ export class RegisterComponent {
       .subscribe(
         // for notification message
         //response => this.serverResponseEmitter.emit(response),
+        response => this.router.navigate(['/login']),
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );

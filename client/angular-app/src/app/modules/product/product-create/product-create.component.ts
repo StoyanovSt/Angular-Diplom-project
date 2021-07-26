@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
+import { UserService } from '../../user/user.service';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -10,7 +12,11 @@ import { ProductService } from '../product.service';
 })
 export class ProductCreateComponent {
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private router: Router,
+    private productService: ProductService,
+    private userService: UserService
+  ) { }
 
   createOffertHandler(args: Array<any>): void {
     args[0].preventDefault();
@@ -24,6 +30,7 @@ export class ProductCreateComponent {
         tap(response => console.log(response))
       )
       .subscribe(
+        response => this.router.navigate([`/user/${this.userService.getCurrentUserName()}/profile`]),
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );

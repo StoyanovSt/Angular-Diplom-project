@@ -18,6 +18,12 @@
   align-items: center;
 }
 
+.products-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .user-profile-info p {
   font-weight: bold;
   width: fit-content;
