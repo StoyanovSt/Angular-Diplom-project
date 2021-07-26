@@ -35,13 +35,13 @@
   box-shadow: 3px 0px 7px 2px lightgrey;
 }
 
-.about-us {
+.cta {
   width: fit-content;
   position: relative;
   left: 75px;
 }
 
-.about-us-btn {
+.cta-btn {
   font-size: 0.9rem;
   padding: 12px 32px;
   background-color: orange;
@@ -53,7 +53,7 @@
   box-shadow: 2px 0px 7px 1px lightgrey;
 }
 
-.about-us-btn:hover {
+.cta-btn:hover {
   cursor: pointer;
   color: orange;
   background-color: black;

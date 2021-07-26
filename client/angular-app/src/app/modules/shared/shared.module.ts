@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { SuccessComponent } from './notifications/success/success.component';
 import { ErrorComponent } from './notifications/error/error.component';
@@ -19,7 +20,8 @@ import { ProductModule } from '../product/product.module';
   ],
   imports: [
     CommonModule,
-    ProductModule
+    RouterModule,
+    ProductModule,
   ],
   exports: [
     SuccessComponent,

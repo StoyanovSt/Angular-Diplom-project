@@ -7,8 +7,10 @@
         <img src="../../assets/images/sunflowers.jpg" alt="home-view-guest-background-image">
     </article>
 </section>
-<article class="about-us">
-    <button class="about-us-btn">About us</button>
+<article class="cta">
+    <a routerLink="/login">
+        <button class="cta-btn" routerLink="/login">See all products</button>
+    </a>
 </article>
 <section class="recent-offerts">
     <ng-template [ngIf]="mostRecentOfferts?.length !== 0">
