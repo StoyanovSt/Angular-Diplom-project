@@ -15,6 +15,10 @@ export class UserService {
     private router: Router
   ) { }
 
+  isLogged(): boolean {
+    return localStorage.getItem('user') ? true : false;
+  }
+  
   // ГОТОВ
   registerUser(
     username: string,

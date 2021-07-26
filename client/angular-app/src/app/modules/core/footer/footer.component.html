@@ -3,18 +3,21 @@
         <article class="pages">
             <span class="pages-title">Navigation</span>
             <ul class="footer-links">
-                <li class="footer-link">
-                    <a href="">Home</a>
-                <li class="footer-link">
-                    <a href="">My profile</a>
-                </li>
+                <ng-template [ngIf]="isLogged">
+                    <li class="footer-link">
+                        <a routerLink="/home">Home</a>
+                    </li>
+                    <li class="footer-link">
+                        <a routerLink="/user/{{loggedUserUsername}}/profile">My profile</a>
+                    </li>
+                </ng-template>
+                <ng-template [ngIf]="!isLogged">
+                    <li class="footer-link">
+                        <a routerLink="/">Home</a>
+                    </li>
+                </ng-template>
             </ul>
         </article>
-        <!-- <article class="about-us">
-            <span class="about-us-title">About us</span>
-            <p class="about-us-text">Our online marketplace gives you the opportunity to register an account, to offer
-                products and also to contact with owners of other products of which you are interested.</p>
-        </article> -->
         <article class="contact-us">
             <span class="contact-us-title">Contact us</span>
             <ul class="contacts-list">

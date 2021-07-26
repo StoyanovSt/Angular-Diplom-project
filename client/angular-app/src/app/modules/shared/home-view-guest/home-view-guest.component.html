@@ -18,7 +18,8 @@
                 <form action="" class="filter-form">
                     <label for="search">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="search" name="search" placeholder="Search">
+                        <input type="text" id="search" name="search">
+                        <input type="submit" value="Search">
                     </label>
                 </form>
             </article>
@@ -27,7 +28,7 @@
             <ng-template [ngIf]="mostRecentOfferts">
                 <app-product *ngFor="let product of mostRecentOfferts" [product]="product"></app-product>
             </ng-template>
-            <ng-template [ngIf]="mostRecentOfferts">
+            <ng-template [ngIf]="!mostRecentOfferts">
                 <h3>Loading...</h3>
             </ng-template>
         </section>

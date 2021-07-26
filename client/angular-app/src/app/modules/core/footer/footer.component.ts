@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
+  get isLogged(): boolean {
+    return this.userService.isLogged();
   }
 
+  get loggedUserUsername(): string {
+    return this.userService.getCurrentUserName();
+  }
 }
