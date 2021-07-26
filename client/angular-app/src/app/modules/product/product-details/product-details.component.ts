@@ -16,9 +16,8 @@ export class ProductDetailsComponent implements OnInit {
   user!: IUser;
 
   constructor(
-    private productService: ProductService,
-    private activatedRoute: ActivatedRoute
-  ) { }
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductService) { }
 
   ngOnInit(): void {
     this.productService.getProduct(this.activatedRoute.snapshot.params.productId)
@@ -39,7 +38,7 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe(
         // ЗА НОТИФИКАЦИЯ ЩЕ МИ ТРЯБВА RESPONSA ОТ БАЗАТА
         error => console.log(error),
-        () => ('Stream has been closed!')
+        () => console.log('Stream has been closed!')
       );
   }
 
@@ -50,7 +49,7 @@ export class ProductDetailsComponent implements OnInit {
       )
       .subscribe(
         error => console.error(error),
-        () => ('Stream has been closed!')
+        () => console.log('Stream has been closed!')
       );
   }
 }

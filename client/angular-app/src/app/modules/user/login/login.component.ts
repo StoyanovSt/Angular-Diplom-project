@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 import { UserService } from '../user.service';
@@ -10,7 +9,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private userService: UserService,) { }
+  constructor(private userService: UserService) { }
 
   signInHandler(args: Array<any>): void {
     args[0].preventDefault();

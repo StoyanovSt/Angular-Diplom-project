@@ -11,8 +11,8 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  @Output()
-  serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
+  // @Output()
+  // serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
 
   // unsub!: Subscription;
 
@@ -40,7 +40,7 @@ export class RegisterComponent {
       )
       .subscribe(
         // for notification message
-        response => this.serverResponseEmitter.emit(response),
+        //response => this.serverResponseEmitter.emit(response),
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );

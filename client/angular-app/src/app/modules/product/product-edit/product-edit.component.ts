@@ -27,7 +27,6 @@ export class ProductEditComponent implements OnInit {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute) { }
 
-  // ГОТОВ
   ngOnInit(): void {
     this.productService.getProduct(this.productId)
       .subscribe(
@@ -37,7 +36,6 @@ export class ProductEditComponent implements OnInit {
       );
   }
 
-  //ГОТОВ
   editProductHandler(args: Array<any>): void {
     args[0].preventDefault();
 

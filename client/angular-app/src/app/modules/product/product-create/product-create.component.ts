@@ -21,8 +21,7 @@ export class ProductCreateComponent {
       args[3].value,
       Number(args[4].value))
       .pipe(
-        tap(response => console.log(response)
-        )
+        tap(response => console.log(response))
       )
       .subscribe(
         error => console.error(error),

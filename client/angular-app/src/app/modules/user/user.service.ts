@@ -19,7 +19,6 @@ export class UserService {
     return localStorage.getItem('user') ? true : false;
   }
   
-  // ГОТОВ
   registerUser(
     username: string,
     eMail: string,
@@ -37,8 +36,7 @@ export class UserService {
       }
     });
   }
-
-  // ГОТОВ
+  
   loginUser(
     username: string,
     password: string
@@ -52,18 +50,15 @@ export class UserService {
       }
     });
   }
-
-  // ГОТОВ
+  
   getCurrentUserName(): string {
     return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).USERNAME : '';
   }
 
-  // РАБОТИ
   getCurrentUserToken(): string {
     return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).TOKEN : '';
   }
 
-  // ГОТОВ
   logout(): void {
     localStorage.removeItem('user');
     this.router.navigate(['/']);
