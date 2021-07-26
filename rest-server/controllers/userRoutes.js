@@ -3,46 +3,23 @@ const User = require('../models/User');
 const isAuthorized = require('../middlewares/isAuthorized.js');
 
 // User profile page
-router.get('/user/:userId/profile', isAuthorized, (req, res) => {
-    // get user id
-    const userId = req.params.userId;
+router.get('/user/:username/profile', isAuthorized, (req, res) => {
+    const usernameAsParam = req.params.username;
 
-    // TODO: 
-    User.findById(userId)
-        .populate('products')
-        .then(user => {
-            res.status(200).json({
-                username: user.username,
-                products: user.products
-            });
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: 'Internal server error!',
-                hasError: true,
-            });
+    User.findOne({username: usernameAsParam}).lean()
+    .populate('products')
+    .then(user => {
+        res.status(200).json({
+            username: user.username,
+            products: user.products
         });
-
-});
-
-//get current user that is selling the product
-router.get('/user/:userId', isAuthorized, (req, res) => {
-    // get user id
-    const userId = req.params.userId;
-
-    // get user by id from database
-    User.findById(userId).lean()
-        .then(user => {
-            res.status(200).json({
-                user
-            });
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: 'Internal server error!',
-                hasError: true,
-            });
+    })
+    .catch(err => {
+        res.status(500).json({
+            message: 'Internal server error!',
+            hasError: true,
         });
+    });
 });
 
 module.exports = router;

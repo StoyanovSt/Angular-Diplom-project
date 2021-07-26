@@ -24,13 +24,14 @@
 }
 
 .user-profile-info p:first-child {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .user-profile-info p:first-child span {
   font-weight: normal;
 }
-.user-profile-info p:last-child span {
+
+.empty {
   font-weight: normal;
   color: red;
 }

@@ -18,7 +18,7 @@ export class HomeViewLoggedInComponent implements OnInit {
       .subscribe(
         response => this.products = response,
         error => console.error(error),
-        () => (console.log('Stream has been closed!'))
+        () => console.log('Stream has been closed!')
       )
   }
 }

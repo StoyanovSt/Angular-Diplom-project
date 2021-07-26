@@ -3,14 +3,13 @@
         <img src="../../assets/images/profile-pic.png" alt="">
     </article>
     <article class="user-profile-info">
-        <p>Username: <span>Ivan Petrov</span></p>
-        <p>All user available products: <span>Current user do not have any products stored!</span></p>
-        <!-- If no available products -  -->
-        <!-- <span>Current user do not have any products stored!</span> -->
-
+        <p>Username: <span>{{username}}</span></p>
+        <p>All user available products:</p>
+        <article class="products-container" *ngIf="allUserProductsAvailable?.length !== 0">
+            <app-product *ngFor="let product of allUserProductsAvailable" [product]="product"></app-product>
+        </article>
+        <article class="empty" *ngIf="allUserProductsAvailable?.length === 0">
+            <p>Current user do not have any products stored!</p>
+        </article>
     </article>
-    <section class="inner" *ngIf="userInfo">
-        <!-- <app-product *ngFor="let product of userInfo.products" [product]="userInfo.products">
-        </app-product> -->
-    </section>
 </section>

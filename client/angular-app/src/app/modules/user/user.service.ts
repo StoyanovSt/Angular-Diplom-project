@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { environment } from "src/environments/environment";
-import { IUser } from '../../interfaces/user';
 
 const apiURL = environment.apiURL;
 
@@ -15,10 +14,6 @@ export class UserService {
     private http: HttpClient,
     private router: Router
   ) { }
-
-  // isLogged(): boolean {
-  //   return localStorage.getItem('user') ? true : false;
-  // }
 
   // ГОТОВ
   registerUser(
@@ -54,6 +49,7 @@ export class UserService {
     });
   }
 
+  // ГОТОВ
   getCurrentUserName(): string {
     return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).USERNAME : '';
   }
@@ -69,23 +65,12 @@ export class UserService {
     this.router.navigate(['/']);
   }
 
-  // ГОТОВ
-  getProductSeller(userId: string): Observable<any> {
-    return this.http.get<any>(apiURL + `/user/${userId}`, {
+  getCurrentUserInfo(username: string): Observable<any> {
+    return this.http.get<any>(apiURL + `/user/${username}/profile`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${this.getCurrentUserToken()}`,
       }
     });
   }
-
-  getAllUserProducts(userId: string): Observable<any> {
-    return this.http.get<any>(apiURL + `/user/${userId}/profile`, {
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `${this.getCurrentUserToken()}`,
-      }
-    });
-  }
-
 }

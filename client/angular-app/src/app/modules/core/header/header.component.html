@@ -9,7 +9,7 @@
             <li class="link"><a routerLink="/register">Sign up</a></li>
             <li class="link"><a routerLink="/login">Sign in</a></li>
             <li class="link"><a routerLink="/product/create">Store a product</a></li>
-            <li class="link"><a routerLink="/user/:id/profile">My profile</a></li>
+            <li class="link"><a routerLink="/user/{{currentUserUsername}}/profile">My profile</a></li>
             <li class="link"><a (click)="logoutHandler()">Logout</a></li>
         </ul>
     </nav>       
