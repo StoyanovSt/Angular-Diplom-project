@@ -22,7 +22,7 @@ export class HomeViewGuestComponent implements OnInit {
       .subscribe(
         response => this.mostRecentOfferts = response,
         error => console.error(error),
-        () => ('Stream has been closed!')
+        () => (console.log('Stream has been closed!'))
       )
   }
 }

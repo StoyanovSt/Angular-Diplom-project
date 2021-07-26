@@ -25,6 +25,16 @@ export class ProductService {
     });
   }
 
+   // ГОТОВ
+  getAllProducts(): Observable<any> {
+    return this.http.get<any>(apiURL + `/home`, {
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `${this.userService.getCurrentUserToken()}`,
+      }
+    });
+  }
+
   // ГОТОВ
   storeProduct(
     product: string,

@@ -11,23 +11,28 @@
     <button class="about-us-btn">About us</button>
 </article>
 <section class="recent-offerts">
-    <h1 class="recent-offerts-title">Our most liked offerts</h1>
-    <article class="search-filter-container">
-        <article class="search">
-            <form action="" class="filter-form">
-                <label for="search">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search" name="search" placeholder="Search">
-                </label>
-            </form>
+    <ng-template [ngIf]="mostRecentOfferts?.length !== 0">
+        <h1 class="recent-offerts-title">Our most liked offerts</h1>
+        <article class="search-container">
+            <article class="search">
+                <form action="" class="filter-form">
+                    <label for="search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search" name="search" placeholder="Search">
+                    </label>
+                </form>
+            </article>
         </article>
-    </article>
-    <section class="inner">
-        <ng-template [ngIf]="mostRecentOfferts">
-            <app-product *ngFor="let product of mostRecentOfferts" [product]="product"></app-product>
-        </ng-template>
-        <ng-template [ngIf]="!mostRecentOfferts">
-            <h3>Loading...</h3>
-        </ng-template>
-    </section>
+        <section class="inner">
+            <ng-template [ngIf]="mostRecentOfferts">
+                <app-product *ngFor="let product of mostRecentOfferts" [product]="product"></app-product>
+            </ng-template>
+            <ng-template [ngIf]="mostRecentOfferts">
+                <h3>Loading...</h3>
+            </ng-template>
+        </section>
+    </ng-template>
+    <ng-template [ngIf]="mostRecentOfferts?.length === 0">
+        <h3>No products stored yet!</h3>
+    </ng-template>
 </section>
