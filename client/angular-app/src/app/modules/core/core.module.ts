@@ -4,6 +4,7 @@ import { RouterModule} from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthActive } from './guards/auth.activate';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,9 @@ import { FooterComponent } from './footer/footer.component';
   exports: [
     HeaderComponent,
     FooterComponent
+  ],
+  providers: [
+    AuthActive
   ]
 })
 export class CoreModule { }

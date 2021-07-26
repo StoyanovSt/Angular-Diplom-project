@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthActive } from './modules/core/guards/auth.activate';
 
 import { HomeViewGuestComponent } from './modules/shared/home-view-guest/home-view-guest.component';
 import { HomeViewLoggedInComponent } from './modules/shared/home-view-logged-in/home-view-logged-in.component';
@@ -9,11 +10,16 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomeViewGuestComponent
+    component: HomeViewGuestComponent,
 },
 {
     path: 'home',
-    component: HomeViewLoggedInComponent
+    component: HomeViewLoggedInComponent,
+    canActivate: [AuthActive],
+    data: {
+      authRequired: true,
+      authFailureRedirectUrl: '/login'
+  }
 },
 // {
 //     path: '**',

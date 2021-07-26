@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthActive } from '../core/guards/auth.activate';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -8,15 +9,30 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 const routes: Routes = [
     {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
+        canActivate: [AuthActive],
+        data: {
+            authRequired: false,
+            authFailureRedirectUrl: '/home'
+        }
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [AuthActive],
+        data: {
+            authRequired: false,
+            authFailureRedirectUrl: '/home'
+        }
     },
     {
         path: 'user/:username/profile',
-        component: UserProfileComponent
+        component: UserProfileComponent,
+        canActivate: [AuthActive],
+        data: {
+            authRequired: true,
+            authFailureRedirectUrl: '/login'
+        }
     },
 ];
 
