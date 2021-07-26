@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 import { ProductService } from '../product.service';
+import { UserService } from '../../user/user.service';
 import { IProduct } from 'src/app/interfaces/product';
 import { IUser } from 'src/app/interfaces/user';
 
@@ -17,7 +18,13 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private userService: UserService
+  ) { }
+
+  get isCurrentLoggedUserOwnerOfProduct(): boolean {
+    return this.userService.isCurrentLoggedUserOwnerOfProduct(this.user.username, this.userService.getCurrentUserName());
+  }
 
   ngOnInit(): void {
     this.productService.getProduct(this.activatedRoute.snapshot.params.productId)

@@ -190,12 +190,13 @@ router.post('/product/:productId/edit', isAuthorized, (req, res) => {
 });
 
 // Product details
-router.get('/product/:productId/details', isAuthorized, async (req, res) => {
-    const productId = req.params.productId;
-    const currentLoggedUserId = req.user._id;
+router.get('/product/:productId/details', async (req, res) => {
+    const productId = req.params.productId;    
     const info = {};
 
     info['product'] = await Product.findById(productId).lean();
+
+    const currentLoggedUserId = info['product'].seller;
     info['user'] = await User.findById(currentLoggedUserId).lean();
     
     return res.status(200).json({

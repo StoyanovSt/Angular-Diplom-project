@@ -20,7 +20,6 @@ export class ProductService {
     return this.http.get<any>(apiURLProduct + `/${productId}/details`, {
       headers: {
         'content-type': 'application/json',
-        'authorization': `${this.userService.getCurrentUserToken()}`,
       }
     });
   }

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { environment } from "src/environments/environment";
+import { IProduct } from 'src/app/interfaces/product';
+import { IUser } from 'src/app/interfaces/user';
 
 const apiURL = environment.apiURL;
 
@@ -18,7 +20,11 @@ export class UserService {
   isLogged(): boolean {
     return localStorage.getItem('user') ? true : false;
   }
-  
+
+  isCurrentLoggedUserOwnerOfProduct(productSellerUsername: string, loggedUserUsername: string): boolean {
+    return productSellerUsername === loggedUserUsername;
+  }
+
   registerUser(
     username: string,
     eMail: string,
@@ -36,7 +42,7 @@ export class UserService {
       }
     });
   }
-  
+
   loginUser(
     username: string,
     password: string
@@ -50,7 +56,7 @@ export class UserService {
       }
     });
   }
-  
+
   getCurrentUserName(): string {
     return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).USERNAME : '';
   }

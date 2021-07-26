@@ -5,4 +5,5 @@ export interface IProduct {
     imageUrl: string,
     price: number,
     likes: number,
+    seller: string
 }

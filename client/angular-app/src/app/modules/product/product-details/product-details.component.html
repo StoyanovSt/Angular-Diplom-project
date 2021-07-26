@@ -18,15 +18,14 @@
                 <span class="main-info">E-mail</span>
                 <span class="secondary-info">{{user!.eMail}}</span>
             </li>
-            <!-- TO DO: -->
-            <article class="owner-options">
+            <article class="owner-options" *ngIf="isCurrentLoggedUserOwnerOfProduct">
                 <button class="product-details-content-btn edit" routerLink="/product/:productId/edit">Edit</button>
                 <button class="product-details-content-btn delete" (click)="productDeleteHandler()">Delete</button>
-            </article>
-            <article class="guest-options">
+            </article> 
+            <article class="guest-options" *ngIf="!isCurrentLoggedUserOwnerOfProduct">
                 <button class="product-details-content-btn buy" (click)="productDeleteHandler()">Buy</button>
                 <button class="product-details-content-btn like" (click)="likeProductHandler()">Like</button>
-            </article>
+            </article>                       
         </ul>
     </article>
 </section>

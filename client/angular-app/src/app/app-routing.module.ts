@@ -15,10 +15,10 @@ const routes: Routes = [
     path: 'home',
     component: HomeViewLoggedInComponent
 },
-{
-    path: '**',
-    component: PageNotFoundComponent
-}
+// {
+//     path: '**',
+//     component: PageNotFoundComponent
+// }
 ];
 
 @NgModule({
