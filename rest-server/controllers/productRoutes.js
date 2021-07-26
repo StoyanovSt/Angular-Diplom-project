@@ -108,6 +108,10 @@ router.post('/product/create', isAuthorized, (req, res) => {
 router.get('/:criteria', (req, res) => {
     const searchedCriteria = req.params.criteria;
 
+    if (!searchedCriteria) {
+        return;
+    }
+
     Product.find({ product: searchedCriteria })
         .limit(3)
         .lean()

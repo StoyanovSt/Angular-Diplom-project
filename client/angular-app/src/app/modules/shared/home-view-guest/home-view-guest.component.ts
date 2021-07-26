@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { IProduct } from 'src/app/interfaces/product';
 import { ProductService } from '../../product/product.service';
@@ -29,7 +29,7 @@ export class HomeViewGuestComponent implements OnInit {
 
     this.productService.getAllSearchedProducts(searchedCriteria.value)
       .pipe(
-        map(response=> this.searchedProducts = response)
+        map(response => this.searchedProducts = response)
       )
       .subscribe(
         error => console.error(error),

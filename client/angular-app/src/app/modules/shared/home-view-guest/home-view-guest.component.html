@@ -28,6 +28,9 @@
         </article>
         <section class="inner">
             <ng-template [ngIf]="searchedProducts">
+                <ng-template [ngIf]="searchedProducts.length === 0">
+                    <h4>Sorry, there are no products available with this search criteria.</h4>
+                </ng-template>
                 <app-product *ngFor="let product of searchedProducts" [product]="product"></app-product>
             </ng-template>
             <ng-template [ngIf]="mostRecentOfferts && !searchedProducts">
