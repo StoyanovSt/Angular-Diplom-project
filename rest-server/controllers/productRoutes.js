@@ -104,6 +104,26 @@ router.post('/product/create', isAuthorized, (req, res) => {
         });
 });
 
+// Get all froducts by criteria
+router.get('/:criteria', (req, res) => {
+    const searchedCriteria = req.params.criteria;
+
+    Product.find({ product: searchedCriteria })
+        .limit(3)
+        .lean()
+        .then(products => {
+            res.status(200).json(
+                products
+            );
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+                hasError: true,
+            });
+        });
+});
+
 // Delete product
 router.get('/product/:productId/delete', isAuthorized, (req, res) => {
     // get product id
@@ -191,14 +211,14 @@ router.post('/product/:productId/edit', isAuthorized, (req, res) => {
 
 // Product details
 router.get('/product/:productId/details', async (req, res) => {
-    const productId = req.params.productId;    
+    const productId = req.params.productId;
     const info = {};
 
     info['product'] = await Product.findById(productId).lean();
 
     const currentLoggedUserId = info['product'].seller;
     info['user'] = await User.findById(currentLoggedUserId).lean();
-    
+
     return res.status(200).json({
         product: info['product'],
         user: info['user']

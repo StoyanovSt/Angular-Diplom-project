@@ -20,22 +20,25 @@
                 <form action="" class="filter-form">
                     <label for="search">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="search" name="search">
-                        <input type="submit" value="Search">
+                        <input type="text" #searchedCriteriaInput id="search" name="search" placeholder="...">
+                        <input type="submit" value="Search" (click)="searchHandler($event, searchedCriteriaInput)">
                     </label>
                 </form>
             </article>
         </article>
         <section class="inner">
-            <ng-template [ngIf]="mostRecentOfferts">
+            <ng-template [ngIf]="searchedProducts">
+                <app-product *ngFor="let product of searchedProducts" [product]="product"></app-product>
+            </ng-template>
+            <ng-template [ngIf]="mostRecentOfferts && !searchedProducts">
                 <app-product *ngFor="let product of mostRecentOfferts" [product]="product"></app-product>
             </ng-template>
-            <ng-template [ngIf]="!mostRecentOfferts">
+            <ng-template [ngIf]="!mostRecentOfferts && !searchedProducts">
                 <h3>Loading...</h3>
             </ng-template>
         </section>
     </ng-template>
-    <ng-template [ngIf]="mostRecentOfferts?.length === 0">
+    <ng-template [ngIf]="mostRecentOfferts?.length === 0 && !searchedProducts">
         <h3>No products stored yet!</h3>
     </ng-template>
 </section>

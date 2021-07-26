@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { environment } from "src/environments/environment";
@@ -13,7 +14,8 @@ export class ProductService {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService) { }
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute) { }
 
   // ГОТОВ
   getProduct(productId: string): Observable<any> {
@@ -24,12 +26,20 @@ export class ProductService {
     });
   }
 
-   // ГОТОВ
+  // ГОТОВ
   getAllProducts(): Observable<any> {
     return this.http.get<any>(apiURL + `/home`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${this.userService.getCurrentUserToken()}`,
+      }
+    });
+  }
+
+  getAllSearchedProducts(searchedCriteria: string): Observable<any> {
+    return this.http.get<any>(apiURL + `/${searchedCriteria}`, {
+      headers: {
+        'content-type': 'application/json',
       }
     });
   }
