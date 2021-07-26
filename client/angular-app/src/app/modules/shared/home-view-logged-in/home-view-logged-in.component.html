@@ -13,6 +13,11 @@
     <ng-template [ngIf]="products?.length === 0">
         <section class="empty">
             <h3>No products stored yet!</h3>
+            <article class="cta-store-a-product">
+                <a routerLink="/product/create">
+                    Store a product
+                </a>
+            </article>
         </section>
     </ng-template>
 </section>

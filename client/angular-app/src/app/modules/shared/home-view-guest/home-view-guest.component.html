@@ -9,7 +9,7 @@
 </section>
 <article class="cta">
     <a routerLink="/login">
-        <button class="cta-btn" routerLink="/login">See all products</button>
+        See all products
     </a>
 </article>
 <section class="recent-offerts">
@@ -40,5 +40,10 @@
     </ng-template>
     <ng-template [ngIf]="mostRecentOfferts?.length === 0 && !searchedProducts">
         <h3>No products stored yet!</h3>
+        <article class="cta-store-a-product">
+            <a routerLink="/login">
+                Store a product
+            </a>
+        </article>
     </ng-template>
 </section>
