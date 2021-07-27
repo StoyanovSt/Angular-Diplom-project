@@ -10,34 +10,33 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 const routes: Routes = [
     {
         path: 'product',
-        component: PageNotFoundComponent,
         children: [
             {
                 path: 'create',
                 component: ProductCreateComponent,
-                canActivate: [AuthActive],
-                data: {
-                    authRequired: true,
-                    authFailureRedirectUrl: '/login'
-                }
+                // canActivate: [AuthActive],
+                // data: {
+                //     authRequired: true,
+                //     authFailureRedirectUrl: '/login'
+                // }
             },
             {
                 path: ':productId/details',
                 component: ProductDetailsComponent,
-                canActivate: [AuthActive],
-                data: {
-                    authRequired: true,
-                    authFailureRedirectUrl: '/login'
-                }
+                // canActivate: [AuthActive],
+                // data: {
+                //     authRequired: true,
+                //     authFailureRedirectUrl: '/login'
+                // }
             },
             {
-                path: 'productId/edit',
+                path: ':productId/edit',
                 component: ProductEditComponent,
-                canActivate: [AuthActive],
-                data: {
-                    authRequired: true,
-                    authFailureRedirectUrl: '/login'
-                }
+                // canActivate: [AuthActive],
+                // data: {
+                //     authRequired: true,
+                //     authFailureRedirectUrl: '/login'
+                // }
             }
         ]
     }

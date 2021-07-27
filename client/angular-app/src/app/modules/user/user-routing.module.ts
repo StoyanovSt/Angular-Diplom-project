@@ -8,6 +8,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
     {
+        //РАБОТИ
         path: 'register',
         component: RegisterComponent,
         canActivate: [AuthActive],
@@ -17,6 +18,7 @@ const routes: Routes = [
         }
     },
     {
+        //РАБОТИ
         path: 'login',
         component: LoginComponent,
         canActivate: [AuthActive],
@@ -26,13 +28,14 @@ const routes: Routes = [
         }
     },
     {
+        // НЕ РАБОТИ
         path: 'user/:username/profile',
         component: UserProfileComponent,
-        canActivate: [AuthActive],
-        data: {
-            authRequired: true,
-            authFailureRedirectUrl: '/login'
-        }
+        // canActivate: [AuthActive],
+        // data: {
+        //     authRequired: true,
+        //     authFailureRedirectUrl: '/login'
+        // }
     },
 ];
 

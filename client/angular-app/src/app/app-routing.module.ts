@@ -8,23 +8,25 @@ import { PageNotFoundComponent } from './modules/shared/page-not-found/page-not-
 
 const routes: Routes = [
   {
+    // ОСТАВА ТАКА
     path: '',
     pathMatch: 'full',
     component: HomeViewGuestComponent,
-},
-{
+  },
+  {
+    // РАБОТИ
     path: 'home',
     component: HomeViewLoggedInComponent,
     canActivate: [AuthActive],
     data: {
       authRequired: true,
       authFailureRedirectUrl: '/login'
-  }
-},
-// {
-//     path: '**',
-//     component: PageNotFoundComponent
-// }
+    }
+  },
+  // {
+  //     path: '**',
+  //     component: PageNotFoundComponent
+  // }
 ];
 
 @NgModule({
