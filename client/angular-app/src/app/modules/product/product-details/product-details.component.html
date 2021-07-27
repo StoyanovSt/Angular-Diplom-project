@@ -22,12 +22,22 @@
                 <button class="product-details-content-btn delete" (click)="productDeleteHandler()">Delete</button>
             </article>
             <article class="owner-options" *ngIf="isCurrentLoggedUserOwnerOfProduct && !isCurrentLoggedUserAdmin">
-                <button class="product-details-content-btn edit" routerLink="/product/{{product._id}}/edit">Edit</button>
+                <button class="product-details-content-btn edit"
+                    routerLink="/product/{{product._id}}/edit">Edit</button>
                 <button class="product-details-content-btn delete" (click)="productDeleteHandler()">Delete</button>
             </article>
             <article class="guest-options" *ngIf="!isCurrentLoggedUserOwnerOfProduct && !isCurrentLoggedUserAdmin">
-                <button class="product-details-content-btn buy" (click)="productDeleteHandler()">Buy</button>
-                <button class="product-details-content-btn like" (click)="likeProductHandler()">Like</button>
+                <button class="product-details-content-btn buy" (click)="productBuyHandler()">Buy</button>
+                <button class="product-details-content-btn like" (click)="likeProductHandler()"
+                *ngIf="!isCurrentUserHasAlreadyLikedTheProduct">
+                    Like product
+                </button>
+                <h4 class="likes-notification" *ngIf="isCurrentUserHasAlreadyLikedTheProduct">
+                    Product liked. Thank you!
+                </h4>
+                <article class="count-of-likes">
+                    <h4>{{product!.likes}} likes</h4>
+                </article>
             </article>
         </ul>
     </article>
