@@ -5,11 +5,11 @@
     <article class="user-profile-info">
         <p>Username: <span>{{username}}</span></p>
         <p>All user available products:</p>
-        <article class="products-container" *ngIf="allUserProductsAvailable?.length !== 0">
-            <app-product *ngFor="let product of allUserProductsAvailable" [product]="product"></app-product>
-        </article>
         <article class="empty" *ngIf="allUserProductsAvailable?.length === 0">
             <p>Current user does not have any products stored!</p>
         </article>
     </article>
 </section>
+<article class="products-container" *ngIf="allUserProductsAvailable?.length !== 0">
+    <app-product class="user-product" *ngFor="let product of allUserProductsAvailable" [product]="product"></app-product>
+</article>

@@ -18,12 +18,6 @@
   align-items: center;
 }
 
-.products-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
 .user-profile-info p {
   font-weight: bold;
   width: fit-content;
@@ -35,6 +29,17 @@
 
 .user-profile-info p:first-child span {
   font-weight: normal;
+}
+
+.products-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.user-product {
+  margin-right: 70px;
 }
 
 .empty {

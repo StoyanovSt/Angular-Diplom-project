@@ -10,16 +10,13 @@
 .products-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .loading {
   margin-top: 50px;
   margin-bottom: 100px;
   font-size: 1.2rem;
-}
-
-.products {
-  display: flex;
 }
 
 .empty {

@@ -233,7 +233,6 @@ router.get('/product/:productId/details', async (req, res) => {
 router.patch('/product/:productId/like', (req, res) => {
     // get editted data
     const { countOfLikes, currentUser } = req.body;
-    console.log(currentUser);
 
     // get product id
     const productId = req.params.productId;
