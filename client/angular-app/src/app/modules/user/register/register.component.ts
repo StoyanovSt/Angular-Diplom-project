@@ -11,10 +11,10 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  @Output()
-  serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
+  // @Output()
+  // serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
 
-  serverResponse!: {};
+  // serverResponse!: {};
   // unsub!: Subscription;
 
   constructor(
@@ -37,8 +37,8 @@ export class RegisterComponent {
         args[3].value,
         args[4].value,
       ).pipe(
-        map(response => this.serverResponse = response),
-        tap(response => this.serverResponseEmitter.emit(this.serverResponse))
+        // map(response => this.serverResponse = response),
+        // tap(response => this.serverResponseEmitter.emit(this.serverResponse))
       )
       .subscribe(       
         response => this.router.navigate(['/login']),

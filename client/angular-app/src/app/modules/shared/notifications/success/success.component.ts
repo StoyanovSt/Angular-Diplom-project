@@ -6,8 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./success.component.css']
 })
 export class SuccessComponent {
-  @Input()
-  message!: string;
+  // @Input()
+  // message!: string;
 
   constructor() { }
 }

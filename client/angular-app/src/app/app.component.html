@@ -1,8 +1,8 @@
 <app-header></app-header>
 <main>
     <section class="main-content">
-        <!-- <router-outlet></router-outlet> -->
-        <ng-template [ngIf]="serverResponseInfo">
+        <router-outlet></router-outlet>
+        <!-- <ng-template [ngIf]="serverResponseInfo">
             <ng-template [ngIf]="serverResponseInfo.hasError === false">
                 <app-success [message]="serverResponseInfo.message"></app-success>
             </ng-template>
@@ -10,7 +10,7 @@
                 <app-error [message]="serverResponseInfo.message"></app-error>
             </ng-template>
         </ng-template>
-        <app-register (serverResponseEmitter)="serverResponseHandler($event)"></app-register>
+        <app-register (serverResponseEmitter)="serverResponseHandler($event)"></app-register> -->
     </section>
 </main>
 <app-footer></app-footer>
