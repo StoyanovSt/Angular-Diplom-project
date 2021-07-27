@@ -9,7 +9,7 @@
             <app-product *ngFor="let product of allUserProductsAvailable" [product]="product"></app-product>
         </article>
         <article class="empty" *ngIf="allUserProductsAvailable?.length === 0">
-            <p>Current user do not have any products stored!</p>
+            <p>Current user does not have any products stored!</p>
         </article>
     </article>
 </section>

@@ -2,16 +2,16 @@
     <h2 class="edit-product-form-title">Edit your offert</h2>
     <form class="edit-product-form">
         <label for="product-name">Product name
-            <input type="text" #productNameInput id="product-name" name="product" placeholder="Product name" autofocus value="">
+            <input type="text" #productNameInput id="product-name" name="product" placeholder="{{getProductResponseInfo.product.product}}" autofocus value="">
         </label>
         <label for="product-description">Product description
-            <textarea id="product-description" #productDescriptionInput name="description" placeholder="Product description"></textarea>
+            <textarea id="product-description" #productDescriptionInput name="description" placeholder="{{getProductResponseInfo.product.description}}"></textarea>
         </label>
         <label for="product-image">Product image
-            <input type="text" #productImageUrlInput id="product-image" name="imageUrl" placeholder="Product image" value="">
+            <input type="text" #productImageUrlInput id="product-image" name="imageUrl" placeholder="{{getProductResponseInfo.product.imageUrl}}" value="">
         </label>
         <label for="product-price">Product price
-            <input type="number" #productPriceInput id="product-price" name="price" placeholder="Product price" value="">
+            <input type="number" #productPriceInput id="product-price" name="price" placeholder="{{getProductResponseInfo.product.price}}" value="">
         </label>
         <input type="submit" (click)="editProductHandler([
         $event,

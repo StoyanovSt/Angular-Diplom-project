@@ -17,11 +17,11 @@ const routes: Routes = [
     // РАБОТИ
     path: 'home',
     component: HomeViewLoggedInComponent,
-    canActivate: [AuthActive],
-    data: {
-      authRequired: true,
-      authFailureRedirectUrl: '/login'
-    }
+    // canActivate: [AuthActive],
+    // data: {
+    //   authRequired: true,
+    //   authFailureRedirectUrl: '/login'
+    // }
   },
   // {
   //     path: '**',

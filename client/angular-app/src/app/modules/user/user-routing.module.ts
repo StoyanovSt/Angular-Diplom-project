@@ -11,21 +11,21 @@ const routes: Routes = [
         //РАБОТИ
         path: 'register',
         component: RegisterComponent,
-        canActivate: [AuthActive],
-        data: {
-            authRequired: false,
-            authFailureRedirectUrl: '/home'
-        }
+        // canActivate: [AuthActive],
+        // data: {
+        //     authRequired: false,
+        //     authFailureRedirectUrl: '/home'
+        // }
     },
     {
         //РАБОТИ
         path: 'login',
         component: LoginComponent,
-        canActivate: [AuthActive],
-        data: {
-            authRequired: false,
-            authFailureRedirectUrl: '/home'
-        }
+        // canActivate: [AuthActive],
+        // data: {
+        //     authRequired: false,
+        //     authFailureRedirectUrl: '/home'
+        // }
     },
     {
         // НЕ РАБОТИ
@@ -40,7 +40,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 export class UserRoutingModule { }

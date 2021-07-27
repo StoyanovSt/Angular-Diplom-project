@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 import { IProduct } from '../../../interfaces/product';
 import { ProductService } from '../product.service';
@@ -15,17 +17,12 @@ export class ProductEditComponent implements OnInit {
     currentLoggedUserId: string;
   }
 
-  getEdittedProductResponseInfo!: {
-    product: IProduct,
-    hasError: boolean,
-    message: string;
-  }
-
   productId: string = this.activatedRoute.snapshot.params.productId;
 
   constructor(
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.productService.getProduct(this.productId)
@@ -50,11 +47,16 @@ export class ProductEditComponent implements OnInit {
       args[3].value,
       Number(args[4].value),
       this.productId
-    ).subscribe(
-      response => this.getEdittedProductResponseInfo = response,
-      error => console.error(error),
-      () => console.log('Stream has been closed')
+    ).pipe(
+      map(response => {
+        this.getProductResponseInfo.product = response['product'];
+      })
     )
+      .subscribe(
+        response => this.router.navigate([`/product/${this.productId}/details`]),
+          error => console.error(error),
+        () => console.log('Stream has been closed')
+      )
 
     args[1].value = '';
     args[2].value = '';

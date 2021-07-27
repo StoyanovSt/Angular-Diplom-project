@@ -20,15 +20,15 @@
             </li>
             <article class="admin-option" *ngIf="isCurrentLoggedUserAdmin">
                 <button class="product-details-content-btn delete" (click)="productDeleteHandler()">Delete</button>
-            </article> 
+            </article>
             <article class="owner-options" *ngIf="isCurrentLoggedUserOwnerOfProduct && !isCurrentLoggedUserAdmin">
-                <button class="product-details-content-btn edit" routerLink="/product/:productId/edit">Edit</button>
+                <button class="product-details-content-btn edit" routerLink="/product/{{product._id}}/edit">Edit</button>
                 <button class="product-details-content-btn delete" (click)="productDeleteHandler()">Delete</button>
-            </article> 
+            </article>
             <article class="guest-options" *ngIf="!isCurrentLoggedUserOwnerOfProduct && !isCurrentLoggedUserAdmin">
                 <button class="product-details-content-btn buy" (click)="productDeleteHandler()">Buy</button>
                 <button class="product-details-content-btn like" (click)="likeProductHandler()">Like</button>
-            </article>                       
+            </article>
         </ul>
     </article>
 </section>
