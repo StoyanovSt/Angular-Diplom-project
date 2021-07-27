@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 
 import { UserService } from '../user.service';
 
@@ -11,9 +11,10 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  // @Output()
-  // serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
+  @Output()
+  serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
 
+  serverResponse!: {};
   // unsub!: Subscription;
 
   constructor(
@@ -36,11 +37,10 @@ export class RegisterComponent {
         args[3].value,
         args[4].value,
       ).pipe(
-        tap(response => console.log(response)),
+        map(response => this.serverResponse = response),
+        tap(response => this.serverResponseEmitter.emit(this.serverResponse))
       )
-      .subscribe(
-        // for notification message
-        //response => this.serverResponseEmitter.emit(response),
+      .subscribe(       
         response => this.router.navigate(['/login']),
         error => console.error(error),
         () => console.log('Stream has been closed!')
