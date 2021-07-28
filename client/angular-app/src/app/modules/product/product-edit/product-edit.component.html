@@ -1,24 +1,49 @@
 <section class="edit-product-container">
     <h2 class="edit-product-form-title">Edit your offert</h2>
-    <form class="edit-product-form">
+    <form class="edit-product-form" #form="ngForm" (submit)="editProductHandler(form.value)">
         <label for="product-name">Product name
-            <input type="text" #productNameInput id="product-name" name="product" placeholder="{{getProductResponseInfo.product.product}}" autofocus value="">
+            <input type="text" id="product-name" name="product" placeholder="{{getProductResponseInfo.product.product}}"
+                autofocus required ngModel>
         </label>
+        <h6 class="required-field-notification"
+            *ngIf="form?.controls?.product?.touched && form?.controls?.product?.errors?.required">
+            This field is required!
+        </h6>
         <label for="product-description">Product description
-            <textarea id="product-description" #productDescriptionInput name="description" placeholder="{{getProductResponseInfo.product.description}}"></textarea>
+            <textarea id="product-description" name="description" minlength="10" maxlength="150"
+                placeholder="{{getProductResponseInfo.product.description}}" required ngModel></textarea>
         </label>
+        <h6 class="required-field-notification"
+            *ngIf="form?.controls?.description?.touched && form?.controls?.description?.errors?.required">
+            This field is required!
+        </h6>
+        <h6 class="field-notification"
+            *ngIf="form?.controls?.description?.errors?.minlength || form?.controls?.description?.errors?.maxlength">
+            Description must be between 10 and 150 characters long!
+        </h6>
         <label for="product-image">Product image
-            <input type="text" #productImageUrlInput id="product-image" name="imageUrl" placeholder="{{getProductResponseInfo.product.imageUrl}}" value="">
+            <input appImageUrlValidation type="text" id="product-image" name="imageUrl"
+                placeholder="{{getProductResponseInfo.product.imageUrl}}" required ngModel>
         </label>
+        <h6 class="required-field-notification"
+            *ngIf="form?.controls?.imageUrl?.touched && form?.controls?.imageUrl?.errors?.required">
+            This field is required!
+        </h6>
+        <h6 class="required-field-notification"
+            *ngIf="form?.errors?.image">
+            Image URL must starts with http or https!
+        </h6>
         <label for="product-price">Product price
-            <input type="number" #productPriceInput id="product-price" name="price" placeholder="{{getProductResponseInfo.product.price}}" value="">
+            <input type="number" id="product-price" name="price" min="0" placeholder="{{getProductResponseInfo.product.price}}"
+                required ngModel>
         </label>
-        <input type="submit" (click)="editProductHandler([
-        $event,
-        productNameInput,
-        productDescriptionInput,
-        productImageUrlInput,
-        productPriceInput
-        ])" value="Edit product">
+        <h6 class="required-field-notification"
+            *ngIf="form?.controls?.price?.touched && form?.controls?.price?.errors?.required">
+            This field is required!
+        </h6>
+        <h6 class="field-notification" *ngIf="form?.controls?.price?.errors?.min">
+            Selling price must be non negative number!
+        </h6>
+        <input type="submit" value="Edit product" [disabled]="form?.invalid">
     </form>
 </section>

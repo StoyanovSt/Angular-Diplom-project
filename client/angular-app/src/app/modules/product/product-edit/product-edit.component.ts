@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -12,6 +13,9 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
+  @ViewChild('form')
+  htmlForm!: NgForm;
+
   getProductResponseInfo!: {
     product: IProduct,
     currentLoggedUserId: string;
@@ -33,19 +37,12 @@ export class ProductEditComponent implements OnInit {
       );
   }
 
-  editProductHandler(args: Array<any>): void {
-    args[0].preventDefault();
-
-    args[1].value;
-    args[2].value;
-    args[3].value;
-    Number(args[4].value);
-
+  editProductHandler(formData: any): void {
     this.productService.editProduct(
-      args[1].value,
-      args[2].value,
-      args[3].value,
-      Number(args[4].value),
+      formData.product,
+      formData.description,
+      formData.imageUrl,
+      Number(formData.price),
       this.productId
     ).pipe(
       map(response => {
@@ -54,13 +51,10 @@ export class ProductEditComponent implements OnInit {
     )
       .subscribe(
         response => this.router.navigate([`/product/${this.productId}/details`]),
-          error => console.error(error),
+        error => console.error(error),
         () => console.log('Stream has been closed')
       )
 
-    args[1].value = '';
-    args[2].value = '';
-    args[3].value = '';
-    args[4].value = '';
+    this.htmlForm.reset();
   }
 }
