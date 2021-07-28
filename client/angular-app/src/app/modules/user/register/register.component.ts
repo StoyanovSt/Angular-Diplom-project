@@ -26,7 +26,6 @@ export class RegisterComponent {
   ) { }
 
   signUpHandler(formData: any): void {
-
     // this.unsub = 
     this.userService
       .registerUser(

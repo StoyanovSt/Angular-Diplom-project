@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
@@ -10,18 +11,19 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  @ViewChild('form')
+  htmlForm!: NgForm;
+  
   constructor(
     private userService: UserService,
     private router: Router
   ) { }
 
-  signInHandler(args: Array<any>): void {
-    args[0].preventDefault();
-
+  signInHandler(formData: any): void {
     this.userService
       .loginUser(
-        args[1].value,
-        args[2].value
+        formData.username,
+        formData.password
       ).pipe(
         tap(response => console.log(response)),
       )
@@ -34,7 +36,6 @@ export class LoginComponent {
         () => console.log('Stream has been closed!')
       );
 
-    args[1].value = '';
-    args[2].value = '';
+      this.htmlForm.reset();
   }
 }
