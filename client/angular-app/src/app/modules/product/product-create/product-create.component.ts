@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
@@ -11,6 +12,8 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-create.component.css']
 })
 export class ProductCreateComponent {
+  @ViewChild('form')
+  htmlForm!: NgForm;
 
   constructor(
     private router: Router,
@@ -18,14 +21,12 @@ export class ProductCreateComponent {
     private userService: UserService
   ) { }
 
-  createOffertHandler(args: Array<any>): void {
-    args[0].preventDefault();
-
+  createOffertHandler(formData: any): void {
     this.productService.storeProduct(
-      args[1].value,
-      args[2].value,
-      args[3].value,
-      Number(args[4].value))
+      formData.product,
+      formData.description,
+      formData.imageUrl,
+      Number(formData.price))
       .pipe(
         tap(response => console.log(response))
       )
@@ -35,9 +36,6 @@ export class ProductCreateComponent {
         () => console.log('Stream has been closed!')
       );
 
-    args[1].value = '';
-    args[2].value = '';
-    args[3].value = '';
-    args[4].value = '';
+    this.htmlForm.reset();
   }
 }

@@ -10,7 +10,7 @@
             *ngIf="form?.controls?.username?.touched && form?.controls?.username?.errors?.required">
             This field isrequired!
         </h6>
-        <h6 class="required-field-notification" *ngIf="form?.controls?.username?.errors?.pattern">
+        <h6 class="pattern-field-notification" *ngIf="form?.controls?.username?.errors?.pattern">
             Username must be atleast four characters long and may contains only english letters and digits!
         </h6>
         <label for="e-mail">E-mail
@@ -22,7 +22,7 @@
             *ngIf="form?.controls?.Email?.touched && form?.controls?.Email?.errors?.required">
             This field is required!
         </h6>
-        <h6 class="required-field-notification" *ngIf="form?.controls?.Email?.errors?.pattern">Email is not valid!</h6>
+        <h6 class="pattern-field-notification" *ngIf="form?.controls?.Email?.errors?.pattern">Email is not valid!</h6>
         <label for="password">Password
             <i class="fas fa-key"></i>
             <input type="password" id="password" name="password" pattern="^[a-zA-Z0-9]{6,}$" placeholder="Password"
@@ -31,7 +31,7 @@
         <h6 class="required-field-notification"
             *ngIf="form?.controls?.password?.touched && form?.controls?.password?.errors?.required">This field is
             required!</h6>
-        <h6 class="required-field-notification" *ngIf="form?.controls?.password?.errors?.pattern">Password must be
+        <h6 class="pattern-field-notification" *ngIf="form?.controls?.password?.errors?.pattern">Password must be
             atleast six characters long and may contains only english letters and digits!</h6>
         <label for="re-password">Re-password
             <i class="fas fa-key"></i>
@@ -41,7 +41,7 @@
         <h6 class="required-field-notification"
             *ngIf="form?.controls?.rePassword?.touched && form?.controls?.rePassword?.errors?.required">This field is
             required!</h6>
-        <h6 class="required-field-notification"
+        <h6 class="pattern-field-notification"
             *ngIf="form?.controls?.password?.value !== form?.controls?.rePassword?.value">Passwords do not match!</h6>
         <input type="submit" value="Sign up" [disabled]="form?.invalid">
     </form>

@@ -9,6 +9,8 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductService } from './product.service';
+import { FormsModule } from '@angular/forms';
+import { ImageUrlValidationDirective } from './image-url-validation.directive';
 
 
 @NgModule({
@@ -17,12 +19,14 @@ import { ProductService } from './product.service';
     ProductCreateComponent,
     ProductDetailsComponent,
     ProductEditComponent,
+    ImageUrlValidationDirective,
   ],
   imports: [
     CommonModule,
     ProductRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     ProductComponent,

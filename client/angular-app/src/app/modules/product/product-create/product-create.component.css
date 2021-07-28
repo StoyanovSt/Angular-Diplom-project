@@ -40,6 +40,10 @@
   border: 2px solid black;
 }
 
+.create-product-form > input:disabled {
+  cursor: not-allowed;
+}
+
 .create-product-form label input,
 .create-product-form label textarea {
   width: 300px;
@@ -52,4 +56,21 @@
 .create-product-form label textarea {
   overflow: scroll;
   height: 80px;
+}
+
+.required-field-notification,
+.field-notification {
+  font-size: 0.9rem;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: red;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  text-align: center;
+  background-color: white;
+  border-bottom: 2px solid red;
+  border-left: 2px solid red;
+  border-right: 2px solid red;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }

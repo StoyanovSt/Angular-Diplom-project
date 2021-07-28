@@ -1,15 +1,19 @@
 <section class="login-form-container">
     <h2 class="login-form-title">Sign in</h2>
-    <form class="login-form" #form="ngForm" (submit)="signInHandler(form.value)">
+    <form class="login-form">
         <label for="username">Username
             <i class="fas fa-user"></i>
-            <input type="text" id="username" name="username" placeholder="Username" autofocus>
+            <input type="text" id="username" #usernameInput name="username" placeholder="Username" autofocus>
         </label>        
         <label for="password">Password
             <i class="fas fa-key"></i>
-            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="password" id="password" #passwordInput name="password" placeholder="Password">
         </label>
-        <input type="submit" value="Sign in">
+        <input type="submit" (click)="signInHandler([
+        $event,
+        usernameInput,
+        passwordInput
+        ])" value="Sign in">
     </form>
     <h5>Do not have a registration? -> <a class="link" routerLink="/register">Sign up</a>
     </h5>
