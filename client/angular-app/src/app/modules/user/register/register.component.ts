@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
@@ -11,6 +12,8 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  @ViewChild('form')
+  htmlForm!: NgForm;
   // @Output()
   // serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
 
@@ -23,8 +26,7 @@ export class RegisterComponent {
   ) { }
 
   signUpHandler(formData: {}): void {
-    console.log(formData);
-
+    this.htmlForm.reset();
   }
 
   // signUpHandler(args: Array<any>): void {

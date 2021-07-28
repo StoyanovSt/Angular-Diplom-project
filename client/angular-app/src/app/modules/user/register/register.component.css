@@ -40,6 +40,10 @@
   border: 2px solid black;
 }
 
+.register-form > input:disabled {
+  cursor: not-allowed;
+}
+
 .register-form i {
   position: absolute;
   top: 39px;
