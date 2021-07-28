@@ -1,56 +1,70 @@
 .register-form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: orange;
-    padding-top: 40px;
-    padding-bottom: 80px;
-    line-height: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: orange;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  line-height: 2;
 }
 
 .register-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .register-form label {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 5px;
 }
 
 .register-form > input {
-    margin-top: 20px;
-    font-size: 0.9rem;    
-    padding: 8px 24px;
-    background-color: black;
-    color: orange;
-    font-weight: bold;
-    border-radius: 22px;
-    letter-spacing: 3px;
-    border: none;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  padding: 8px 24px;
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  border-radius: 22px;
+  letter-spacing: 3px;
+  border: none;
 }
 
 .register-form > input:hover {
-    cursor: pointer;
-    background-color: orange;
-    color: black;
-    border: 2px solid black;
+  cursor: pointer;
+  background-color: orange;
+  color: black;
+  border: 2px solid black;
 }
 
 .register-form i {
-    position: absolute;
-    top: 39px;
-    left: 5px;
+  position: absolute;
+  top: 39px;
+  left: 5px;
 }
 
 .register-form label input {
-    padding: 5px 0px 5px 25px;
-    outline: none;   
-    border: none;
-    border-radius: 3px; 
+  padding: 5px 0px 5px 25px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
 }
 
-
+.required-field-notification {
+  font-size: 0.9rem;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: red;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  text-align: center;
+  background-color: white;
+  border-bottom: 2px solid red;
+  border-left: 2px solid red;
+  border-right: 2px solid red;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}

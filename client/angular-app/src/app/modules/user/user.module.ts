@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserService } from './user.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UserService } from './user.service';
     UserRoutingModule,
     HttpClientModule,
     ProductModule,
+    FormsModule
   ],
   exports: [
     RegisterComponent,

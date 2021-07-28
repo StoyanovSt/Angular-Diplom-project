@@ -22,35 +22,40 @@ export class RegisterComponent {
     private router: Router
   ) { }
 
-  signUpHandler(args: Array<any>): void {
-    args[0].preventDefault();
+  signUpHandler(formData: {}): void {
+    console.log(formData);
 
-    if (args[3].value !== args[4].value) {
-      throw Error('Passwords do not match!');
-    }
-
-    // this.unsub = 
-    this.userService
-      .registerUser(
-        args[1].value,
-        args[2].value,
-        args[3].value,
-        args[4].value,
-      ).pipe(
-        // map(response => this.serverResponse = response),
-        // tap(response => this.serverResponseEmitter.emit(this.serverResponse))
-      )
-      .subscribe(       
-        response => this.router.navigate(['/login']),
-        error => console.error(error),
-        () => console.log('Stream has been closed!')
-      );
-
-    args[1].value = '';
-    args[2].value = '';
-    args[3].value = '';
-    args[4].value = '';
   }
+
+  // signUpHandler(args: Array<any>): void {
+  //   args[0].preventDefault();
+
+  //   if (args[3].value !== args[4].value) {
+  //     throw Error('Passwords do not match!');
+  //   }
+
+  //   // this.unsub = 
+  //   this.userService
+  //     .registerUser(
+  //       args[1].value,
+  //       args[2].value,
+  //       args[3].value,
+  //       args[4].value,
+  //     ).pipe(
+  //       // map(response => this.serverResponse = response),
+  //       // tap(response => this.serverResponseEmitter.emit(this.serverResponse))
+  //     )
+  //     .subscribe(       
+  //       response => this.router.navigate(['/login']),
+  //       error => console.error(error),
+  //       () => console.log('Stream has been closed!')
+  //     );
+
+  //   args[1].value = '';
+  //   args[2].value = '';
+  //   args[3].value = '';
+  //   args[4].value = '';
+  // }
 
   // ngOnDestroy(): void {
   //   this.unsub.unsubscribe();

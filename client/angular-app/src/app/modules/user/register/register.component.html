@@ -1,28 +1,50 @@
 <section class="register-form-container">
     <h2 class="register-form-title">Sign up</h2>
-    <form class="register-form">
+    <form class="register-form" #form="ngForm" (submit)="signUpHandler(form)">
+        <pre>{{form.value |json}}</pre>
         <label for="username">Username
             <i class="fas fa-user"></i>
-            <input type="text" #usernameInput id="username" name="username" placeholder="Username" autofocus>
+            <input type="text" id="username" name="username" pattern="^[a-zA-Z0-9]{4,}$" placeholder="Username"
+                autofocus required ngModel>
         </label>
+        <h6 class="required-field-notification"
+            *ngIf="form?.controls?.username?.touched && form?.controls?.username?.errors?.required">This field is
+            required!</h6>
+        <h6 class="required-field-notification" *ngIf="form?.controls?.username?.errors?.pattern">Username must be
+            atleast four characters long and may contains only english letters and digits!</h6>
         <label for="e-mail">E-mail
             <i class="fas fa-envelope"></i>
-            <input type="email" #emailInput id="e-mail" name="Email" placeholder="E-mail">
+            <input type="email" id="e-mail" name="Email" pattern="^\w+\@[a-zA-Z]+\.[a-zA-Z]+$" placeholder="E-mail"
+                required ngModel>
         </label>
+        <h6 class="required-field-notification"
+            *ngIf="form?.controls?.Email?.touched && form?.controls?.Email?.errors?.required">This field is required!
+        </h6>
+        <h6 class="required-field-notification" *ngIf="form?.controls?.Email?.errors?.pattern">Email is not valid!</h6>
         <label for="password">Password
             <i class="fas fa-key"></i>
-            <input type="password" #passwordInput id="password" name="password" placeholder="Password">
+            <input type="password" id="password" name="password" pattern="^[a-zA-Z0-9]{6,}$" placeholder="Password" required ngModel>
         </label>
+        <h6 class="required-field-notification"
+            *ngIf="form?.controls?.password?.touched && form?.controls?.password?.errors?.required">This field is
+            required!</h6>
+            <h6 class="required-field-notification" *ngIf="form?.controls?.password?.errors?.pattern">Password must be atleast six characters long and may contains only english letters and digits!</h6>
         <label for="re-password">Re-password
             <i class="fas fa-key"></i>
-            <input type="password" #rePasswordInput id="re-password" name="rePassword" placeholder="Re-password">
+            <input type="password" id="re-password" name="rePassword" pattern="^[a-zA-Z0-9]{6,}$" placeholder="Re-password" required ngModel>
         </label>
-        <input type="submit" (click)="signUpHandler([
+        <h6 class="required-field-notification"
+            *ngIf="form?.controls?.rePassword?.touched && form?.controls?.rePassword?.errors?.required">This field is
+            required!</h6>
+            <h6 class="required-field-notification" *ngIf="form?.controls?.rePassword?.errors?.pattern">Password must be atleast six characters long and may contains only english letters and digits!</h6>
+        <input type="submit" value="Sign up">
+    </form>
+</section>
+
+<!-- (click)="signUpHandler([
             $event,
             usernameInput,
             emailInput,
             passwordInput,
             rePasswordInput
-        ])" value="Sign up">
-    </form>
-</section>
+        ])" -->
