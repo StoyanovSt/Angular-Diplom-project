@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { UserService } from '../../user/user.service';
 import { ProductService } from '../product.service';
@@ -10,9 +11,11 @@ import { ProductService } from '../product.service';
   templateUrl: './product-create.component.html',
   styleUrls: ['./product-create.component.css']
 })
-export class ProductCreateComponent {
+export class ProductCreateComponent implements OnDestroy{
   @ViewChild('form')
   htmlForm!: NgForm;
+
+  unsub!: Subscription;
 
   constructor(
     private router: Router,
@@ -21,7 +24,7 @@ export class ProductCreateComponent {
   ) { }
 
   createOffertHandler(formData: any): void {
-    this.productService.storeProduct(
+    this.unsub = this.productService.storeProduct(
       formData.product,
       formData.description,
       formData.imageUrl,
@@ -33,5 +36,9 @@ export class ProductCreateComponent {
       );
 
     this.htmlForm.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.unsub.unsubscribe();    
   }
 }

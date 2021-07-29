@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 
 import { UserService } from '../user.service';
 
@@ -8,7 +10,9 @@ import { UserService } from '../user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {  
+export class LoginComponent implements OnDestroy{  
+  unsub!: Subscription;
+
   constructor(
     private userService: UserService,
     private router: Router
@@ -17,7 +21,7 @@ export class LoginComponent {
   signInHandler(args: Array<any>): void {
     args[0].preventDefault();
     
-    this.userService
+    this.unsub = this.userService
       .loginUser(
         args[1].value,
         args[2].value
@@ -33,5 +37,9 @@ export class LoginComponent {
 
       args[1].value = '';
       args[2].value = '';
+  }
+
+  ngOnDestroy(): void {
+    this.unsub.unsubscribe();    
   }
 }

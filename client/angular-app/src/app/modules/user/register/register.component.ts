@@ -11,14 +11,14 @@ import { UserService } from '../user.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy{
   @ViewChild('form')
   htmlForm!: NgForm;
   // @Output()
   // serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
 
   // serverResponse!: {};
-  // unsub!: Subscription;
+  unsub!: Subscription;
 
   constructor(
     private userService: UserService,
@@ -26,8 +26,7 @@ export class RegisterComponent {
   ) { }
 
   signUpHandler(formData: any): void {
-    // this.unsub = 
-    this.userService
+    this.unsub = this.userService
       .registerUser(
         formData.username,
         formData.Email,
@@ -46,7 +45,7 @@ export class RegisterComponent {
       this.htmlForm.reset();
   }
 
-  // ngOnDestroy(): void {
-  //   this.unsub.unsubscribe();
-  // }
+  ngOnDestroy(): void {
+    this.unsub.unsubscribe();
+  }
 }

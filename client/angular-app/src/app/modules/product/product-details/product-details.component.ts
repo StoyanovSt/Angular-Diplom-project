@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ProductService } from '../product.service';
@@ -15,6 +16,7 @@ import { IUser } from 'src/app/interfaces/user';
 export class ProductDetailsComponent implements OnInit {
   product!: IProduct;
   user!: IUser;
+  unsub!: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -36,7 +38,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProduct(this.activatedRoute.snapshot.params.productId)
+    this.unsub = this.productService.getProduct(this.activatedRoute.snapshot.params.productId)
       .pipe(
         map(response => {
           this.product = response['product'];
@@ -52,7 +54,7 @@ export class ProductDetailsComponent implements OnInit {
 
   productDeleteHandler(): void {
     if (window.confirm("Are you sure that you want to delete this product?")) {
-      this.productService.deleteProduct(this.product._id)
+      this.unsub = this.productService.deleteProduct(this.product._id)
         .subscribe(
           // ЗА НОТИФИКАЦИЯ ЩЕ МИ ТРЯБВА RESPONSA ОТ БАЗАТА
           response => this.router.navigate(['/home']),
@@ -64,7 +66,7 @@ export class ProductDetailsComponent implements OnInit {
 
   productBuyHandler(): void {
     if (window.confirm("Are you sure that you want to buy this product?")) {
-      this.productService.deleteProduct(this.product._id)
+      this.unsub = this.productService.deleteProduct(this.product._id)
         .subscribe(
           // ЗА НОТИФИКАЦИЯ ЩЕ МИ ТРЯБВА RESPONSA ОТ БАЗАТА
           response => this.router.navigate(['/home']),
@@ -75,7 +77,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   likeProductHandler(): void {
-    this.productService.likeProduct(this.product._id, this.product.likes + 1)
+    this.unsub = this.productService.likeProduct(this.product._id, this.product.likes + 1)
       .pipe(
         map((response) => this.product = response['product']),
       )
@@ -84,5 +86,9 @@ export class ProductDetailsComponent implements OnInit {
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );
+  }
+
+  ngOnDestroy(): void {
+    this.unsub.unsubscribe();    
   }
 }

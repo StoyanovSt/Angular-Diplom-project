@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IProduct } from '../../../interfaces/product';
@@ -12,9 +13,11 @@ import { ProductService } from '../product.service';
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css']
 })
-export class ProductEditComponent implements OnInit {
+export class ProductEditComponent implements OnInit, OnDestroy {
   @ViewChild('form')
   htmlForm!: NgForm;
+
+  unsub!: Subscription;
 
   getProductResponseInfo!: {
     product: IProduct,
@@ -29,7 +32,7 @@ export class ProductEditComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.productService.getProduct(this.productId)
+    this.unsub = this.productService.getProduct(this.productId)
       .subscribe(
         response => this.getProductResponseInfo = response,
         error => console.error(error),
@@ -38,7 +41,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   editProductHandler(formData: any): void {
-    this.productService.editProduct(
+    this.unsub = this.productService.editProduct(
       formData.product,
       formData.description,
       formData.imageUrl,
@@ -56,5 +59,9 @@ export class ProductEditComponent implements OnInit {
       )
 
     this.htmlForm.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.unsub.unsubscribe();    
   }
 }
