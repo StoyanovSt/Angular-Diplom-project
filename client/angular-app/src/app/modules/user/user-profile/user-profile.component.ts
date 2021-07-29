@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { IProduct } from 'src/app/interfaces/product';
 import { UserService } from '../user.service';
@@ -18,13 +18,13 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getCurrentUserInfo(`${this.userService.getCurrentUserName()}`)
       .pipe(
-        tap(response => console.log(response)),
         map(response => {
           this.username = response['username'];
           this.allUserProductsAvailable = response['products'];
         })
       )
       .subscribe(
+        response => {},
         error => console.error(error),
         () => console.log('Stream has been closed!'))
   }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
 
 import { UserService } from '../user.service';
 
@@ -22,8 +21,6 @@ export class LoginComponent {
       .loginUser(
         args[1].value,
         args[2].value
-      ).pipe(
-        tap(response => console.log(response)),
       )
       .subscribe(
         response => {

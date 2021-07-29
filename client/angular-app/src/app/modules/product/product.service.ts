@@ -17,7 +17,6 @@ export class ProductService {
     private userService: UserService,
     private activatedRoute: ActivatedRoute) { }
 
-  // ГОТОВ
   getProduct(productId: string): Observable<any> {
     return this.http.get<any>(apiURLProduct + `/${productId}/details`, {
       headers: {
@@ -26,7 +25,6 @@ export class ProductService {
     });
   }
 
-  // ГОТОВ
   getAllProducts(): Observable<any> {
     return this.http.get<any>(apiURL + `/home`, {
       headers: {
@@ -44,7 +42,6 @@ export class ProductService {
     });
   }
 
-  // ГОТОВ
   storeProduct(
     product: string,
     description: string,
@@ -64,7 +61,6 @@ export class ProductService {
     });
   }
 
-  // ГОТОВ
   editProduct(
     product: string,
     description: string,
@@ -85,7 +81,6 @@ export class ProductService {
     });
   }
 
-  // ГОТОВ
   deleteProduct(productId: string): Observable<any> {
     return this.http.get<any>(apiURLProduct + `/${productId}/delete`, {
       headers: {
@@ -95,7 +90,6 @@ export class ProductService {
     });
   }
 
-  //ГОТОВ
   likeProduct(productId: string, countOfLikes: number): Observable<any> {
     return this.http.patch<any>(apiURLProduct + `/${productId}/like`, {
       countOfLikes,
@@ -108,7 +102,6 @@ export class ProductService {
     });
   }
 
-  // ГОТОВ
   getMostLikedProducts(): Observable<any> {
     return this.http.get<any>(apiURL + '/', {
       headers: {

@@ -24,7 +24,7 @@ export class ProductDetailsComponent implements OnInit {
   ) { }
 
   get isCurrentLoggedUserOwnerOfProduct(): boolean {
-    return this.userService.isCurrentLoggedUserOwnerOfProduct(this.user.username, this.userService.getCurrentUserName());
+    return this.userService.isCurrentLoggedUserOwnerOfProduct(this.user?.username, this.userService.getCurrentUserName());
   }
 
   get isCurrentLoggedUserAdmin(): boolean {
@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   get isCurrentUserHasAlreadyLikedTheProduct(): boolean {
-    return this.product.peopleLikedProduct.includes(this.userService.getCurrentUserName()) ? true : false;
+    return this.product?.peopleLikedProduct.includes(this.userService.getCurrentUserName()) ? true : false;
   }
 
   ngOnInit(): void {
@@ -44,6 +44,7 @@ export class ProductDetailsComponent implements OnInit {
         })
       )
       .subscribe(
+        response => { },
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );
@@ -79,6 +80,7 @@ export class ProductDetailsComponent implements OnInit {
         map((response) => this.product = response['product']),
       )
       .subscribe(
+        response=> {},
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );

@@ -3,7 +3,7 @@
     <form class="edit-product-form" #form="ngForm" (submit)="editProductHandler(form.value)">
         <label for="product-name">Product name
             <input type="text" id="product-name" name="product"
-                autofocus required [ngModel]="getProductResponseInfo.product.product">
+                autofocus required [ngModel]="getProductResponseInfo?.product?.product">
         </label>
         <h6 class="required-field-notification"
             *ngIf="form?.controls?.product?.touched && form?.controls?.product?.errors?.required">
@@ -11,7 +11,7 @@
         </h6>
         <label for="product-description">Product description
             <textarea id="product-description" name="description" minlength="10" maxlength="150"
-                 required [ngModel]="getProductResponseInfo.product.description"></textarea>
+                 required [ngModel]="getProductResponseInfo?.product?.description"></textarea>
         </label>
         <h6 class="required-field-notification"
             *ngIf="form?.controls?.description?.touched && form?.controls?.description?.errors?.required">
@@ -23,7 +23,7 @@
         </h6>
         <label for="product-image">Product image
             <input appImageUrlValidation type="text" id="product-image" name="imageUrl"
-                 required [ngModel]="getProductResponseInfo.product.imageUrl">
+                 required [ngModel]="getProductResponseInfo?.product?.imageUrl">
         </label>
         <h6 class="required-field-notification"
             *ngIf="form?.controls?.imageUrl?.touched && form?.controls?.imageUrl?.errors?.required">
@@ -35,7 +35,7 @@
         </h6>
         <label for="product-price">Product price
             <input type="number" id="product-price" name="price" min="0"
-                required [ngModel]="getProductResponseInfo.product.price">
+                required [ngModel]="getProductResponseInfo?.product?.price">
         </label>
         <h6 class="required-field-notification"
             *ngIf="form?.controls?.price?.touched && form?.controls?.price?.errors?.required">

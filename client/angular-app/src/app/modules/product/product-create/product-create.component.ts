@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
 
 import { UserService } from '../../user/user.service';
 import { ProductService } from '../product.service';
@@ -27,9 +26,6 @@ export class ProductCreateComponent {
       formData.description,
       formData.imageUrl,
       Number(formData.price))
-      .pipe(
-        tap(response => console.log(response))
-      )
       .subscribe(
         response => this.router.navigate([`/user/${this.userService.getCurrentUserName()}/profile`]),
         error => console.error(error),

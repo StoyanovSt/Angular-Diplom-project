@@ -32,6 +32,7 @@ export class HomeViewGuestComponent implements OnInit {
         map(response => this.searchedProducts = response)
       )
       .subscribe(
+        response=>{},
         error => console.error(error),
         () => console.log('Stream has been closed!')
       )
