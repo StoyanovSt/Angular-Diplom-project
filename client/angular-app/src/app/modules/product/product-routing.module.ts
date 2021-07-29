@@ -14,29 +14,29 @@ const routes: Routes = [
             {
                 path: 'create',
                 component: ProductCreateComponent,
-                // canActivate: [AuthActive],
-                // data: {
-                //     authRequired: true,
-                //     authFailureRedirectUrl: '/login'
-                // }
+                canActivate: [AuthActive],
+                data: {
+                    authRequired: true,
+                    authFailureRedirectUrl: '/login'
+                }
             },
             {
                 path: ':productId/details',
                 component: ProductDetailsComponent,
-                // canActivate: [AuthActive],
-                // data: {
-                //     authRequired: true,
-                //     authFailureRedirectUrl: '/login'
-                // }
+                canActivate: [AuthActive],
+                data: {
+                    authRequired: true,
+                    authFailureRedirectUrl: '/login'
+                }
             },
             {
                 path: ':productId/edit',
                 component: ProductEditComponent,
-                // canActivate: [AuthActive],
-                // data: {
-                //     authRequired: true,
-                //     authFailureRedirectUrl: '/login'
-                // }
+                canActivate: [AuthActive],
+                data: {
+                    authRequired: true,
+                    authFailureRedirectUrl: '/login'
+                }
             }
         ]
     }
