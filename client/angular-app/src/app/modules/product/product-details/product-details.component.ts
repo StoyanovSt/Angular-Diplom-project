@@ -89,6 +89,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.unsub.unsubscribe();    
+    this.unsub?.unsubscribe();    
   }
 }

@@ -24,6 +24,6 @@ export class HomeViewLoggedInComponent implements OnInit, OnDestroy {
       )
   }
   ngOnDestroy(): void {
-    this.unsub.unsubscribe();
+    this.unsub?.unsubscribe();
   }
 }
