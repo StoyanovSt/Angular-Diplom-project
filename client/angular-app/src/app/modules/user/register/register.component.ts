@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnDestroy, Output, ViewChild } from '@angular/
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { UserService } from '../user.service';
 
@@ -12,12 +12,12 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnDestroy{
-  @ViewChild('form')
-  htmlForm!: NgForm;
   // @Output()
   // serverResponseEmitter: EventEmitter<{}> = new EventEmitter();
 
-  // serverResponse!: {};
+  @ViewChild('form')
+  htmlForm!: NgForm;
+
   unsub!: Subscription;
 
   constructor(
@@ -33,8 +33,7 @@ export class RegisterComponent implements OnDestroy{
         formData.password,
         formData.rePassword,
       ).pipe(
-        // map(response => this.serverResponse = response),
-        // tap(response => this.serverResponseEmitter.emit(this.serverResponse))
+        // map(response => this.serverResponseEmitter.emit(response)),
       )
       .subscribe(       
         response => this.router.navigate(['/login']),

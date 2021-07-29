@@ -6,14 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // serverResponseInfo!: {
-  //   hasError: boolean,
-  //   message: string
-  // };
+  // serverResponseInfo!: any;
 
   constructor() { }
 
   // serverResponseHandler(event: any): void {
-  //   this.serverResponseInfo = event;    
+  //   this.serverResponseInfo = event;
+  //   console.log(this.serverResponseInfo);       
   // }
+  
 }
