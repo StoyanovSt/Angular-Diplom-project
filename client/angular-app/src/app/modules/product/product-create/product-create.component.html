@@ -2,27 +2,27 @@
     <h2 class="create-product-form-title">Create an offert</h2>
     <form class="create-product-form" #form="ngForm" (submit)="createOffertHandler(form.value)">
         <label for="product-name">Product name
-            <input type="text" id="product-name" name="product" placeholder="Product name" autofocus required ngModel>
+            <input type="text" id="product-name" name="product" #productNameInput="ngModel" placeholder="Product name" autofocus required ngModel>
         </label>
         <h6 class="required-field-notification"
-            *ngIf="form?.controls?.product?.touched && form?.controls?.product?.errors?.required">
+            *ngIf="productNameInput.touched && productNameInput.errors?.required">
             This field is required!
         </h6>        
         <label for="product-description">Product description
-            <textarea id="product-description" name="description" minlength="10" maxlength="150" placeholder="Product description" required ngModel></textarea>
+            <textarea id="product-description" name="description" #productDescriptionInput="ngModel" minlength="10" maxlength="150" placeholder="Product description" required ngModel></textarea>
         </label>
         <h6 class="required-field-notification"
-            *ngIf="form?.controls?.description?.touched && form?.controls?.description?.errors?.required">
+            *ngIf="productDescriptionInput.touched && productDescriptionInput.errors?.required">
             This field isrequired!
         </h6>
-        <h6 class="field-notification" *ngIf="form?.controls?.description?.errors?.minlength || form?.controls?.description?.errors?.maxlength">
+        <h6 class="field-notification" *ngIf="productDescriptionInput.errors?.minlength || productDescriptionInput.errors?.maxlength">
             Description must be between 10 and 150 characters long!
         </h6>
         <label for="product-image">Product image
-            <input appImageUrlValidation type="text" id="product-image" name="imageUrl" placeholder="Product image" required ngModel>
+            <input appImageUrlValidation type="text" id="product-image" name="imageUrl" #imageUrlInput="ngModel" placeholder="Product image" required ngModel>
         </label>
         <h6 class="required-field-notification"
-            *ngIf="form?.controls?.imageUrl?.touched && form?.controls?.imageUrl?.errors?.required">
+            *ngIf="imageUrlInput.touched && imageUrlInput.errors?.required">
             This field isrequired!
         </h6>
         <h6 class="required-field-notification"
@@ -30,13 +30,13 @@
             Image URL must starts with http or https!
         </h6>
         <label for="product-price">Product price
-            <input type="number" id="product-price" name="price" min="0" placeholder="Product price" required ngModel>
+            <input type="number" id="product-price" name="price" #productPriceInput="ngModel" min="0" placeholder="Product price" required ngModel>
         </label>
         <h6 class="required-field-notification"
-            *ngIf="form?.controls?.price?.touched && form?.controls?.price?.errors?.required">
+            *ngIf="productPriceInput.touched && productPriceInput.errors?.required">
             This field isrequired!
         </h6>
-        <h6 class="field-notification" *ngIf="form?.controls?.price?.errors?.min">
+        <h6 class="field-notification" *ngIf="productPriceInput.errors?.min">
             Selling price must be non negative number!
         </h6>
         <input type="submit" value="Store a product" [disabled]="form?.invalid">
