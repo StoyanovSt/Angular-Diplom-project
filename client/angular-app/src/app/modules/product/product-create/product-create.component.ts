@@ -2,6 +2,7 @@ import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { UserService } from '../../user/user.service';
 import { ProductService } from '../product.service';
@@ -15,6 +16,10 @@ export class ProductCreateComponent implements OnDestroy{
   @ViewChild('form')
   htmlForm!: NgForm;
 
+  serverResponseInfo!: {
+    hasError: boolean,
+    message: string
+  };
   unsub!: Subscription;
 
   constructor(
@@ -29,9 +34,20 @@ export class ProductCreateComponent implements OnDestroy{
       formData.description,
       formData.imageUrl,
       Number(formData.price))
+      .pipe(
+        map(response => this.serverResponseInfo = response),
+      )
       .subscribe(
-        response => this.router.navigate([`/user/${this.userService.getCurrentUserName()}/profile`]),
-        error => console.error(error),
+        response => {
+          setTimeout(() => {
+            if (this.serverResponseInfo.hasError === false) {
+              this.router.navigate([`/user/${this.userService.getCurrentUserName()}/profile`]);
+            }
+          }, 3000);
+        },
+        error => {
+          this.serverResponseInfo = error.error;
+        },
         () => console.log('Stream has been closed!')
       );
 

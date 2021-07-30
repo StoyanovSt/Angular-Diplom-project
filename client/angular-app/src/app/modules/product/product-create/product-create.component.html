@@ -1,3 +1,11 @@
+<ng-template [ngIf]="serverResponseInfo">
+    <ng-template [ngIf]="serverResponseInfo.hasError === false">
+        <app-success [message]="serverResponseInfo.message"></app-success>
+    </ng-template>
+    <ng-template [ngIf]="serverResponseInfo.hasError === true">
+        <app-error [message]="serverResponseInfo.message"></app-error>
+    </ng-template>
+</ng-template>
 <section class="create-product-container">
     <h2 class="create-product-form-title">Create an offert</h2>
     <form class="create-product-form" #form="ngForm" (submit)="createOffertHandler(form.value)">

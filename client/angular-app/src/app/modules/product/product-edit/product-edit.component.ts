@@ -17,6 +17,11 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   @ViewChild('form')
   htmlForm!: NgForm;
 
+  serverResponseInfo!: {
+    hasError: boolean,
+    message: string
+  };
+
   unsub!: Subscription;
 
   getProductResponseInfo!: {
@@ -33,7 +38,20 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.unsub = this.productService.getProduct(this.productId)
+    .pipe(
+      map(response => this.serverResponseInfo = response),
+    )
       .subscribe(
+        // response => {
+        //   setTimeout(() => {
+        //     if (this.serverResponseInfo.hasError === false) {
+        //       this.router.navigate(['/login']);
+        //     }
+        //   }, 3000);
+        // },
+        // error => {
+        //   this.serverResponseInfo = error.error;
+        // },
         response => this.getProductResponseInfo = response,
         error => console.error(error),
         () => console.log('Stream has been closed!')
@@ -53,6 +71,16 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       })
     )
       .subscribe(
+         // response => {
+        //   setTimeout(() => {
+        //     if (this.serverResponseInfo.hasError === false) {
+        //       this.router.navigate(['/login']);
+        //     }
+        //   }, 3000);
+        // },
+        // error => {
+        //   this.serverResponseInfo = error.error;
+        // },
         response => this.router.navigate([`/product/${this.productId}/details`]),
         error => console.error(error),
         () => console.log('Stream has been closed')

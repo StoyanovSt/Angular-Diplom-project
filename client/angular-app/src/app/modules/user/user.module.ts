@@ -9,21 +9,22 @@ import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserService } from './user.service';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
+import { NotificationsModule } from '../notifications/notifications.module';
+
 
 @NgModule({
   declarations: [
     RegisterComponent,
     LoginComponent,
-    UserProfileComponent
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     HttpClientModule,
     ProductModule,
-    SharedModule,
-    FormsModule
+    FormsModule,
+    NotificationsModule
   ],
   exports: [
     RegisterComponent,

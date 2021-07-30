@@ -11,6 +11,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductService } from './product.service';
 import { FormsModule } from '@angular/forms';
 import { ImageUrlValidationDirective } from './image-url-validation.directive';
+import { NotificationsModule } from '../notifications/notifications.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ImageUrlValidationDirective } from './image-url-validation.directive';
     ProductRoutingModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    NotificationsModule
   ],
   exports: [
     ProductComponent,
