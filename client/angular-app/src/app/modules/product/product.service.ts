@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { environment } from "src/environments/environment";
@@ -14,13 +13,21 @@ export class ProductService {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService,
-    private activatedRoute: ActivatedRoute) { }
+    private userService: UserService) { }
 
   getProduct(productId: string): Observable<any> {
     return this.http.get<any>(apiURLProduct + `/${productId}/details`, {
       headers: {
         'content-type': 'application/json',
+      }
+    });
+  }
+
+  getProductForEdditingPurpose(productId: string): Observable<any> {
+    return this.http.get<any>(apiURLProduct + `/${productId}/edit`, {
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `${this.userService.getCurrentUserToken()}`
       }
     });
   }

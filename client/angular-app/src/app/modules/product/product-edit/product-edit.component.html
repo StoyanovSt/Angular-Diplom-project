@@ -1,17 +1,17 @@
-<!-- <ng-template [ngIf]="serverResponseInfo">
-    <ng-template [ngIf]="serverResponseInfo.hasError === false">
+<ng-template [ngIf]="serverResponseInfo">
+    <ng-template [ngIf]="serverResponseInfo.hasError === false && serverResponseInfo.message !== ''">
         <app-success [message]="serverResponseInfo.message"></app-success>
     </ng-template>
-    <ng-template [ngIf]="serverResponseInfo.hasError === true">
+    <ng-template [ngIf]="serverResponseInfo.hasError === true && serverResponseInfo.message !== ''">
         <app-error [message]="serverResponseInfo.message"></app-error>
     </ng-template>
-</ng-template> -->
+</ng-template>
 <section class="edit-product-container">
     <h2 class="edit-product-form-title">Edit your offert</h2>
     <form class="edit-product-form" #form="ngForm" (submit)="editProductHandler(form.value)">
         <label for="product-name">Product name
             <input type="text" id="product-name" name="product" #productNameInput="ngModel"
-                autofocus required [ngModel]="getProductResponseInfo?.product?.product">
+                autofocus required [ngModel]="getProductResponseInfo?.product">
         </label>
         <h6 class="required-field-notification"
             *ngIf="productNameInput.touched && productNameInput.errors?.required">
@@ -19,7 +19,7 @@
         </h6>
         <label for="product-description">Product description
             <textarea id="product-description" name="description" #productDescriptionInput="ngModel" minlength="10" maxlength="150"
-                 required [ngModel]="getProductResponseInfo?.product?.description"></textarea>
+                 required [ngModel]="getProductResponseInfo?.description"></textarea>
         </label>
         <h6 class="required-field-notification"
             *ngIf="productDescriptionInput.touched && productDescriptionInput.errors?.required">
@@ -31,7 +31,7 @@
         </h6>
         <label for="product-image">Product image
             <input appImageUrlValidation type="text" id="product-image" name="imageUrl" #imageUrlInput="ngModel"
-                 required [ngModel]="getProductResponseInfo?.product?.imageUrl">
+                 required [ngModel]="getProductResponseInfo?.imageUrl">
         </label>
         <h6 class="required-field-notification"
             *ngIf="imageUrlInput.touched && imageUrlInput.errors?.required">
@@ -43,7 +43,7 @@
         </h6>
         <label for="product-price">Product price
             <input type="number" id="product-price" name="price" #productPriceInput="ngModel" min="0"
-                required [ngModel]="getProductResponseInfo?.product?.price">
+                required [ngModel]="getProductResponseInfo?.price">
         </label>
         <h6 class="required-field-notification"
             *ngIf="productPriceInput.touched && productPriceInput.errors?.required">

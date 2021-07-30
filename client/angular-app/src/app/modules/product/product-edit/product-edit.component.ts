@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { IProduct } from '../../../interfaces/product';
 import { ProductService } from '../product.service';
@@ -19,14 +19,16 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   serverResponseInfo!: {
     hasError: boolean,
-    message: string
+    message: string,
   };
 
   unsub!: Subscription;
 
   getProductResponseInfo!: {
-    product: IProduct,
-    currentLoggedUserId: string;
+    product: string,
+    description: string,
+    imageUrl: string,
+    price: number
   }
 
   productId: string = this.activatedRoute.snapshot.params.productId;
@@ -37,23 +39,14 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.unsub = this.productService.getProduct(this.productId)
-    .pipe(
-      map(response => this.serverResponseInfo = response),
-    )
-      .subscribe(
-        // response => {
-        //   setTimeout(() => {
-        //     if (this.serverResponseInfo.hasError === false) {
-        //       this.router.navigate(['/login']);
-        //     }
-        //   }, 3000);
-        // },
-        // error => {
-        //   this.serverResponseInfo = error.error;
-        // },
-        response => this.getProductResponseInfo = response,
-        error => console.error(error),
+    this.unsub = this.productService.getProductForEdditingPurpose(this.productId)
+      .subscribe(response => {
+        this.getProductResponseInfo = response['product'];
+        this.serverResponseInfo = response['notification'];
+      },
+        error => {
+          this.serverResponseInfo = error.error;
+        },
         () => console.log('Stream has been closed!')
       );
   }
@@ -65,31 +58,27 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       formData.imageUrl,
       Number(formData.price),
       this.productId
-    ).pipe(
-      map(response => {
-        this.getProductResponseInfo.product = response['product'];
-      })
     )
-      .subscribe(
-         // response => {
-        //   setTimeout(() => {
-        //     if (this.serverResponseInfo.hasError === false) {
-        //       this.router.navigate(['/login']);
-        //     }
-        //   }, 3000);
-        // },
-        // error => {
-        //   this.serverResponseInfo = error.error;
-        // },
-        response => this.router.navigate([`/product/${this.productId}/details`]),
-        error => console.error(error),
-        () => console.log('Stream has been closed')
+      .subscribe(response => {
+        this.getProductResponseInfo = response['product'];
+        this.serverResponseInfo = response['notification'];
+
+        setTimeout(() => {
+          if (this.serverResponseInfo.hasError === false) {
+            this.router.navigate([`/product/${this.productId}/details`]);
+          }
+        }, 3000);
+      },
+        error => {
+          this.serverResponseInfo = error.error;
+        },
+        () => console.log('Stream has been closed!')
       )
 
     this.htmlForm.reset();
   }
 
   ngOnDestroy(): void {
-    this.unsub?.unsubscribe();    
+    this.unsub?.unsubscribe();
   }
 }

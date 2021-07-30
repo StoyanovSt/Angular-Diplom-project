@@ -159,13 +159,16 @@ router.get('/product/:productId/edit', isAuthorized, (req, res) => {
         .then(product => {
             res.status(200).json({
                 product,
-                hasError: false,
+                notification: {
+                    hasError: false,
+                    message: '',
+                }
             });
         })
         .catch(err => {
             res.status(500).json({
+                hasError: true,
                 message: 'Internal server error!',
-                hasError: false,
             });
         });
 });
@@ -194,8 +197,10 @@ router.post('/product/:productId/edit', isAuthorized, (req, res) => {
                 .then(product => {
                     res.status(200).json({
                         product,
-                        hasError: false,
-                        message: 'Product has been successfully eddited!',
+                        notification: {
+                            hasError: false,
+                            message: 'Product has been successfully eddited!',
+                        }
                     });
                 })
                 .catch(err => {
