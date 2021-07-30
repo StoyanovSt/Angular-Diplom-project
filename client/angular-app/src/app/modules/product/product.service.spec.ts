@@ -3,10 +3,11 @@ import { TestBed } from '@angular/core/testing';
 import { ProductService } from './product.service';
 
 describe('ProductService', () => {
+  // Service-а, който ще тестваме
   let service: ProductService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ providers: [ProductService] });
     service = TestBed.inject(ProductService);
   });
 

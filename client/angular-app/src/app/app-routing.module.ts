@@ -21,10 +21,10 @@ const routes: Routes = [
       authFailureRedirectUrl: '/login'
     }
   },
-  // {
-  //     path: '**',
-  //     component: PageNotFoundComponent
-  // }
+  {
+      path: '**',
+      component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({
