@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-
+import { map } from 'rxjs/operators';
 
 import { UserService } from '../user.service';
 
@@ -10,7 +10,12 @@ import { UserService } from '../user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnDestroy{  
+export class LoginComponent implements OnDestroy {
+  serverResponseInfo!: {
+    hasError: boolean,
+    message: string
+  };
+
   unsub!: Subscription;
 
   constructor(
@@ -20,26 +25,34 @@ export class LoginComponent implements OnDestroy{
 
   signInHandler(args: Array<any>): void {
     args[0].preventDefault();
-    
+
     this.unsub = this.userService
       .loginUser(
         args[1].value,
         args[2].value
+      ).pipe(
+        map(response => this.serverResponseInfo = response),
       )
       .subscribe(
         response => {
-          localStorage.setItem('user', JSON.stringify({ TOKEN: response.token, USERNAME: response.username })),
-            this.router.navigate(['/home'])
+          localStorage.setItem('user', JSON.stringify({ TOKEN: response.token, USERNAME: response.username }));
+          setTimeout(() => {
+            if (this.serverResponseInfo.hasError === false) {
+              this.router.navigate(['/home']);
+            }
+          }, 3000);
         },
-        error => console.error(error),
+        error => {
+          this.serverResponseInfo = error.error;
+        },
         () => console.log('Stream has been closed!')
       );
 
-      args[1].value = '';
-      args[2].value = '';
+    args[1].value = '';
+    args[2].value = '';
   }
 
   ngOnDestroy(): void {
-    this.unsub?.unsubscribe();    
+    this.unsub?.unsubscribe();
   }
 }

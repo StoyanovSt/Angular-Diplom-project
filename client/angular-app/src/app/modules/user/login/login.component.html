@@ -1,3 +1,11 @@
+<ng-template [ngIf]="serverResponseInfo">
+    <ng-template [ngIf]="serverResponseInfo.hasError === false">
+        <app-success [message]="serverResponseInfo.message"></app-success>
+    </ng-template>
+    <ng-template [ngIf]="serverResponseInfo.hasError === true">
+        <app-error [message]="serverResponseInfo.message"></app-error>
+    </ng-template>
+</ng-template>
 <section class="login-form-container">
     <h2 class="login-form-title">Sign in</h2>
     <form class="login-form">

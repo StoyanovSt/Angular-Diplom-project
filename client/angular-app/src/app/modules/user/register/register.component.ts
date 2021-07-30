@@ -40,12 +40,13 @@ export class RegisterComponent implements OnDestroy {
       .subscribe(
         response => {
           setTimeout(() => {
-            this.serverResponseInfo.hasError === false ? this.router.navigate(['/login']) : this.router.navigate(['/register']);
+            if (this.serverResponseInfo.hasError === false) {
+              this.router.navigate(['/login']);
+            }
           }, 3000);
         },
         error => {
           this.serverResponseInfo = error.error;
-          console.log(this.serverResponseInfo)          
         },
         () => console.log('Stream has been closed!')
       );
