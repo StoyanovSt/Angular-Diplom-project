@@ -23,6 +23,7 @@ export class HomeViewLoggedInComponent implements OnInit, OnDestroy {
         () => console.log('Stream has been closed!')
       )
   }
+  
   ngOnDestroy(): void {
     this.unsub?.unsubscribe();
   }

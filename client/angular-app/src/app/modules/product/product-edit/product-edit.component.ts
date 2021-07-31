@@ -3,9 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
 
-import { IProduct } from '../../../interfaces/product';
 import { ProductService } from '../product.service';
 
 @Component({

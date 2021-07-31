@@ -63,11 +63,6 @@ export class UserService {
     return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).TOKEN : '';
   }
 
-  logout(): void {
-    localStorage.removeItem('user');
-    this.router.navigate(['/']);
-  }
-
   getCurrentUserInfo(username: string): Observable<any> {
     return this.http.get<any>(apiURL + `/user/${username}/profile`, {
       headers: {
@@ -75,5 +70,10 @@ export class UserService {
         'authorization': `${this.getCurrentUserToken()}`,
       }
     });
+  }
+
+  logout(): void {
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
   }
 }

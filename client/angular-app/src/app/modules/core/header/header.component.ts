@@ -13,12 +13,12 @@ export class HeaderComponent{
   get isLogged(): boolean {
     return this.userService.isLogged();
   }
-
-  logoutHandler(): void {
-    this.userService.logout();
-  }
-
+  
   get loggedUserUsername(): string {
     return this.userService.getCurrentUserName();
   } 
+  
+  logoutHandler(): void {
+    this.userService.logout();
+  }
 }
