@@ -2,10 +2,10 @@
     <h1 class="main-content-title">All products available</h1>
     <ng-template [ngIf]="products?.length !== 0">
         <section class="inner">
-            <section class="products-container" *ngIf="products">
+            <section *ngIf="products" class="products-container">
                 <app-product *ngFor="let product of products" [product]="product"></app-product>
             </section>
-            <section class="loading" *ngIf="!products">
+            <section *ngIf="!products" class="loading">
                 <h3>Loading...</h3>
             </section>
         </section>

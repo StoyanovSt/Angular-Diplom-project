@@ -1,11 +1,8 @@
-<ng-template [ngIf]="serverResponseInfo">
-    <ng-template [ngIf]="serverResponseInfo.hasError === false">
-        <app-success [message]="serverResponseInfo.message"></app-success>
-    </ng-template>
-    <ng-template [ngIf]="serverResponseInfo.hasError === true">
-        <app-error [message]="serverResponseInfo.message"></app-error>
-    </ng-template>
-</ng-template>
+<app-success *ngIf="serverResponseInfo && serverResponseInfo.hasError === false" [message]="serverResponseInfo.message">
+</app-success>
+<app-error *ngIf="serverResponseInfo && serverResponseInfo.hasError === true" [message]="serverResponseInfo.message">
+</app-error>
+
 <section class="register-form-container">
     <h2 class="register-form-title">Sign up</h2>
     <form class="register-form" #form="ngForm" (submit)="signUpHandler(form.value)">

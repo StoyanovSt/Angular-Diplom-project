@@ -1,11 +1,8 @@
-<ng-template [ngIf]="serverResponseInfo">
-    <ng-template [ngIf]="serverResponseInfo.hasError === false">
-        <app-success [message]="serverResponseInfo.message"></app-success>
-    </ng-template>
-    <ng-template [ngIf]="serverResponseInfo.hasError === true">
-        <app-error [message]="serverResponseInfo.message"></app-error>
-    </ng-template>
-</ng-template>
+<app-success *ngIf="serverResponseInfo && serverResponseInfo.hasError === false" [message]="serverResponseInfo.message">
+</app-success>
+<app-error *ngIf="serverResponseInfo && serverResponseInfo.hasError === true" [message]="serverResponseInfo.message">
+</app-error>
+
 <section class="login-form-container">
     <h2 class="login-form-title">Sign in</h2>
     <form class="login-form">
@@ -24,6 +21,5 @@
         ])" value="Sign in">
     </form>
     <h5>Do not have a registration? -> <a class="link" routerLink="/register">Sign up</a>
-    </h5>
-    
+    </h5>    
 </section>

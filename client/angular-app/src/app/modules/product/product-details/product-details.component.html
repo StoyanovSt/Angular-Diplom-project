@@ -1,11 +1,8 @@
-<ng-template [ngIf]="serverResponseInfo">
-    <ng-template [ngIf]="serverResponseInfo.hasError === false">
-        <app-success [message]="serverResponseInfo.message"></app-success>
-    </ng-template>
-    <ng-template [ngIf]="serverResponseInfo.hasError === true">
-        <app-error [message]="serverResponseInfo.message"></app-error>
-    </ng-template>
-</ng-template>
+<app-success *ngIf="serverResponseInfo && serverResponseInfo.hasError === false" [message]="serverResponseInfo.message">
+</app-success>
+<app-error *ngIf="serverResponseInfo && serverResponseInfo.hasError === true" [message]="serverResponseInfo.message">
+</app-error>
+
 <section class="product-details-content">
     <article class="product-details-content-image-wrapper">
         <img [src]="product?.imageUrl" alt="Product">
@@ -37,7 +34,7 @@
             <article class="guest-options" *ngIf="!isCurrentLoggedUserOwnerOfProduct && !isCurrentLoggedUserAdmin">
                 <button class="product-details-content-btn buy" (click)="productBuyHandler()">Buy</button>
                 <button class="product-details-content-btn like" (click)="likeProductHandler()"
-                *ngIf="!isCurrentUserHasAlreadyLikedTheProduct">
+                    *ngIf="!isCurrentUserHasAlreadyLikedTheProduct">
                     Like product
                 </button>
                 <h4 class="likes-notification" *ngIf="isCurrentUserHasAlreadyLikedTheProduct">
