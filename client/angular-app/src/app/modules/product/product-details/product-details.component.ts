@@ -61,7 +61,6 @@ export class ProductDetailsComponent implements OnInit {
       this.unsub = this.productService.deleteProduct(this.product._id)
         .pipe(
           map(response => this.serverResponseInfo = response),
-          tap(response => console.log(this.serverResponseInfo))
         )
         .subscribe(
           response => {
@@ -82,10 +81,20 @@ export class ProductDetailsComponent implements OnInit {
   productBuyHandler(): void {
     if (window.confirm("Are you sure that you want to buy this product?")) {
       this.unsub = this.productService.deleteProduct(this.product._id)
+      .pipe(
+        map(response => this.serverResponseInfo = response),
+      )
         .subscribe(
-          // ЗА НОТИФИКАЦИЯ ЩЕ МИ ТРЯБВА RESPONSA ОТ БАЗАТА
-          response => this.router.navigate(['/home']),
-          error => console.log(error),
+          response => {
+            setTimeout(() => {
+              if (this.serverResponseInfo.hasError === false) {
+                this.router.navigate(['/home']);
+              }
+            }, 3000);
+          },
+          error => {
+            this.serverResponseInfo = error.error;
+          },
           () => console.log('Stream has been closed!')
         );
     }

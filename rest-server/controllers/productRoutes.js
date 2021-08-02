@@ -84,7 +84,7 @@ router.post('/product/create', isAuthorized, (req, res) => {
                 })
                 .then(response => {
                     res.status(201).json({
-                        message: 'Product successfully created!',
+                        message: 'Product successfully stored in database!',
                         hasError: false,
                     });
                 })
@@ -137,7 +137,7 @@ router.get('/product/:productId/delete', isAuthorized, (req, res) => {
     Product.findByIdAndDelete(productId)
         .then(response => {
             res.status(200).json({
-                message: 'Successfully deleted!',
+                message: 'Product has been unstored!',
                 hasError: false,
             });
         })
