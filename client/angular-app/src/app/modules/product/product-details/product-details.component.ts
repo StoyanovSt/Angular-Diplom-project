@@ -20,7 +20,10 @@ export class ProductDetailsComponent implements OnInit {
     hasError: boolean,
     message: string
   };
-  unsub!: Subscription;
+  unsubForGettingProduct!: Subscription;
+  unsubForDeletingProduct!: Subscription;
+  unsubForBuyingProduct!: Subscription;
+  unsubForLikingProduct!: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,7 +45,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.unsub = this.productService.getProduct(this.activatedRoute.snapshot.params.productId)
+    this.unsubForGettingProduct = this.productService.getProduct(this.activatedRoute.snapshot.params.productId)
       .pipe(
         map(response => {
           this.product = response['product'];
@@ -58,7 +61,7 @@ export class ProductDetailsComponent implements OnInit {
 
   productDeleteHandler(): void {
     if (window.confirm("Are you sure that you want to delete this product?")) {
-      this.unsub = this.productService.deleteProduct(this.product._id)
+      this.unsubForDeletingProduct = this.productService.deleteProduct(this.product._id)
         .pipe(
           map(response => this.serverResponseInfo = response),
         )
@@ -80,7 +83,7 @@ export class ProductDetailsComponent implements OnInit {
 
   productBuyHandler(): void {
     if (window.confirm("Are you sure that you want to buy this product?")) {
-      this.unsub = this.productService.deleteProduct(this.product._id)
+      this.unsubForBuyingProduct = this.productService.deleteProduct(this.product._id)
       .pipe(
         map(response => this.serverResponseInfo = response),
       )
@@ -101,7 +104,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   likeProductHandler(): void {
-    this.unsub = this.productService.likeProduct(this.product._id, this.product.likes + 1)
+    this.unsubForLikingProduct = this.productService.likeProduct(this.product._id, this.product.likes + 1)
       .pipe(
         map((response) => this.product = response['product']),
       )
@@ -113,6 +116,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.unsub?.unsubscribe();
+    this.unsubForGettingProduct?.unsubscribe();
+    this.unsubForDeletingProduct?.unsubscribe();
+    this.unsubForBuyingProduct?.unsubscribe();
+    this.unsubForLikingProduct?.unsubscribe();
   }
 }

@@ -20,7 +20,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     message: string,
   };
 
-  unsub!: Subscription;
+  unsubForGettingProductForEdditingPurpose!: Subscription;
+  unsubForEddittingProduct!: Subscription;
 
   getProductResponseInfo!: {
     product: string,
@@ -37,7 +38,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.unsub = this.productService.getProductForEdditingPurpose(this.productId)
+    this.unsubForGettingProductForEdditingPurpose = this.productService.getProductForEdditingPurpose(this.productId)
       .subscribe(response => {
         this.getProductResponseInfo = response['product'];
         this.serverResponseInfo = response['notification'];
@@ -50,7 +51,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   editProductHandler(formData: any): void {
-    this.unsub = this.productService.editProduct(
+    this.unsubForEddittingProduct = this.productService.editProduct(
       formData.product,
       formData.description,
       formData.imageUrl,
@@ -77,6 +78,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsub?.unsubscribe();
+    this.unsubForGettingProductForEdditingPurpose?.unsubscribe();
+    this.unsubForEddittingProduct?.unsubscribe();
   }
 }

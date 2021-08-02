@@ -16,12 +16,13 @@ export class HomeViewGuestComponent implements OnInit, OnDestroy {
   htmlForm!: NgForm;
   mostRecentOfferts!: IProduct[];
   searchedProducts!: IProduct[];
-  unsub!: Subscription;
+  unsubForGettingMostLikedProducts!: Subscription;
+  unsubForGettingAllSearchedProducts!: Subscription;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.unsub = this.productService.getMostLikedProducts()
+    this.unsubForGettingMostLikedProducts = this.productService.getMostLikedProducts()
       .subscribe(
         response => this.mostRecentOfferts = response,
         error => console.error(error),
@@ -30,7 +31,7 @@ export class HomeViewGuestComponent implements OnInit, OnDestroy {
   }
 
   searchHandler(formData: any): void {
-    this.unsub = this.productService.getAllSearchedProducts(formData.search)
+    this.unsubForGettingAllSearchedProducts = this.productService.getAllSearchedProducts(formData.search)
       .pipe(
         map(response => this.searchedProducts = response)
       )
@@ -44,6 +45,7 @@ export class HomeViewGuestComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsub?.unsubscribe();
+    this.unsubForGettingMostLikedProducts?.unsubscribe();
+    this.unsubForGettingAllSearchedProducts?.unsubscribe();
   }
 }
