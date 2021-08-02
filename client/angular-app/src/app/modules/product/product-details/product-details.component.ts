@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { ProductService } from '../product.service';
 import { UserService } from '../../user/user.service';
@@ -16,6 +16,10 @@ import { IUser } from 'src/app/interfaces/user';
 export class ProductDetailsComponent implements OnInit {
   product!: IProduct;
   user!: IUser;
+  serverResponseInfo!: {
+    hasError: boolean,
+    message: string
+  };
   unsub!: Subscription;
 
   constructor(
@@ -55,10 +59,21 @@ export class ProductDetailsComponent implements OnInit {
   productDeleteHandler(): void {
     if (window.confirm("Are you sure that you want to delete this product?")) {
       this.unsub = this.productService.deleteProduct(this.product._id)
+        .pipe(
+          map(response => this.serverResponseInfo = response),
+          tap(response => console.log(this.serverResponseInfo))
+        )
         .subscribe(
-          // ЗА НОТИФИКАЦИЯ ЩЕ МИ ТРЯБВА RESPONSA ОТ БАЗАТА
-          response => this.router.navigate(['/home']),
-          error => console.log(error),
+          response => {
+            setTimeout(() => {
+              if (this.serverResponseInfo.hasError === false) {
+                this.router.navigate(['/home']);
+              }
+            }, 3000);
+          },
+          error => {
+            this.serverResponseInfo = error.error;
+          },
           () => console.log('Stream has been closed!')
         );
     }
@@ -82,13 +97,13 @@ export class ProductDetailsComponent implements OnInit {
         map((response) => this.product = response['product']),
       )
       .subscribe(
-        response=> {},
+        response => { },
         error => console.error(error),
         () => console.log('Stream has been closed!')
       );
   }
 
   ngOnDestroy(): void {
-    this.unsub?.unsubscribe();    
+    this.unsub?.unsubscribe();
   }
 }
