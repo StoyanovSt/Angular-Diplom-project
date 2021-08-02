@@ -31,13 +31,13 @@
         </article>
         <section class="inner">
             <ng-template [ngIf]="searchedProducts">
+                <ng-template [ngIf]="searchedProducts.length === 0">
+                    <article class="no-searched-products">
+                        <h4 class="no-searched-products-text">Sorry, there are no products available with this search
+                            criteria.</h4>
+                    </article>
+                </ng-template>
                 <app-product *ngFor="let product of searchedProducts" [product]="product"></app-product>
-            </ng-template>
-            <ng-template [ngIf]="searchedProducts.length === 0">
-                <article class="no-searched-products">
-                    <h4 class="no-searched-products-text">Sorry, there are no products available with this search
-                        criteria.</h4>
-                </article>
             </ng-template>
             <ng-template [ngIf]="mostRecentOfferts && !searchedProducts">
                 <app-product *ngFor="let product of mostRecentOfferts" [product]="product"></app-product>
