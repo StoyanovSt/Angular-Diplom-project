@@ -39,7 +39,8 @@
                     </article>
                 </ng-template>
                 <app-product *ngFor="let product of searchedProducts" [product]="product"></app-product>
-            </ng-template>
+                <button class="searched-products-btn" *ngIf="searchedProducts.length !== 0" routerLink="/">To home page</button>
+            </ng-template>           
             <ng-template [ngIf]="mostRecentOfferts && !searchedProducts">
                 <app-product *ngFor="let product of mostRecentOfferts" [product]="product"></app-product>
             </ng-template>

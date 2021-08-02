@@ -135,7 +135,15 @@
   align-items: center;
 }
 
-.no-searched-products-btn {
+.searched-products-btn {
+  height: fit-content;
+  position: relative;
+  left: -398px;
+  top: -28px;
+}
+
+.no-searched-products-btn,
+.searched-products-btn {
   width: fit-content;
   padding: 8px 16px;
   background-color: black;
@@ -145,7 +153,8 @@
   border-radius: 12px;
 }
 
-.no-searched-products-btn:hover {
+.no-searched-products-btn:hover,
+.searched-products-btn:hover {
   cursor: pointer;
 }
 
