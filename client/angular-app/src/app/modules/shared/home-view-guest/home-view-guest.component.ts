@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -11,6 +12,8 @@ import { ProductService } from '../../product/product.service';
   styleUrls: ['./home-view-guest.component.css']
 })
 export class HomeViewGuestComponent implements OnInit, OnDestroy {
+  @ViewChild('form')
+  htmlForm!: NgForm;
   mostRecentOfferts!: IProduct[];
   searchedProducts!: IProduct[];
   unsub!: Subscription;
@@ -26,10 +29,8 @@ export class HomeViewGuestComponent implements OnInit, OnDestroy {
       )
   }
 
-  searchHandler(event: MouseEvent, searchedCriteria: HTMLInputElement): void {
-    event.preventDefault();
-
-    this.unsub = this.productService.getAllSearchedProducts(searchedCriteria.value)
+  searchHandler(formData: any): void {
+    this.unsub = this.productService.getAllSearchedProducts(formData.search)
       .pipe(
         map(response => this.searchedProducts = response)
       )
@@ -39,7 +40,7 @@ export class HomeViewGuestComponent implements OnInit, OnDestroy {
         () => console.log('Stream has been closed!')
       )
 
-    searchedCriteria.value = '';
+    this.htmlForm.reset();
   }
 
   ngOnDestroy(): void {

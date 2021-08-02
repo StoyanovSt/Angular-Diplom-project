@@ -14,22 +14,29 @@
 </article>
 <section class="recent-offerts">
     <ng-template [ngIf]="mostRecentOfferts?.length !== 0">
-        <h1 class="recent-offerts-title">Our most liked offerts</h1>
+        <h1 class="recent-offerts-title" *ngIf="!searchedProducts">Our most liked offerts</h1>
         <article class="search-container">
             <article class="search">
-                <form action="" class="filter-form">
+                <form action="" class="filter-form" #form="ngForm" (submit)="searchHandler(form.value)">
                     <label for="search">
                         <i class="fas fa-search"></i>
-                        <input type="text" #searchedCriteriaInput id="search" name="search" placeholder="...">
-                        <input type="submit" value="Search" (click)="searchHandler($event, searchedCriteriaInput)">
+                        <input type="text" id="search" name="search" #searchInput="ngModel" placeholder="..." required
+                            ngModel>
+                        <input type="submit" id="searchBtn" value="Search" [disabled]="form?.invalid">
                     </label>
+                    <h6 class="required-field-notification" *ngIf="searchInput.touched && searchInput.errors?.required">
+                        Field is required for search</h6>
                 </form>
             </article>
         </article>
         <section class="inner">
             <ng-template [ngIf]="searchedProducts">
                 <ng-template [ngIf]="searchedProducts.length === 0">
-                    <h4>Sorry, there are no products available with this search criteria.</h4>
+                    <article class="no-searched-products">
+                        <h4 class="no-searched-products-text">Sorry, there are no products available with this search
+                            criteria.</h4>
+                        <button class="no-searched-products-btn" routerLink="/">To home page</button>
+                    </article>
                 </ng-template>
                 <app-product *ngFor="let product of searchedProducts" [product]="product"></app-product>
             </ng-template>

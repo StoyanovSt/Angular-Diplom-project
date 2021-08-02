@@ -6,6 +6,7 @@ import { HomeViewGuestComponent } from './home-view-guest/home-view-guest.compon
 import { HomeViewLoggedInComponent } from './home-view-logged-in/home-view-logged-in.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductModule } from '../product/product.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ProductModule } from '../product/product.module';
     CommonModule,
     RouterModule,
     ProductModule,
+    FormsModule
   ],
   exports: [
     HomeViewGuestComponent,

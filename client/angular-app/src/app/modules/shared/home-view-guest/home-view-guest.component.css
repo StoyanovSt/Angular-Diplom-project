@@ -129,3 +129,45 @@
   cursor: pointer;
 }
 
+.no-searched-products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-searched-products-btn {
+  width: fit-content;
+  padding: 8px 16px;
+  background-color: black;
+  border: none;
+  color: orange;
+  font-weight: bold;
+  border-radius: 12px;
+}
+
+.no-searched-products-btn:hover {
+  cursor: pointer;
+}
+
+.required-field-notification {
+  position: relative;
+  left: -540px;
+  top: 6px;
+  font-size: 0.9rem;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: black;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  text-align: center;
+  background-color: white;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.filter-form #searchBtn:disabled {
+  cursor: not-allowed;
+}
