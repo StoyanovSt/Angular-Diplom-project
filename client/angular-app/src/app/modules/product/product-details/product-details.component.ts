@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 
 import { ProductService } from '../product.service';
 import { UserService } from '../../user/user.service';
