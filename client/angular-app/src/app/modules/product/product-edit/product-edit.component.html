@@ -1,7 +1,11 @@
-<app-success *ngIf="serverResponseInfo && serverResponseInfo.hasError === false" [message]="serverResponseInfo.message">
-</app-success>
-<app-error *ngIf="serverResponseInfo && serverResponseInfo.hasError === true" [message]="serverResponseInfo.message">
-</app-error>
+<ng-template [ngIf]="serverResponseInfo">
+    <ng-template [ngIf]="serverResponseInfo.hasError === false && serverResponseInfo.message !== ''">
+        <app-success [message]="serverResponseInfo.message"></app-success>
+    </ng-template>
+    <ng-template [ngIf]="serverResponseInfo.hasError === true && serverResponseInfo.message !== ''">
+        <app-error [message]="serverResponseInfo.message"></app-error>
+    </ng-template>
+</ng-template>
 
 <section class="edit-product-container">
     <h2 class="edit-product-form-title">Edit your offert</h2>
