@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { environment } from "src/environments/environment";
+import { IUser } from 'src/app/interfaces/user';
+import { IProduct } from 'src/app/interfaces/product';
 
 const apiURL = environment.apiURL;
 
@@ -28,8 +30,14 @@ export class UserService {
     eMail: string,
     password: string,
     rePassword: string
-  ): Observable<any> {
-    return this.http.post<any>(`${apiURL}/register`, {
+  ): Observable<{
+    hasError: boolean,
+    message: string
+  }> {
+    return this.http.post<{
+      hasError: boolean,
+      message: string
+    }>(`${apiURL}/register`, {
       username,
       eMail,
       password,
@@ -44,8 +52,18 @@ export class UserService {
   loginUser(
     username: string,
     password: string
-  ): Observable<any> {
-    return this.http.post<any>(`${apiURL}/login`, {
+  ): Observable<{
+    message: string,
+    token: string,
+    username: string,
+    hasError: boolean,
+  }> {
+    return this.http.post<{
+      message: string,
+      token: string,
+      username: string,
+      hasError: boolean,
+    }>(`${apiURL}/login`, {
       username,
       password
     }, {
@@ -63,8 +81,14 @@ export class UserService {
     return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).TOKEN : '';
   }
 
-  getCurrentUserInfo(username: string): Observable<any> {
-    return this.http.get<any>(apiURL + `/user/${username}/profile`, {
+  getCurrentUserInfo(username: string): Observable<{
+    username: string,
+    products: IProduct[]
+  }> {
+    return this.http.get<{
+      username: string,
+      products: []
+    }>(apiURL + `/user/${username}/profile`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${this.getCurrentUserToken()}`,

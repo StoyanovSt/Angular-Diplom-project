@@ -252,8 +252,7 @@ router.patch('/product/:productId/like', (req, res) => {
             Product.findById(productId).lean()
                 .then(product => {
                     res.status(200).json({
-                        product,
-                        hasError: false,
+                        product
                     });
                 })
                 .catch(err => {

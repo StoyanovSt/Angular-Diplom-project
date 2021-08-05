@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IProduct } from 'src/app/interfaces/product';
+import { IUser } from 'src/app/interfaces/user';
 
 import { environment } from "src/environments/environment";
 import { UserService } from '../user/user.service';
@@ -15,16 +17,34 @@ export class ProductService {
     private http: HttpClient,
     private userService: UserService) { }
 
-  getProduct(productId: string): Observable<any> {
-    return this.http.get<any>(apiURLProduct + `/${productId}/details`, {
+  getProduct(productId: string): Observable<{
+    product: IProduct,
+    user: IUser
+  }> {
+    return this.http.get<{
+      product: IProduct,
+      user: IUser
+    }>(apiURLProduct + `/${productId}/details`, {
       headers: {
         'content-type': 'application/json',
       }
     });
   }
 
-  getProductForEdditingPurpose(productId: string): Observable<any> {
-    return this.http.get<any>(apiURLProduct + `/${productId}/edit`, {
+  getProductForEdditingPurpose(productId: string): Observable<{
+    product: IProduct,
+    notification: {
+      hasError: boolean,
+      message: string,
+    }
+  }> {
+    return this.http.get<{
+      product: IProduct,
+      notification: {
+        hasError: boolean,
+        message: string,
+      }
+    }>(apiURLProduct + `/${productId}/edit`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${this.userService.getCurrentUserToken()}`
@@ -32,8 +52,8 @@ export class ProductService {
     });
   }
 
-  getAllProducts(): Observable<any> {
-    return this.http.get<any>(apiURL + `/home`, {
+  getAllProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(apiURL + `/home`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${this.userService.getCurrentUserToken()}`,
@@ -41,8 +61,8 @@ export class ProductService {
     });
   }
 
-  getAllSearchedProducts(searchedCriteria: string): Observable<any> {
-    return this.http.get<any>(apiURL + `/${searchedCriteria}`, {
+  getAllSearchedProducts(searchedCriteria: string): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(apiURL + `/${searchedCriteria}`, {
       headers: {
         'content-type': 'application/json',
       }
@@ -54,8 +74,14 @@ export class ProductService {
     description: string,
     imageUrl: string,
     price: number
-  ): Observable<any> {
-    return this.http.post<any>(`${apiURLProduct}/create`, {
+  ): Observable<{
+    hasError: boolean,
+    message: string,
+  }> {
+    return this.http.post<{
+      hasError: boolean,
+      message: string,
+    }>(`${apiURLProduct}/create`, {
       product,
       description,
       imageUrl,
@@ -74,8 +100,20 @@ export class ProductService {
     imageUrl: string,
     price: number,
     productId: string
-  ): Observable<any> {
-    return this.http.post<any>(`${apiURLProduct}/${productId}/edit`, {
+  ): Observable<{
+    product: IProduct,
+    notification: {
+      hasError: boolean,
+      message: string,
+    }
+  }> {
+    return this.http.post<{
+      product: IProduct,
+      notification: {
+        hasError: boolean,
+        message: string,
+      }
+    }>(`${apiURLProduct}/${productId}/edit`, {
       product,
       description,
       imageUrl,
@@ -88,8 +126,14 @@ export class ProductService {
     });
   }
 
-  deleteProduct(productId: string): Observable<any> {
-    return this.http.get<any>(apiURLProduct + `/${productId}/delete`, {
+  deleteProduct(productId: string): Observable<{
+    message: string,
+    hasError: boolean
+  }> {
+    return this.http.get<{
+      message: string,
+      hasError: boolean
+    }>(apiURLProduct + `/${productId}/delete`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `${this.userService.getCurrentUserToken()}`,
@@ -97,8 +141,12 @@ export class ProductService {
     });
   }
 
-  likeProduct(productId: string, countOfLikes: number): Observable<any> {
-    return this.http.patch<any>(apiURLProduct + `/${productId}/like`, {
+  likeProduct(productId: string, countOfLikes: number): Observable<{
+    product: IProduct
+  }> {
+    return this.http.patch<{
+      product: IProduct
+    }>(apiURLProduct + `/${productId}/like`, {
       countOfLikes,
       currentUser: this.userService.getCurrentUserName()
     }, {
@@ -109,8 +157,8 @@ export class ProductService {
     });
   }
 
-  getMostLikedProducts(): Observable<any> {
-    return this.http.get<any>(apiURL + '/', {
+  getMostLikedProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(apiURL + '/', {
       headers: {
         'content-type': 'application/json'
       }

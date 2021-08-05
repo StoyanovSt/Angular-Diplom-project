@@ -1,4 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,6 +12,9 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnDestroy {
+  @ViewChild('form')
+  htmlForm!: NgForm;
+
   serverResponseInfo!: {
     hasError: boolean,
     message: string
@@ -23,13 +27,14 @@ export class LoginComponent implements OnDestroy {
     private router: Router
   ) { }
 
-  signInHandler(args: Array<any>): void {
-    args[0].preventDefault();
-
+  signInHandler(formData: {
+    username: string,
+    password: string,
+  }): void {        
     this.unsub = this.userService
       .loginUser(
-        args[1].value,
-        args[2].value
+        formData.username,
+        formData.password
       ).pipe(
         map(response => this.serverResponseInfo = response),
       )
@@ -48,8 +53,7 @@ export class LoginComponent implements OnDestroy {
         () => console.log('Stream has been closed!')
       );
 
-    args[1].value = '';
-    args[2].value = '';
+    this.htmlForm.reset();
   }
 
   ngOnDestroy(): void {

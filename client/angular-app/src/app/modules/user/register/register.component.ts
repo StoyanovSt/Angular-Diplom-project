@@ -2,7 +2,7 @@ import { Component, OnDestroy, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { UserService } from '../user.service';
 
@@ -27,7 +27,12 @@ export class RegisterComponent implements OnDestroy {
     private router: Router
   ) { }
 
-  signUpHandler(formData: any): void {
+  signUpHandler(formData: {
+    username: string,
+    Email: string,
+    password: string,
+    rePassword: string,
+  }): void {
     this.unsub = this.userService
       .registerUser(
         formData.username,

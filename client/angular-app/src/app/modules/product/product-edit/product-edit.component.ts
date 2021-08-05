@@ -50,7 +50,12 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       );
   }
 
-  editProductHandler(formData: any): void {
+  editProductHandler(formData: {
+    product: string,
+    description: string,
+    imageUrl: string,
+    price: string
+  }): void {
     this.unsubForEddittingProduct = this.productService.editProduct(
       formData.product,
       formData.description,

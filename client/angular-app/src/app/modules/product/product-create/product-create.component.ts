@@ -28,7 +28,12 @@ export class ProductCreateComponent implements OnDestroy{
     private userService: UserService
   ) { }
 
-  createOffertHandler(formData: any): void {
+  createOffertHandler(formData: {
+    product: string,
+    description: string,
+    imageUrl: string,
+    price: string,
+  }): void {
     this.unsub = this.productService.storeProduct(
       formData.product,
       formData.description,
