@@ -20,7 +20,7 @@
                 <form class="filter-form" #form="ngForm" (submit)="searchHandler(form.value)">
                     <label for="search">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="search" name="search" #searchInput="ngModel" placeholder="search among all offerts" required
+                        <input type="text" id="search" name="search" #searchInput="ngModel" placeholder="..." required
                             ngModel>
                         <input type="submit" id="searchBtn" value="Search" [disabled]="form?.invalid">
                     </label>
