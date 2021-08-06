@@ -22,9 +22,9 @@ import { NotificationsModule } from '../notifications/notifications.module';
   ],
   imports: [
     CommonModule,
-    ProductRoutesRoutingModule,
     HttpClientModule,
     RouterModule,
+    ProductRoutesRoutingModule,
     FormsModule,
     NotificationsModule,
   ],

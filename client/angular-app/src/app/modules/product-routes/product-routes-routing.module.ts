@@ -8,7 +8,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 
 const routes: Routes = [
     {
-        path: 'product',
+        path: '',
         children: [
             {
                 path: 'create',
