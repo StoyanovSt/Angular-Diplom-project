@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthActive } from './modules/core/guards/auth.activate';
 
 import { HomeViewGuestComponent } from './modules/shared/home-view-guest/home-view-guest.component';
@@ -13,6 +13,10 @@ const routes: Routes = [
     component: HomeViewGuestComponent,
   },
   {
+    path: 'product',
+    loadChildren: () => import('./modules/product-routes/product-routes.module').then(m => m.ProductRoutesModule)
+  },
+  {
     path: 'home',
     component: HomeViewLoggedInComponent,
     canActivate: [AuthActive],
@@ -22,13 +26,15 @@ const routes: Routes = [
     }
   },
   {
-      path: '**',
-      component: PageNotFoundComponent
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

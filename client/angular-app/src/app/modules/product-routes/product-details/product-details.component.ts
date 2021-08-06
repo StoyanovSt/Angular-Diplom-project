@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map} from 'rxjs/operators';
 
-import { ProductService } from '../product.service';
+import { ProductService } from '../product-routes.service';
 import { UserService } from '../../user/user.service';
 import { IProduct } from 'src/app/interfaces/product';
 import { IUser } from 'src/app/interfaces/user';

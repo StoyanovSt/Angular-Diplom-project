@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { UserService } from '../../user/user.service';
-import { ProductService } from '../product.service';
+import { ProductService } from '../product-routes.service';
 
 @Component({
   selector: 'app-product-create',

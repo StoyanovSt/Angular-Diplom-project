@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ProductModule } from '../product/product.module';
 import { UserRoutingModule } from './user-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -10,6 +9,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserService } from './user.service';
 import { FormsModule } from '@angular/forms';
 import { NotificationsModule } from '../notifications/notifications.module';
+import { ProductModule } from '../product/product.module';
 
 
 @NgModule({
@@ -22,9 +22,9 @@ import { NotificationsModule } from '../notifications/notifications.module';
     CommonModule,
     UserRoutingModule,
     HttpClientModule,
-    ProductModule,
     FormsModule,
-    NotificationsModule
+    ProductModule,
+    NotificationsModule,
   ],
   exports: [
     RegisterComponent,

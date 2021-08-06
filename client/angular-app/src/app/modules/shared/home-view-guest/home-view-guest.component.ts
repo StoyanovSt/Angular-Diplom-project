@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
 
 import { IProduct } from 'src/app/interfaces/product';
-import { ProductService } from '../../product/product.service';
+import { ProductService } from '../../product-routes/product-routes.service';
 
 @Component({
   selector: 'app-home-view-guest',
@@ -32,11 +31,8 @@ export class HomeViewGuestComponent implements OnInit, OnDestroy {
 
   searchHandler(formData: any): void {
     this.unsubForGettingAllSearchedProducts = this.productService.getAllSearchedProducts(formData.search)
-      .pipe(
-        map(response => this.searchedProducts = response)
-      )
       .subscribe(
-        response => { },
+        response => this.searchedProducts = response,
         error => console.error(error),
         () => console.log('Stream has been closed!')
       )

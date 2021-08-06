@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { ProductService } from '../product.service';
+import { ProductService } from '../product-routes.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -20,15 +20,15 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     message: string,
   };
 
-  unsubForGettingProductForEdditingPurpose!: Subscription;
-  unsubForEddittingProduct!: Subscription;
-
   getProductResponseInfo!: {
     product: string,
     description: string,
     imageUrl: string,
     price: number
   }
+
+  unsubForGettingProductForEdditingPurpose!: Subscription;
+  unsubForEddittingProduct!: Subscription;
 
   productId: string = this.activatedRoute.snapshot.params.productId;
 

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 
 import { UserModule } from './modules/user/user.module';
 import { CoreModule } from './modules/core/core.module';
-import { ProductModule } from './modules/product/product.module';
 import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { SharedModule } from './modules/shared/shared.module';
     HttpClientModule,
     UserModule,
     CoreModule,
-    ProductModule,
     SharedModule,
     AppRoutingModule,
   ],

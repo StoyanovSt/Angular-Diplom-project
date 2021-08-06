@@ -5,8 +5,9 @@ import { RouterModule } from '@angular/router';
 import { HomeViewGuestComponent } from './home-view-guest/home-view-guest.component';
 import { HomeViewLoggedInComponent } from './home-view-logged-in/home-view-logged-in.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ProductModule } from '../product/product.module';
 import { FormsModule } from '@angular/forms';
+import { ProductService } from '../product-routes/product-routes.service';
+import { ProductModule } from '../product/product.module';
 
 
 @NgModule({
@@ -18,13 +19,16 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
-    ProductModule,
-    FormsModule
+    FormsModule,
+    ProductModule
   ],
   exports: [
     HomeViewGuestComponent,
     HomeViewLoggedInComponent,
     PageNotFoundComponent,
+  ],
+  providers: [
+    ProductService
   ]
 })
 export class SharedModule { }
