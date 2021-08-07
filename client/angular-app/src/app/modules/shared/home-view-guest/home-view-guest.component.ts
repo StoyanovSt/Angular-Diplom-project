@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { IProduct } from 'src/app/interfaces/product';
+import { IProduct } from 'src/app/modules/shared/interfaces/product';
 import { ProductService } from '../../core/services/product-routes.service';
 
 @Component({

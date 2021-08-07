@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IProduct } from 'src/app/interfaces/product';
+import { IProduct } from 'src/app/modules/shared/interfaces/product';
 import { UserService } from '../../core/services/user.service';
 
 @Component({

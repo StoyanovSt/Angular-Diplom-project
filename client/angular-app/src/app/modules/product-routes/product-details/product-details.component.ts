@@ -5,8 +5,8 @@ import { map} from 'rxjs/operators';
 
 import { UserService } from '../../core/services/user.service';
 import { ProductService } from '../../core/services/product-routes.service';
-import { IProduct } from 'src/app/interfaces/product';
-import { IUser } from 'src/app/interfaces/user';
+import { IProduct } from 'src/app/modules/shared/interfaces/product';
+import { IUser } from 'src/app/modules/shared/interfaces/user';
 
 @Component({
   selector: 'app-product-details',

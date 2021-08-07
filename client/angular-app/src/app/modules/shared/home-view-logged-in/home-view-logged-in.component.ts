@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { IProduct } from '../../../interfaces/product';
+import { IProduct } from '../interfaces/product';
 import { ProductService } from '../../core/services/product-routes.service';
 
 @Component({

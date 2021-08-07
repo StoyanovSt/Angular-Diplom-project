@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { IProduct } from '../../../interfaces/product';
+import { IProduct } from '../../shared/interfaces/product';
 import { UserService } from '../../core/services/user.service';
 
 

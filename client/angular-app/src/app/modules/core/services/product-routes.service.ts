@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IProduct } from 'src/app/interfaces/product';
-import { IUser } from 'src/app/interfaces/user';
+import { IProduct } from 'src/app/modules/shared/interfaces/product';
+import { IUser } from 'src/app/modules/shared/interfaces/user';
 
 import { environment } from "src/environments/environment";
 import { UserService } from '../services/user.service';

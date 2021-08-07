@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { environment } from "src/environments/environment";
-import { IProduct } from 'src/app/interfaces/product';
+import { IProduct } from 'src/app/modules/shared/interfaces/product';
 
 const apiURL = environment.apiURL;
 
