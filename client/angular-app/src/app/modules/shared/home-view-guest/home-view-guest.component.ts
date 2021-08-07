@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { IProduct } from 'src/app/interfaces/product';
-import { ProductService } from '../../product-routes/product-routes.service';
+import { ProductService } from '../../core/services/product-routes.service';
 
 @Component({
   selector: 'app-home-view-guest',

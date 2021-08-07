@@ -6,8 +6,8 @@ import { HomeViewGuestComponent } from './home-view-guest/home-view-guest.compon
 import { HomeViewLoggedInComponent } from './home-view-logged-in/home-view-logged-in.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
-import { ProductService } from '../product-routes/product-routes.service';
 import { ProductModule } from '../product/product.module';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -18,6 +18,7 @@ import { ProductModule } from '../product/product.module';
   ],
   imports: [
     CommonModule,
+    CoreModule,
     RouterModule,
     FormsModule,
     ProductModule
@@ -27,8 +28,5 @@ import { ProductModule } from '../product/product.module';
     HomeViewLoggedInComponent,
     PageNotFoundComponent,
   ],
-  providers: [
-    ProductService
-  ]
 })
 export class SharedModule { }

@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { UserService } from '../../user/user.service';
-import { ProductService } from '../product-routes.service';
+import { UserService } from '../../core/services/user.service';
+import { ProductService } from '../../core/services/product-routes.service';
 
 @Component({
   selector: 'app-product-create',
