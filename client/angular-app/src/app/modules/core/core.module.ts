@@ -7,6 +7,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthActive } from './guards/auth.activate';
 import { UserService } from './services/user.service';
 import { ProductService } from './services/product-routes.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptorService } from '../shared/interceptors/jwt-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,12 @@ import { ProductService } from './services/product-routes.service';
   providers: [
     AuthActive,
     ProductService,
-    UserService
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
+      multi: true
+    }
   ]
 })
 export class CoreModule { }

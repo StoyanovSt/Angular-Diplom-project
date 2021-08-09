@@ -24,11 +24,7 @@ export class ProductService {
     return this.http.get<{
       product: IProduct,
       user: IUser
-    }>(apiURLProduct + `/${productId}/details`, {
-      headers: {
-        'content-type': 'application/json',
-      }
-    });
+    }>(apiURLProduct + `/${productId}/details`);
   }
 
   getProductForEdditingPurpose(productId: string): Observable<{
@@ -44,29 +40,15 @@ export class ProductService {
         hasError: boolean,
         message: string,
       }
-    }>(apiURLProduct + `/${productId}/edit`, {
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `${this.userService.getCurrentUserToken()}`
-      }
-    });
+    }>(apiURLProduct + `/${productId}/edit`);
   }
 
   getAllProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(apiURL + `/home`, {
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `${this.userService.getCurrentUserToken()}`,
-      }
-    });
+    return this.http.get<IProduct[]>(apiURL + `/home`);
   }
 
   getAllSearchedProducts(searchedCriteria: string): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(apiURL + `/${searchedCriteria}`, {
-      headers: {
-        'content-type': 'application/json',
-      }
-    });
+    return this.http.get<IProduct[]>(apiURL + `/${searchedCriteria}`);
   }
 
   storeProduct(
@@ -86,11 +68,6 @@ export class ProductService {
       description,
       imageUrl,
       price
-    }, {
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `${this.userService.getCurrentUserToken()}`,
-      }
     });
   }
 
@@ -118,11 +95,6 @@ export class ProductService {
       description,
       imageUrl,
       price
-    }, {
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `${this.userService.getCurrentUserToken()}`,
-      }
     });
   }
 
@@ -133,12 +105,7 @@ export class ProductService {
     return this.http.get<{
       message: string,
       hasError: boolean
-    }>(apiURLProduct + `/${productId}/delete`, {
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `${this.userService.getCurrentUserToken()}`,
-      }
-    });
+    }>(apiURLProduct + `/${productId}/delete`);
   }
 
   likeProduct(productId: string, countOfLikes: number): Observable<{
@@ -149,19 +116,10 @@ export class ProductService {
     }>(apiURLProduct + `/${productId}/like`, {
       countOfLikes,
       currentUser: this.userService.getCurrentUserName()
-    }, {
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `${this.userService.getCurrentUserToken()}`,
-      }
     });
   }
 
   getMostLikedProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(apiURL + '/', {
-      headers: {
-        'content-type': 'application/json'
-      }
-    });
+    return this.http.get<IProduct[]>(apiURL + '/');
   }
 }

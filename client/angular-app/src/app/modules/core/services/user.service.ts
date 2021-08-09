@@ -20,6 +20,14 @@ export class UserService {
     return localStorage.getItem('user') ? true : false;
   }
 
+  getCurrentUserName(): string {
+    return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).USERNAME : '';
+  }
+
+  getCurrentUserToken(): string {
+    return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).TOKEN : '';
+  }
+
   isCurrentLoggedUserOwnerOfProduct(productSellerUsername: string, loggedUserUsername: string): boolean {
     return productSellerUsername === loggedUserUsername;
   }
@@ -41,10 +49,6 @@ export class UserService {
       eMail,
       password,
       rePassword
-    }, {
-      headers: {
-        'content-type': 'application/json'
-      }
     });
   }
 
@@ -65,19 +69,7 @@ export class UserService {
     }>(`${apiURL}/login`, {
       username,
       password
-    }, {
-      headers: {
-        'content-type': 'application/json'
-      }
     });
-  }
-
-  getCurrentUserName(): string {
-    return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).USERNAME : '';
-  }
-
-  getCurrentUserToken(): string {
-    return localStorage.getItem('user') ? JSON.parse(String(localStorage.getItem('user'))).TOKEN : '';
   }
 
   getCurrentUserInfo(username: string): Observable<{
@@ -87,12 +79,7 @@ export class UserService {
     return this.http.get<{
       username: string,
       products: []
-    }>(apiURL + `/user/${username}/profile`, {
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `${this.getCurrentUserToken()}`,
-      }
-    });
+    }>(apiURL + `/user/${username}/profile`);
   }
 
   logout(): void {
