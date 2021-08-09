@@ -104,30 +104,6 @@ router.post('/product/create', isAuthorized, (req, res) => {
         });
 });
 
-// Get all froducts by criteria
-router.get('/:criteria', (req, res) => {
-    const searchedCriteria = req.params.criteria;
-
-    if (!searchedCriteria) {
-        return;
-    }
-
-    Product.find({ product: searchedCriteria })
-        .limit(3)
-        .lean()
-        .then(products => {
-            res.status(200).json(
-                products
-            );
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: 'Internal server error!',
-                hasError: true,
-            });
-        });
-});
-
 // Delete product
 router.get('/product/:productId/delete', isAuthorized, (req, res) => {
     // get product id
@@ -268,6 +244,30 @@ router.patch('/product/:productId/like', (req, res) => {
                 hasError: true,
             });
         })
+});
+
+// Get all froducts by criteria
+router.get('/:criteria', (req, res) => {
+    const searchedCriteria = req.params.criteria;
+
+    if (!searchedCriteria) {
+        return;
+    }
+
+    Product.find({ product: searchedCriteria })
+        .limit(3)
+        .lean()
+        .then(products => {
+            res.status(200).json(
+                products
+            );
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Internal server error!',
+                hasError: true,
+            });
+        });
 });
 
 module.exports = router;
