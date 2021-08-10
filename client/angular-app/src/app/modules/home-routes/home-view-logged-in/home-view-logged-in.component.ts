@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { IProduct } from '../interfaces/product';
-import { ProductService } from '../../core/services/product-routes.service';
+import { IProduct } from '../../shared/interfaces/product';
+import { ProductService } from '../../shared/services/product-routes.service';
 
 @Component({
   selector: 'app-home-view-logged-in',

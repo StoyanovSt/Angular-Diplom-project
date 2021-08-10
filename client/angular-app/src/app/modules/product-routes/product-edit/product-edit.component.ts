@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { ProductService } from '../../core/services/product-routes.service';
+import { ProductService } from '../../shared/services/product-routes.service';
 
 @Component({
   selector: 'app-product-edit',

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthActive } from './modules/core/guards/auth.activate';
+import { AuthActive } from './modules/shared/guards/auth.activate';
 
-import { HomeViewGuestComponent } from './modules/shared/home-view-guest/home-view-guest.component';
-import { HomeViewLoggedInComponent } from './modules/shared/home-view-logged-in/home-view-logged-in.component';
+import { HomeViewGuestComponent } from './modules/home-routes/home-view-guest/home-view-guest.component';
+import { HomeViewLoggedInComponent } from './modules/home-routes/home-view-logged-in/home-view-logged-in.component';
 import { PageNotFoundComponent } from './modules/shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [

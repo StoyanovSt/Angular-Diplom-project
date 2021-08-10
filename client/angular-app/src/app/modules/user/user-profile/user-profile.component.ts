@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IProduct } from 'src/app/modules/shared/interfaces/product';
-import { UserService } from '../../core/services/user.service';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-user-profile',

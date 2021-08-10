@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { IProduct } from 'src/app/modules/shared/interfaces/product';
-import { ProductService } from '../../core/services/product-routes.service';
+import { ProductService } from '../../shared/services/product-routes.service';
 
 @Component({
   selector: 'app-home-view-guest',

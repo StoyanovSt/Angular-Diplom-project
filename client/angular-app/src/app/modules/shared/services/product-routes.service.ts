@@ -5,7 +5,7 @@ import { IProduct } from 'src/app/modules/shared/interfaces/product';
 import { IUser } from 'src/app/modules/shared/interfaces/user';
 
 import { environment } from "src/environments/environment";
-import { UserService } from '../services/user.service';
+import { UserService } from './user.service';
 
 const apiURL = environment.apiURL;
 const apiURLProduct = environment.apiURL + '/product';

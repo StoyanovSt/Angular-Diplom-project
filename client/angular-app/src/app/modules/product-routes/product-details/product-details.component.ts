@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map} from 'rxjs/operators';
 
-import { UserService } from '../../core/services/user.service';
-import { ProductService } from '../../core/services/product-routes.service';
+import { UserService } from '../../shared/services/user.service';
+import { ProductService } from '../../shared/services/product-routes.service';
 import { IProduct } from 'src/app/modules/shared/interfaces/product';
 import { IUser } from 'src/app/modules/shared/interfaces/user';
 

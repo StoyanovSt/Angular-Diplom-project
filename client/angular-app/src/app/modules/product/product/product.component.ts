@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { IProduct } from '../../shared/interfaces/product';
-import { UserService } from '../../core/services/user.service';
+import { UserService } from '../../shared/services/user.service';
 
 
 @Component({
