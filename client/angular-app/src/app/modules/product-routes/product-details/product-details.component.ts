@@ -20,10 +20,8 @@ export class ProductDetailsComponent implements OnInit {
     hasError: boolean,
     message: string
   };
-  unsubForGettingProduct!: Subscription;
-  unsubForDeletingProduct!: Subscription;
-  unsubForBuyingProduct!: Subscription;
-  unsubForLikingProduct!: Subscription;
+
+  unsub = new Subscription();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -45,7 +43,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.unsubForGettingProduct = this.productService.getProduct(this.activatedRoute.snapshot.params.productId)
+    this.unsub.add(this.productService.getProduct(this.activatedRoute.snapshot.params.productId)
       .pipe(
         map(response => {
           this.product = response['product'];
@@ -56,12 +54,12 @@ export class ProductDetailsComponent implements OnInit {
         response => { },
         error => console.error(error),
         () => console.log('Stream has been closed!')
-      );
+      ));
   }
 
   productDeleteHandler(): void {
     if (window.confirm("Are you sure that you want to delete this product?")) {
-      this.unsubForDeletingProduct = this.productService.deleteProduct(this.product._id)
+      this.unsub.add(this.productService.deleteProduct(this.product._id)
         .pipe(
           map(response => this.serverResponseInfo = response),
         )
@@ -77,13 +75,13 @@ export class ProductDetailsComponent implements OnInit {
             this.serverResponseInfo = error.error;
           },
           () => console.log('Stream has been closed!')
-        );
+        ));
     }
   }
 
   productBuyHandler(): void {
     if (window.confirm("Are you sure that you want to buy this product?")) {
-      this.unsubForBuyingProduct = this.productService.deleteProduct(this.product._id)
+      this.unsub.add(this.productService.deleteProduct(this.product._id)
       .pipe(
         map(response => this.serverResponseInfo = response),
       )
@@ -99,12 +97,12 @@ export class ProductDetailsComponent implements OnInit {
             this.serverResponseInfo = error.error;
           },
           () => console.log('Stream has been closed!')
-        );
+        ));
     }
   }
 
   likeProductHandler(): void {
-    this.unsubForLikingProduct = this.productService.likeProduct(this.product._id, this.product.likes + 1)
+    this.unsub.add(this.productService.likeProduct(this.product._id, this.product.likes + 1)
       .pipe(
         map((response) => this.product = response['product']),
       )
@@ -112,13 +110,10 @@ export class ProductDetailsComponent implements OnInit {
         response => { },
         error => console.error(error),
         () => console.log('Stream has been closed!')
-      );
+      ));
   }
 
   ngOnDestroy(): void {
-    this.unsubForGettingProduct?.unsubscribe();
-    this.unsubForDeletingProduct?.unsubscribe();
-    this.unsubForBuyingProduct?.unsubscribe();
-    this.unsubForLikingProduct?.unsubscribe();
+    this.unsub?.unsubscribe();
   }
 }

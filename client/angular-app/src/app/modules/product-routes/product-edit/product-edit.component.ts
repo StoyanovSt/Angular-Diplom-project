@@ -26,9 +26,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     price: number
   }
 
-  unsubForGettingProductForEdditingPurpose!: Subscription;
-  unsubForEddittingProduct!: Subscription;
-
+  unsub = new Subscription();
   productId: string = this.activatedRoute.snapshot.params.productId;
 
   constructor(
@@ -37,7 +35,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.unsubForGettingProductForEdditingPurpose = this.productService.getProductForEdditingPurpose(this.productId)
+    this.unsub.add(this.productService.getProductForEdditingPurpose(this.productId)
       .subscribe(response => {
         this.getProductResponseInfo = response['product'];
         this.serverResponseInfo = response['notification'];
@@ -46,7 +44,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
           this.serverResponseInfo = error.error;
         },
         () => console.log('Stream has been closed!')
-      );
+    ));
   }
 
   editProductHandler(formData: {
@@ -55,7 +53,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     imageUrl: string,
     price: string
   }): void {
-    this.unsubForEddittingProduct = this.productService.editProduct(
+    this.unsub.add(this.productService.editProduct(
       formData.product,
       formData.description,
       formData.imageUrl,
@@ -76,13 +74,12 @@ export class ProductEditComponent implements OnInit, OnDestroy {
           this.serverResponseInfo = error.error;
         },
         () => console.log('Stream has been closed!')
-      )
+      ));
 
     this.htmlForm.reset();
   }
 
   ngOnDestroy(): void {
-    this.unsubForGettingProductForEdditingPurpose?.unsubscribe();
-    this.unsubForEddittingProduct?.unsubscribe();
+    this.unsub?.unsubscribe();
   }
 }

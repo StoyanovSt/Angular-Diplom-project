@@ -20,7 +20,7 @@ export class LoginComponent implements OnDestroy {
     message: string
   };
 
-  unsub!: Subscription;
+  unsub = new Subscription();
 
   constructor(
     private userService: UserService,
@@ -31,7 +31,7 @@ export class LoginComponent implements OnDestroy {
     username: string,
     password: string,
   }): void {        
-    this.unsub = this.userService
+    this.unsub.add(this.userService
       .loginUser(
         formData.username,
         formData.password
@@ -51,7 +51,7 @@ export class LoginComponent implements OnDestroy {
           this.serverResponseInfo = error.error;
         },
         () => console.log('Stream has been closed!')
-      );
+      ));
 
     this.htmlForm.reset();
   }

@@ -11,17 +11,17 @@ import { ProductService } from '../../shared/services/product-routes.service';
 })
 export class HomeViewLoggedInComponent implements OnInit, OnDestroy {
   products!: IProduct[];
-  unsub!: Subscription;
+  unsub = new Subscription();
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.unsub = this.productService.getAllProducts()
+    this.unsub.add(this.productService.getAllProducts()
       .subscribe(
         response => this.products = response,
         error => console.error(error),
         () => console.log('Stream has been closed!')
-      )
+      ));
   }
   
   ngOnDestroy(): void {

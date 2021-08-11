@@ -20,7 +20,8 @@ export class ProductCreateComponent implements OnDestroy{
     hasError: boolean,
     message: string
   };
-  unsub!: Subscription;
+  
+  unsub = new Subscription();
 
   constructor(
     private router: Router,
@@ -34,7 +35,7 @@ export class ProductCreateComponent implements OnDestroy{
     imageUrl: string,
     price: string,
   }): void {
-    this.unsub = this.productService.storeProduct(
+    this.unsub.add(this.productService.storeProduct(
       formData.product,
       formData.description,
       formData.imageUrl,
@@ -54,7 +55,7 @@ export class ProductCreateComponent implements OnDestroy{
           this.serverResponseInfo = error.error;
         },
         () => console.log('Stream has been closed!')
-      );
+      ));
 
     this.htmlForm.reset();
   }

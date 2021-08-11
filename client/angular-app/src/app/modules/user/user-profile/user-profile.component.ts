@@ -13,12 +13,12 @@ import { UserService } from '../../shared/services/user.service';
 export class UserProfileComponent implements OnInit, OnDestroy {
   username!: string;
   allUserProductsAvailable!: IProduct[];
-  unsub!: Subscription;
+  unsub = new Subscription();
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.unsub = this.userService.getCurrentUserInfo(`${this.userService.getCurrentUserName()}`)
+    this.unsub.add(this.userService.getCurrentUserInfo(`${this.userService.getCurrentUserName()}`)
       .pipe(
         map(response => {
           this.username = response['username'];
@@ -26,11 +26,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe(
-        response => {},
+        response => { },
         error => console.error(error),
-        () => console.log('Stream has been closed!'))
+        () => console.log('Stream has been closed!')));
   }
-  
+
   ngOnDestroy(): void {
     this.unsub?.unsubscribe();
   }

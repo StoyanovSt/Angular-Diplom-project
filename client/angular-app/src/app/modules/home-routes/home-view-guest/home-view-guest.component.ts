@@ -15,33 +15,31 @@ export class HomeViewGuestComponent implements OnInit, OnDestroy {
   htmlForm!: NgForm;
   mostRecentOfferts!: IProduct[];
   searchedProducts!: IProduct[];
-  unsubForGettingMostLikedProducts!: Subscription;
-  unsubForGettingAllSearchedProducts!: Subscription;
+  unsub = new Subscription();
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.unsubForGettingMostLikedProducts = this.productService.getMostLikedProducts()
-      .subscribe(
-        response => this.mostRecentOfferts = response,
-        error => console.error(error),
-        () => console.log('Stream has been closed!')
-      )
+    this.unsub.add(this.productService.getMostLikedProducts()
+        .subscribe(
+          response => this.mostRecentOfferts = response,
+          error => console.error(error),
+          () => console.log('Stream has been closed!')
+        ));
   }
 
   searchHandler(formData: any): void {
-    this.unsubForGettingAllSearchedProducts = this.productService.getAllSearchedProducts(formData.search)
-      .subscribe(
-        response => this.searchedProducts = response,
-        error => console.error(error),
-        () => console.log('Stream has been closed!')
-      )
+    this.unsub.add(this.productService.getAllSearchedProducts(formData.search)
+        .subscribe(
+          response => this.searchedProducts = response,
+          error => console.error(error),
+          () => console.log('Stream has been closed!')
+        ));
 
     this.htmlForm.reset();
   }
 
   ngOnDestroy(): void {
-    this.unsubForGettingMostLikedProducts?.unsubscribe();
-    this.unsubForGettingAllSearchedProducts?.unsubscribe();
+    this.unsub?.unsubscribe();
   }
 }

@@ -20,7 +20,7 @@ export class RegisterComponent implements OnDestroy {
     message: string
   };
 
-  unsub!: Subscription;
+  unsub = new Subscription();
 
   constructor(
     private userService: UserService,
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnDestroy {
     password: string,
     rePassword: string,
   }): void {
-    this.unsub = this.userService
+    this.unsub.add(this.userService
       .registerUser(
         formData.username,
         formData.Email,
@@ -54,7 +54,7 @@ export class RegisterComponent implements OnDestroy {
           this.serverResponseInfo = error.error;
         },
         () => console.log('Stream has been closed!')
-      );
+      ));
 
     this.htmlForm.reset();
   }
