@@ -5,6 +5,7 @@
     </article>
     <article class="product-info">        
         <p class="price">Price: {{product.price}}lv/ kg</p>
+        <p class="price" *ngIf="!isLogged">Likes: {{product.likes}}</p>
         <button class="more-info" *ngIf="isLogged" routerLink="/product/{{product._id}}/details">More info</button>
     </article>
 </article>
