@@ -24,7 +24,7 @@ router.get('/home', isAuthorized, (req, res) => {
 router.get('/', (req, res) => {
     // get most liked products
     Product.find()
-        .sort({ peopleLikedProduct: -1 })
+        .sort({ likes: -1 })
         .limit(3)
         .lean()
         .then(products => {
