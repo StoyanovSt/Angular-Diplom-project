@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
-import { environment } from "src/environments/environment";
-import { IProduct } from 'src/app/modules/shared/interfaces/product';
+import { environment } from "../../../../environments/environment";
+import { IProduct } from '../interfaces/product';
 
 const apiURL = environment.apiURL;
 

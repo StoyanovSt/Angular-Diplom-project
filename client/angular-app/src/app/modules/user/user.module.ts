@@ -9,7 +9,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FormsModule } from '@angular/forms';
 import { NotificationsModule } from '../notifications/notifications.module';
 import { ProductModule } from '../product/product.module';
-import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -20,9 +19,7 @@ import { CoreModule } from '../core/core.module';
   ],
   imports: [
     CommonModule,
-    CoreModule,
     UserRoutingModule,
-    HttpClientModule,
     FormsModule,
     ProductModule,
     NotificationsModule,

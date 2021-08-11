@@ -1,32 +1,36 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { HomeViewGuestComponent } from '../home-routes/home-view-guest/home-view-guest.component';
-import { HomeViewLoggedInComponent } from '../home-routes/home-view-logged-in/home-view-logged-in.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { FormsModule } from '@angular/forms';
-import { ProductModule } from '../product/product.module';
-import { CoreModule } from '../core/core.module';
+import { AuthActive } from './guards/auth.activate';
+import { ProductService } from './services/product-routes.service';
+import { UserService } from './services/user.service';
+import { JwtInterceptorService } from './interceptors/jwt-interceptor.service';
 
 
 @NgModule({
   declarations: [
-    HomeViewGuestComponent,
-    HomeViewLoggedInComponent,
     PageNotFoundComponent,
   ],
   imports: [
     CommonModule,
-    CoreModule,
     RouterModule,
-    FormsModule,
-    ProductModule
+    HttpClientModule,    
   ],
   exports: [
-    HomeViewGuestComponent,
-    HomeViewLoggedInComponent,
     PageNotFoundComponent,
   ],
+  providers: [
+    AuthActive,
+    ProductService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
+      multi: true
+    }
+  ]
 })
 export class SharedModule { }

@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IProduct } from 'src/app/modules/shared/interfaces/product';
-import { IUser } from 'src/app/modules/shared/interfaces/user';
 
-import { environment } from "src/environments/environment";
 import { UserService } from './user.service';
+import { IProduct } from '../interfaces/product';
+import { IUser } from '../interfaces/user';
+
+import { environment } from "../../../../environments/environment";
 
 const apiURL = environment.apiURL;
 const apiURLProduct = environment.apiURL + '/product';

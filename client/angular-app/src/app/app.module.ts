@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { UserModule } from './modules/user/user.module';
 import { CoreModule } from './modules/core/core.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { HomeRoutesModule } from './modules/home-routes/home-routes.module';
 
 @NgModule({
   declarations: [
@@ -14,9 +14,9 @@ import { SharedModule } from './modules/shared/shared.module';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    UserModule,
     CoreModule,
+    HomeRoutesModule,
+    UserModule,
     SharedModule,
     AppRoutingModule,
   ],
