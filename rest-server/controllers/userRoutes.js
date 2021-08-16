@@ -22,4 +22,21 @@ router.get('/user/:username/profile', isAuthorized, (req, res) => {
     });
 });
 
+router.get('/user/:userId/data', isAuthorized, (req, res) => {
+    const userAsParam = req.params.userId;
+
+    User.findOne({_id: userAsParam}).lean()
+    .then(user => {
+        res.status(200).json({
+            username: user.username,
+        });
+    })
+    .catch(err => {
+        res.status(500).json({
+            message: 'Internal server error!',
+            hasError: true,
+        });
+    });
+});
+
 module.exports = router;

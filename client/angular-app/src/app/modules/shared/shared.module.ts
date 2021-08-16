@@ -8,6 +8,7 @@ import { AuthActive } from './guards/auth.activate';
 import { ProductService } from './services/product-routes.service';
 import { UserService } from './services/user.service';
 import { JwtInterceptorService } from './interceptors/jwt-interceptor.service';
+import { EditActive } from './guards/edit.activate';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { JwtInterceptorService } from './interceptors/jwt-interceptor.service';
   ],
   providers: [
     AuthActive,
+    EditActive,
     ProductService,
     UserService,
     {

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { environment } from "../../../../environments/environment";
 import { IProduct } from '../interfaces/product';
+import { IUser } from '../interfaces/user';
 
 const apiURL = environment.apiURL;
 
@@ -85,6 +86,11 @@ export class UserService {
       username: string,
       products: []
     }>(apiURL + `/user/${username}/profile`);
+  }
+
+  async getUserByIdAsync(userId: string): Promise<{username: string}> {
+    const userName = await this.http.get<{username: string}>(apiURL + `/user/${userId}/data`).toPromise();
+    return userName;
   }
 
 }

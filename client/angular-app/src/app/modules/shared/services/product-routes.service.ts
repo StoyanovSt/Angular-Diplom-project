@@ -28,6 +28,17 @@ export class ProductService {
     }>(apiURLProduct + `/${productId}/details`);
   }
 
+  async getProductAsync(productId: string): Promise<{
+    product: IProduct,
+    user: IUser
+  }> {
+    const product = await this.http.get<{
+      product: IProduct,
+      user: IUser
+    }>(apiURLProduct + `/${productId}/details`).toPromise();
+    return product;
+  }
+
   getProductForEdditingPurpose(productId: string): Observable<{
     product: IProduct,
     notification: {
