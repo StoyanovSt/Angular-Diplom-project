@@ -11,13 +11,13 @@ export class JwtInterceptorService implements HttpInterceptor{
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // clone the outgoing request first
-    let request = req.clone({
+    let updatedRequest = req.clone({
       setHeaders: {
         'content-type': 'application/json',
         'authorization': `${this.userService.getCurrentUserToken()}`
       }
     });
 
-    return next.handle(request);
+    return next.handle(updatedRequest);
   }
 }
