@@ -72,6 +72,11 @@ export class UserService {
     });
   }
 
+  logout(): void {
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
+  }
+
   getCurrentUserInfo(username: string): Observable<{
     username: string,
     products: IProduct[]
@@ -82,8 +87,4 @@ export class UserService {
     }>(apiURL + `/user/${username}/profile`);
   }
 
-  logout(): void {
-    localStorage.removeItem('user');
-    this.router.navigate(['/']);
-  }
 }

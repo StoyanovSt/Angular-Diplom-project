@@ -52,6 +52,10 @@ export class ProductService {
     return this.http.get<IProduct[]>(apiURL + `/${searchedCriteria}`);
   }
 
+  getMostLikedProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(apiURL + '/');
+  }
+
   storeProduct(
     product: string,
     description: string,
@@ -120,7 +124,4 @@ export class ProductService {
     });
   }
 
-  getMostLikedProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(apiURL + '/');
-  }
 }

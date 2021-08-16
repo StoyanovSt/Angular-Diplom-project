@@ -11,6 +11,7 @@ export class ImageUrlValidationDirective {
     private form: NgForm
   ) { }
 
+  // listens for input event
   @HostListener('input')
   inputHandle() {
     let element: string = this.elRef.nativeElement.value;
