@@ -37,14 +37,14 @@
             This field isrequired!
         </h6>
         <h6 class="required-field-notification" *ngIf="form?.errors?.image">
-            Image URL must starts with http or https!
+            Image URL must starts with http or https and must ends with .jpg!
         </h6>
         <label for="product-price">Product price
             <input type="number" id="product-price" name="price" #productPriceInput="ngModel" min="0"
                 placeholder="Product price" required ngModel>
         </label>
         <h6 class="required-field-notification" *ngIf="productPriceInput.touched && productPriceInput.errors?.required">
-            This field isrequired!
+            This field is required!
         </h6>
         <h6 class="field-notification" *ngIf="productPriceInput.errors?.min">
             Selling price must be non negative number!

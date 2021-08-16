@@ -16,7 +16,7 @@ export class ImageUrlValidationDirective {
   inputHandle() {
     let element: string = this.elRef.nativeElement.value;
 
-    if (!element.startsWith('http')) {
+    if (!element.startsWith('http') || !element.endsWith('.jpg')) {
       this.form.control.setErrors({
         'image': true
       });

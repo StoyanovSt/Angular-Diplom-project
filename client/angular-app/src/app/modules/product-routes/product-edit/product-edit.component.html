@@ -40,7 +40,7 @@
         </h6>
         <h6 class="required-field-notification"
             *ngIf="form?.errors?.image">
-            Image URL must starts with http or https!
+            Image URL must starts with http or https and must ends with .jpg!
         </h6>
         <label for="product-price">Product price
             <input type="number" id="product-price" name="price" #productPriceInput="ngModel" min="0"
