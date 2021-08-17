@@ -21,7 +21,8 @@
   margin-bottom: 5px;
 }
 
-.create-product-form > input {
+.create-product-form > input,
+.create-product-form > select {
   margin-top: 20px;
   font-size: 0.9rem;
   padding: 8px 24px;
@@ -45,7 +46,8 @@
 }
 
 .create-product-form label input,
-.create-product-form label textarea {
+.create-product-form label textarea,
+.create-product-form label select {
   width: 300px;
   padding: 5px 0px 5px 5px;
   outline: none;

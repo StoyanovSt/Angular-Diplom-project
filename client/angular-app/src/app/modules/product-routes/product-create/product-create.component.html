@@ -49,6 +49,13 @@
         <h6 class="field-notification" *ngIf="productPriceInput.errors?.min">
             Selling price must be non negative number!
         </h6>
+        <label for="quantityType">Specify units
+            <select name="units" id="quantityType" ngModel>
+                <option value="per kg" selected>Price is per kg</option>
+                <option value="per item">Price is per item</option>            
+            </select>
+        </label>        
+
         <input type="submit" value="Store a product" [disabled]="form?.invalid">
     </form>
 </section>

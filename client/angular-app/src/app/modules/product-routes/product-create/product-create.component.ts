@@ -21,6 +21,7 @@ export class ProductCreateComponent implements OnDestroy{
     message: string
   };
   
+  choosenQuantityType!: string;
   unsub = new Subscription();
 
   constructor(
@@ -34,7 +35,9 @@ export class ProductCreateComponent implements OnDestroy{
     description: string,
     imageUrl: string,
     price: string,
+    units: string
   }): void {
+    this.choosenQuantityType = formData.units;           
     this.unsub.add(this.productService.storeProduct(
       formData.product,
       formData.description,
